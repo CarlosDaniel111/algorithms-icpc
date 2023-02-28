@@ -4,6 +4,8 @@
 #define FOR1(x, n) for (long long x = 1; x <= (long long)n; x++)
 #define FORR(x, n) for (long long x = n - 1; x >= 0; x--)
 #define FORR1(x, n) for (long long x = n; x >= 1; x--)
+#define eb emplace_back
+#define all(x) x.begin(), x.end()
 const long long INF = 1 << 28;
 const long long MOD = 1e9 + 7;
 const long long MAXN = 1e5 + 5;
