@@ -16,6 +16,14 @@ typedef pair<int, int> ii;
 typedef vector<int> vi;
 typedef vector<pair<int, int>> vii;
 
+int GCD(int a, int b) {
+    if (b == 0)
+        return a;
+    return GCD(b, a % b);
+}
+
+ll LCM(int a, int b) { return ((a * b) / GCD(a, b)); }
+
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
