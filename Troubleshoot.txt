@@ -1,0 +1,51 @@
+Antes de enviar la solución:
+Escribe algunos casos de prueba simples, si los de ejemplo no son suficientes.
+Si es posible, generar casos de prueba máximos.
+¿Está bien el uso de memoria?
+¿Alguna variable puede sufrir overflow?
+Subir el archivo correcto.
+
+Wrong answer:
+¿Estás limpiando todas las estructuras de datos entre los casos de prueba?
+¿Puede tu algoritmo manejar todo el rango de entrada?
+¿Dividir pantalla del IDE mientras un compañero resuelve otro problema, debugear a mano?
+Leer de nuevo el problema
+¿Manejas todos los casos esquina correctamente?
+¿Entendiste bien el problema?
+¿Variables no inicializadas?
+¿Algún overflow?
+¿Confundiendo N y m, i y j, etc.?
+¿Estás seguro de que tu algoritmo funciona?
+¿Hay casos especiales en los que no hayas pensado?
+¿Estás seguro que las funciones de la STL funcionan como piensas?
+Add some assertions, maybe resubmit.
+Crea algunos casos de prueba para probar tu algoritmo.
+Ir a través del algoritmo por un caso simple.
+Ve por esta lista otra vez.
+Explica tu algoritmo a un compañero.
+Pídele a un compañero que mire tu código.
+Ve por una pequeña caminata (al baño tal vez).
+¿Es tu formato de salida correcto? (incluyendo los espacios en blanco)
+Reescribe tu solución desde el inicio, o deja a un compañero hacerlo.
+
+Runtime error:
+¿Pusiste a prueba todos los casos esquina localmente?
+¿Alguna variable no inicializada?
+¿Estás leyendo o escribiendo fuera del rango de algún vector?
+¿Alguna posible división entre 0? (mod 0 por ejemplo)
+¿Alguna posible recursión infinita?
+¿Punteros o iteradores invalidados?
+¿Estás usando mucha memoria?
+Debug with resubmits (e.g. remapped signals, see Various).
+
+Time limit exceeded:
+¿Tienes algún posible bucle infinito?
+¿Cuál es la complejidad temporal de tu algoritmo?
+¿Estás copiando mucha información innecesaria? (referencias)
+¿Qué tan grande es la entrada y salida? (considerar scanf/printf)
+Evitar vector, map. (usar arreglos/unordered_map)
+¿Qué piensan tus compañeros acerca de tu algoritmo?
+
+Memory limit exceeded:
+¿Cuánto es lo máximo de memoria que tu algoritmo puede llegar a necesitar?
+¿Estás limpiando todas las estructuras de datos entre casos de prueba?
