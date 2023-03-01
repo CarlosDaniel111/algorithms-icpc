@@ -8,6 +8,5 @@
 -Algoritmos de ruta más corta para grafos.\
 -Algoritmos de minimum spaning tree.\
 -Algoritmos de ordenamiento topológico.\
--Kth ancestor con binary lifting.\
 -Euler tour (aplanamiento de árbol).\
 -Funciones útiles de la STL (y también \_\_builtin)?
