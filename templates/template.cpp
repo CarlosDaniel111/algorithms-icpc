@@ -13,7 +13,9 @@ using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 typedef pair<int, int> ii;
+typedef pair<ll, ll> llll;
 typedef vector<int> vi;
+typedef vector<ll> vll;
 typedef vector<pair<int, int>> vii;
 
 int main() {
