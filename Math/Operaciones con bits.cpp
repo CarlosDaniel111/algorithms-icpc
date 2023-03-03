@@ -1,4 +1,6 @@
+//NOTA - Si i > 30, usar 1LL
 //Tomando en cuenta un número x e índices i, j (0-indexados); podemos hacer muchas cosas:
+
 
 /*Tomando en cuenta el i-esimo bit, retorna:
 0                       Si está apagado
@@ -24,3 +26,9 @@ x &= (((~0) << (j + 1)) | ((1 << i) - 1));
 1 si x es impar
 0 si x es par*/
 x & 1
+
+//Recorre a x k bits a la derecha, lo podemos ver como (x >> k) = piso(x / (2^k))
+x >> k;
+
+//Recorre a x k bits a la izquierda, lo podemos ver como (x << k) = x * (2^k)
+x << k
