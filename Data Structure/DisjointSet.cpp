@@ -22,7 +22,6 @@ int numSets;
 
 int findSet(int i) { return (p[i] == i) ? i : (p[i] = findSet(p[i])); }
 bool isSame(int i, int j) { return findSet(i) == findSet(j); }
-int numDisjointSets() { return numSets; }      // optional
 int sizeOfSet(int i) { return setSize[findSet(i)]; } // optional
 
 void unite(int i, int j) {
@@ -41,8 +40,8 @@ int main() {
 
     /*INICIALIZAR
     Para todo i en [0, n - 1]
-      p[i] = i
-      setSize[i] = 1
+      p[i] = i --> iota(p, p + n, 0)
+      setSize[i] = 1 --> fill(setSize, setSize + n, 1)
       numSets = n
     */
     return 0;
