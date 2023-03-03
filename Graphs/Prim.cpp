@@ -51,7 +51,7 @@ int main() {
     process(0);                                    // take+process vertex 0
     int totalWeight = 0, takenEdges = 0;               // no edge has been taken
     while (!pq.empty() && takenEdges != V - 1) {                          // up to O(E)
-	    auto [w, u] = pq.top(); //Se desempaqueta la arista con menor peso
+        auto [w, u] = pq.top(); //Se desempaqueta la arista con menor peso
         pq.pop();
 
         if (taken[u]) continue; //Si ha sido tomada
