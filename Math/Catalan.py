@@ -1,4 +1,5 @@
-#Python solution for small range ---> k <= 510
+# Solution for small range ---> k <= 510
+# if k is greater, use Java's BigInteger class
 catalan = [0 for i in range(510)]
 
 def precalculate():
