@@ -3,8 +3,9 @@
 vii graph[MAXN]; //Grafo guardado como lista de adyascencia.
 int dist[MAXN];
 
-/*Llena un arreglo (dist), donde dist[i] indica la distancia mínima que
-se tiene que recorrer desde un nodo 'x' para llegar al nodo 'i'. */
+/*Llena un arreglo (dist), donde dist[i] indica la distancia mÃ­nima que
+se tiene que recorrer desde un nodo 'x' para llegar al nodo 'i',
+en caso de que 'i' no sea alcanzable desde 'x', dist[i] = -1 */
 void dijkstra(int x){
     memset(dist, -1, sizeof dist);
     dist[x] = 0;
