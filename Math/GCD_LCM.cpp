@@ -24,6 +24,21 @@ int GCD(int a, int b) {
 
 ll LCM(int a, int b) { return ((a * b) / GCD(a, b)); }
 
+//Tripleta (d, x, y)
+typedef tuple<int, int, int> Triple;
+
+Triple extendedGCD(int a, int b){
+    if (b == 0) return Triple({a, 1, 0});
+    auto [d, x, y] = extendedGCD(b, a % b);
+    return {d, y, x - a/b * y};
+}
+
+int modInverse(int a, int m){
+    auto [d, x, y] = extendedGCD(a, m);
+    if (d > 1) return 0;
+    return (x + m) % m;
+}
+
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
