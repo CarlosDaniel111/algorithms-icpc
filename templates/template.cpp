@@ -2,6 +2,7 @@
 
 #define all(x) x.begin(), x.end()
 #define eb emplace_back
+#define ENDL '\n'
 #define FOR(x, n) for (long long x = 0; x < (long long)n; x++)
 #define FOR1(x, n) for (long long x = 1; x <= (long long)n; x++)
 #define FORR(x, n) for (long long x = n - 1; x >= 0; x--)
