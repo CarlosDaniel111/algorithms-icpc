@@ -2,8 +2,6 @@
 
 -Inverso modular.\
 -Update al Segment Tree (agregar lazy).\
--Binary Indexed Tree (BIT) o fenwick tree.\
--Cálculo de Catalán.\
 -Formulas necesarias de combinatoria?.\
 -Algunas soluciones de programación dinámica (iterativa y recursivamente si es posible).\
 -Algoritmos de ruta más corta para grafos (Dijkstra, Bellman-Ford, Floyd-Warshall).\
