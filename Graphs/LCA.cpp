@@ -40,7 +40,7 @@ int LCA(int p, int q) {
 }
 
 int main(){
-	ios_base :: sync_with_stdio(0); cin.tie(nullptr);
+    ios_base :: sync_with_stdio(0); cin.tie(nullptr);
 
     cin >> num_nodes;
     // read num_nodes, the total number of nodes
