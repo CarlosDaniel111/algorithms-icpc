@@ -1,39 +1,43 @@
-//iterative way
-ll binpow(ll a, ll b, ll m){ //(a^b) mod m
-  ll res = 1;
-  while(b){
-    if (b & 1) res = (res * a) % m;
-    a = (a * a) % m;
-    b >>= 1;
-  }
-  return res;
+// iterative way
+ll binpow(ll a, ll b, ll m) { //(a^b) mod m
+    ll res = 1;
+    a %= m;
+    while (b) {
+        if (b & 1)
+            res = (res * a) % m;
+        a = (a * a) % m;
+        b >>= 1;
+    }
+    return res;
 }
 
-//Let A be an n*n order matrix and k the exponent, we can calculate A^k in O(log k * n^3)
+// Let A be an n*n order matrix and k the exponent, we can calculate A^k in O(log k * n^3)
 typedef vector<vi> vvi;
-//A * B = C, O(n^3)
-vvi matrixMultiplication(vvi& A, vvi& B){
+// A * B = C, O(n^3)
+vvi matrixMultiplication(vvi &A, vvi &B) {
     int n = A.size(), m = A[0].size(), k = B[0].size();
     vvi C(n, vi(k, 0));
 
     FOR(i, n)
-        FOR(j, k)
-            FOR(l, m)
-                C[i][j] += (A[i][l] * B[l][j]) % MOD;
+    FOR(j, k)
+    FOR(l, m)
+    C[i][j] += (A[i][l] * B[l][j]) % MOD;
     return C;
 }
-//A^k, O(log k * n^3)
-vvi matrixExponentiation(vvi &A, ll k){
+// A^k, O(log k * n^3)
+vvi matrixExponentiation(vvi &A, ll k) {
     int n = A.size();
-    //ret -> identity matrix
+    // ret -> identity matrix
     vvi ret(n, vi(n)), B = A;
-    FOR(i, n) ret[i][i] = 1;
+    FOR(i, n)
+    ret[i][i] = 1;
 
-    while(k){
-        if (k & 1) ret = matrixMultiplication(ret, B);
+    while (k) {
+        if (k & 1)
+            ret = matrixMultiplication(ret, B);
         k >>= 1;
         B = matrixMultiplication(B, B);
     }
     return ret;
 }
-//Another faster approach could be use structs with fixed matrices overloading the * operator
+// Another faster approach could be use structs with fixed matrices overloading the * operator
