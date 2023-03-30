@@ -34,7 +34,7 @@ using vpd = vector<pd>;
 #define eb emplace_back
 #define lb lower_bound
 #define ub upper_bound
-#define tcT template <class T
+#define tcT template <class T \
 tcT > int lwb(V<T> &a, const T &b) { return int(lb(all(a), b) - bg(a)); }
 
 // loops
