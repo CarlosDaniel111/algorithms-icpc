@@ -35,7 +35,7 @@ using vpd = vector<pd>;
 #define lb lower_bound
 #define ub upper_bound
 #define tcT template <class T
-tcT > int lwb(V<T> &a, const T &b) { return int(lb(all(a), b) - bg(a)); }
+tcT > int lwb(vector<T> &a, const T &b) { return int(lb(all(a), b) - bg(a)); }
 
 // loops
 #define FOR(i, a, b) for (int i = (a); i < (b); ++i)
