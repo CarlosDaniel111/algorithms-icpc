@@ -18,6 +18,9 @@ typedef pair<int, int> ii;
 typedef vector<int> vi;
 typedef vector<pair<int, int>> vii;
 
+/*Esta implementado para obtener la suma en un rango, pero es posible usar cualquier 
+operacion conmutativa como la multiplicacion, XOR, AND, OR, MIN, MAX, etc.*/
+
 int arr[MAXN], tree[MAXN * 4];
 
 void buildTree(int index, int start, int end) {
@@ -46,8 +49,7 @@ void update(int index, int start, int end, int idx, int val) {
     }
 }
 
-/*Implementado para obtener suma en un rango, pero es posible usar cualquier 
-operacion conmutativa como la multiplicacion, XOR, AND, OR, MIN, MAX, etc.*/
+
 int query(int index, int start, int end, int l, int r) {
     if (r < start || end < l) 
         return 0; //Si ese rango no nos sirve, retornar un valor que no cambie nada
