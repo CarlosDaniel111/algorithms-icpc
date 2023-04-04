@@ -46,9 +46,11 @@ void update(int index, int start, int end, int idx, int val) {
     }
 }
 
+/*Implementado para obtener suma en un rango, pero es posible usar cualquier 
+operacion conmutativa como la multiplicacion, XOR, AND, OR, MIN, MAX, etc.*/
 int query(int index, int start, int end, int l, int r) {
-    if (r < start || end < l)
-        return INT_MAX;
+    if (r < start || end < l) 
+        return 0; //Si ese rango no nos sirve, retornar un valor que no cambie nada
 
     if (l <= start && end <= r)
         return tree[index];
