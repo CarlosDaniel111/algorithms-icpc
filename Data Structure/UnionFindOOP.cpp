@@ -1,30 +1,28 @@
 const int MAXN = 1e5 + 5;
 
 class UnionFind {
-    private: int p[MAXN], rank[MAXN];
+    private: int numSets, parent[MAXN], rank[MAXN], setSize[MAXN];
     public:
-        UnionFind(int N) {
-            for(int i = 0; i < N; i++) {
-                p[i] = i;
-            }
+        UnionFind(int &N) {
+            for(int i = 0; i < N; i++) 
+                parent[i] = i;
+            numSets = N;
         }
-        int get(int i) {
-            return (p[i] == i) ? i : (p[i] = get(p[i]));
+        int get(int i) { //path compression
+            return (parent[i] == i) ? i : (parent[i] = get(parent[i]));
         }
-        bool isSameSet(int i, int j) {
+        bool isSame(int i, int j) {
             return get(i) == get(j);
         }
-        void unionSet(int i, int j) {
-            if(!isSameSet(i, j)) {
+        void unite(int i, int j) {
+            if(!isSame(i, j)) {
                 int x = get(i), y = get(j);
-                if(rank[x] > rank[y]) {
-                    p[y] = x;
-                }else {
-                    p[x] = y;
-                    if(rank[x] == rank[y]) {
-                        rank[y]++;
-                    }
-                }
+                if (rank[x] > rank[y]) swap(x, y);
+                parent[x] = y;
+                if (rank[x] == rank[y]) ++rank[y];
+                setSize[y] += setSize[x];
+                --numSets;
             }
         }
+        int sizeOfSet(int i) { return setSize[get(i)]; }
 };
