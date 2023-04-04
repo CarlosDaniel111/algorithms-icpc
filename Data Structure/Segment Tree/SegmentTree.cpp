@@ -30,7 +30,6 @@ void update(int index, int start, int end, int idx, int val) {
     }
 }
 
-
 int query(int index, int start, int end, int l, int r) {
     if (r < start || end < l) 
         return 0; //Si ese rango no nos sirve, retornar un valor que no cambie nada
@@ -43,11 +42,4 @@ int query(int index, int start, int end, int l, int r) {
     int q2 = query(2 * index + 2, mid + 1, end, l, r);
 
     return q1 + q2;
-}
-
-int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(nullptr);
-
-    return 0;
 }
