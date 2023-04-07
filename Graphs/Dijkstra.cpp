@@ -3,6 +3,8 @@
 vii graph[MAXN]; //Grafo guardado como lista de adyascencia.
 int dist[MAXN];
 
+using pi = pair<int, int>;
+
 template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
 
@@ -15,7 +17,7 @@ void dijkstra(int x){
     F0R (i, MAXN) dist[i] = INF;
     dist[x] = 0;
     
-    pqg<ii> pq; pq.emplace(0, x);
+    pqg<pi> pq; pq.emplace(0, x);
     while(!pq.empty()){
         auto [du, u] = pq.top();
         pq.pop();
