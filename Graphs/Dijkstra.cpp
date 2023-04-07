@@ -5,7 +5,9 @@ int dist[MAXN];
 
 /*Llena un arreglo (dist), donde dist[i] indica la distancia mínima que
 se tiene que recorrer desde un nodo 'x' para llegar al nodo 'i',
-en caso de que 'i' no sea alcanzable desde 'x', dist[i] = -1 */
+en caso de que 'i' no sea alcanzable desde 'x', dist[i] = -1 
+
+O(V + E log V)                                                      */
 void dijkstra(int x){
     F0R (i, MAXN) dist[i] = INF;
     dist[x] = 0;
