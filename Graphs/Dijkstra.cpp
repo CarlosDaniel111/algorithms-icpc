@@ -2,6 +2,7 @@
 
 vii graph[MAXN]; //Grafo guardado como lista de adyascencia.
 int dist[MAXN];
+using pqg = priority_queue<T, vector<T>, greater<T>>;
 
 /*Llena un arreglo (dist), donde dist[i] indica la distancia mínima que
 se tiene que recorrer desde un nodo 'x' para llegar al nodo 'i',
@@ -12,7 +13,7 @@ void dijkstra(int x){
     F0R (i, MAXN) dist[i] = INF;
     dist[x] = 0;
     
-    priority_queue<ii, vii, greater<ii>> pq; pq.emplace(0, x);
+    pqg<ii> pq; pq.emplace(0, x);
     while(!pq.empty()){
         auto [du, u] = pq.top();
         pq.pop();
