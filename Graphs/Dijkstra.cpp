@@ -2,6 +2,8 @@
 
 vii graph[MAXN]; //Grafo guardado como lista de adyascencia.
 int dist[MAXN];
+
+template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
 
 /*Llena un arreglo (dist), donde dist[i] indica la distancia mínima que
