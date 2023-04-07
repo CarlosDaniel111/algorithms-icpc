@@ -7,7 +7,7 @@ int dist[MAXN];
 se tiene que recorrer desde un nodo 'x' para llegar al nodo 'i',
 en caso de que 'i' no sea alcanzable desde 'x', dist[i] = -1 */
 void dijkstra(int x){
-    memset(dist, -1, sizeof dist);
+    F0R (i, MAXN) dist[i] = INF;
     dist[x] = 0;
 
     priority_queue<ii, vii, greater<ii>> pq; pq.emplace(0, x);
