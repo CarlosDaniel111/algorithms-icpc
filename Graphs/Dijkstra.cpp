@@ -33,7 +33,7 @@ void dijkstra(int x){
     }
     
     //Si la pq puede tener muchisimos elementos, utilizamos un set, en donde habrá a lo mucho V elementos
-    set<ii> pq;                                    
+    set<pi> pq;                                    
     for (int u = 0; u < V; ++u)                    
         pq.emplace(dist[u], u);                     
 
