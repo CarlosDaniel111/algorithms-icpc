@@ -16,7 +16,7 @@ typedef pair<int, int> ii;
 typedef vector<int> vi;
 typedef vector<pair<int, int>> vii;
 
-//DSU
+// DSU
 int p[MAXN], rankk[MAXN];
 int numSets;
 
@@ -24,11 +24,14 @@ int findSet(int i) { return (p[i] == i) ? i : (p[i] = findSet(p[i])); }
 bool isSame(int i, int j) { return findSet(i) == findSet(j); }
 
 void unite(int i, int j) {
-    if (isSame(i, j)) return;
+    if (isSame(i, j))
+        return;
     int x = findSet(i), y = findSet(j);
-    if (rankk[x] > rankk[y]) swap(x, y);
+    if (rankk[x] > rankk[y])
+        swap(x, y);
     p[x] = y;
-    if (rankk[x] == rankk[y]) ++rankk[y];
+    if (rankk[x] == rankk[y])
+        ++rankk[y];
     --numSets;
 }
 
@@ -38,23 +41,25 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
 
-    int V, E; cin >> V >> E;
+    int V, E;
+    cin >> V >> E;
 
-    //Inicializando arreglos.
+    // Inicializando arreglos.
     iota(p, p + V, 0);
     numSets = V;
 
     Edge edges[V];
-    FOR(i, E){
-        int u, v, w; cin >> u >> v >> w;
+    FOR(i, E) {
+        int u, v, w;
+        cin >> u >> v >> w;
         edges[i] = {w, u, v};
     }
     sort(edges, edges + E);
 
     int totalWeight = 0;
-    for(int i = 0; i < E && numSets > 1; i++){
-        auto [w, u, v] = edges[i]; //desempaquetamiento de arista
-        if(!isSame(u, v)){ //Si no estan en el mismo conjunto, la tomamos
+    for (int i = 0; i < E && numSets > 1; i++) {
+        auto [w, u, v] = edges[i]; // desempaquetamiento de arista
+        if (!isSame(u, v)) {       // Si no estan en el mismo conjunto, la tomamos
             totalWeight += w;
             unite(u, v);
         }

@@ -1,4 +1,4 @@
-int n; // number of nodes
+int n;                   // number of nodes
 vector<vector<int>> adj; // adjacency list of graph
 
 vector<bool> visited;
@@ -9,7 +9,8 @@ void dfs(int v, int p = -1) {
     visited[v] = true;
     tin[v] = low[v] = timer++;
     for (int to : adj[v]) {
-        if (to == p) continue;
+        if (to == p)
+            continue;
         if (visited[to]) {
             low[v] = min(low[v], tin[to]);
         } else {
