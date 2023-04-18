@@ -15,7 +15,7 @@ int GCD(int a, int b) {
 
 ll LCM(int a, int b) { return ((a * b) / GCD(a, b)); }
 
-//Siendo b un numero positivo y p el modulo
+//Siendo b un entero positivo y p un primo
 int modInverse(int b, int p) {
     return fastpow(b, p - 2, p) % p;
 }
