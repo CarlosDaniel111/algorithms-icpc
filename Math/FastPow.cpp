@@ -1,5 +1,5 @@
 // iterative way
-ll binpow(ll a, ll b, ll m) { //(a^b) mod m
+ll fastpow(ll a, ll b, ll m) { //(a^b) mod m
     ll res = 1;
     a %= m;
     while (b) {
