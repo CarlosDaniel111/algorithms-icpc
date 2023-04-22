@@ -1,16 +1,3 @@
-// iterative way
-ll fastpow(ll a, ll b, ll m) { //(a^b) mod m
-    ll res = 1;
-    a %= m;
-    while (b) {
-        if (b & 1)
-            res = (res * a) % m;
-        a = (a * a) % m;
-        b >>= 1;
-    }
-    return res;
-}
-
 // Let A be an n*n order matrix and k the exponent, we can calculate A^k in O(log k * n^3)
 typedef vector<vi> vvi;
 // A * B = C, O(n^3)
