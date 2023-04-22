@@ -15,6 +15,18 @@ int GCD(int a, int b) {
 
 ll LCM(int a, int b) { return ((a * b) / GCD(a, b)); }
 
+ll fastpow(ll a, ll b, ll m) { //(a^b) mod m
+    ll res = 1;
+    a %= m;
+    while (b) {
+        if (b & 1)
+            res = (res * a) % m;
+        a = (a * a) % m;
+        b >>= 1;
+    }
+    return res;
+}
+
 //Siendo b un entero positivo y p un primo
 int modInverse(int b, int p) {
     return fastpow(b, p - 2, p) % p;
