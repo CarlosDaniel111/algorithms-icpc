@@ -1,5 +1,6 @@
 # Algorithms for ICPC
 
+ALGORITMOS NECESARIOS POR AGREGAR ANTES DE LA PRIMERA FECHA:
 -Formulas necesarias de combinatoria?.\
 -Algunas soluciones de programación dinámica (iterativa y recursivamente si es posible).\
 -Euler tour (aplanamiento de árbol), si tienen el Lowest Common Ancestor con Segment Tree no caería mal jeje.\
