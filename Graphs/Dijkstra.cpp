@@ -1,15 +1,17 @@
-// Si se tiene un grafo sin peso, usar BFS.
-
-vii graph[MAXN]; // Grafo guardado como lista de adyascencia.
-int dist[MAXN];
-
 using pi = pair<int, int>;
+using vpi = vector<pi>;
+
+const int MAXN = 1e5 + 5;
+
+// Si se tiene un grafo sin peso, usar BFS.
+vpi graph[MAXN]; // Grafo guardado como lista de adyascencia.
+int dist[MAXN];
 
 template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
 
-/*Llena un arreglo (dist), donde dist[i] indica la distancia mínima que
-se tiene que recorrer desde un nodo 'x' para llegar al nodo 'i',
+/*Llena un arreglo (dist), donde dist[i] indica la distancia mas corta 
+que se tiene que recorrer desde un nodo 'x' para llegar al nodo 'i',
 en caso de que 'i' no sea alcanzable desde 'x', dist[i] = -1
 
 O(V + E log V)                                                      */
@@ -35,7 +37,7 @@ void dijkstra(int x) {
         }
     }
 
-    // Si la pq puede tener muchisimos elementos, utilizamos un set, en donde habrá a lo mucho V elementos
+    // Si la pq puede tener muchisimos elementos, utilizamos un set, en donde habra a lo mucho V elementos
     set<pi> pq;
     for (int u = 0; u < V; ++u)
         pq.emplace(dist[u], u);
