@@ -1,9 +1,9 @@
 const LOG_MAXN = 25;
 vi tree[MAXN];
-int jump[MAXN][LOG_MAXN];
+int jump[MAXN][LOG_MAXN]; //Donde jump[u][h] es el ancestro 2^h del nodo u
 int depth[MAXN];
 
-// DFS para calcular la profundidad y guardar el padre directo en salto[u][0]
+// DFS para calcular la profundidad y guardar el padre directo en jump[u][0]
 void dfs(int u, int padre = -1, int d = 0) {
     depth[u] = d;
     jump[u][0] = padre;
