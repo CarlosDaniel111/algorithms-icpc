@@ -38,7 +38,7 @@ vl primeFactors(ll n) {
     while (n != 1) {
         while (n % idx == 0) {
             n /= idx;
-            factors.pb(i);
+            factors.pb(idx);
         }
         idx++;
     }
