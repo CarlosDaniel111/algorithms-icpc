@@ -1,10 +1,10 @@
 using ll = long long;
-using vll = vector<ll>;
+using vl = vector<ll>;
 
 const int MAXN = 1e6 + 5;
 
 ll sieve_size;
-vll primes;
+vl primes;
 
 //O(n * sqrt(n))
 void sieve(ll n) {
