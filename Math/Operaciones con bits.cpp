@@ -17,3 +17,11 @@
 #define turnOffInRange(S, i, j) s &= (((~0) << (j + 1)) | ((1 << i) - 1));
 #define turnOffLastConsecutiveBits(S) ((S) & (S + 1))
 #define turnOnLastConsecutiveZeroes(S) ((S) | (S - 1))
+/*
+Si en un problema tenemos un conjunto de menos de 30 elementos y tenemos que probar cual es el "bueno"
+Podemos usar una mascara de bits e intentar cada combinacion.
+int limit = 1 << (n + 1);
+for (int i = 1; i < limit; i++) {
+  ....
+} 
+*/
