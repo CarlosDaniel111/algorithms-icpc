@@ -27,7 +27,8 @@ class UnionFind {
         int sizeOfSet(int i) { return setSize[get(i)]; }
 };
 
-typedef tuple<int, int, int> Edge;
+
+using Edge = tuple<int, int, int>;
 
 int main() {
     ios_base::sync_with_stdio(0);
