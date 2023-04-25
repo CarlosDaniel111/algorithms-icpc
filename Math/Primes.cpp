@@ -1,44 +1,47 @@
-bitset<10000010> bs;
-ll criba_tamanio;
+const int MAXN = 1e6 + 5;
+
+ll sieve_size;
 vll primes;
 
-void criba(ll n) {
-    criba_tamanio = n + 1;
-    bs.set(); // Marcar todos primos
-    bs[0] = bs[1] = 0;
-    for (ll p = 2; p < criba_tamanio; p++) {
-        if (bs[p]) {
-            for (ll i = p * p; i < criba_tamanio; i += p) {
-                bs[i] = false;
+//O(n * sqrt(n))
+void sieve(ll n) {
+    sieve_size = n + 1;
+    //faster than bitset
+    bool is_prime[sieve_size];
+    
+    //primo hasta que se demuestre lo contrario B-)
+    for (int i = 0; i < sieve_size; i++)
+        is_prime[i] = 1;
+    
+    is_prime[0] = is_prime[1] = 0;
+    for (ll p = 2; p < sieve_size; p++) {
+        if (is_prime[p]) {
+            for (ll i = p * p; i < sieve_size; i += p) {
+                is_prime[i] = 0;
             }
             primes.push_back(p);
         }
     }
 }
 
+//O(sqrt(n))
 bool isPrime(ll n) {
-    if (n <= criba_tamanio)
-        return bs[n];
-    for (int i = 0; i < (int)primes.size(); i++) {
-        if (n % primes[i] == 0)
+    for (ll i = 0; i * i <= n; i++) 
+        if (n % i == 0)
             return false;
-        if (primes[i] * primes[i] > n)
-            return true;
-    }
     return true;
 }
 
-vi factoresPrimos(ll n) {
-    vi factores;
-    ll index = 0, factor = primes[index];
-    while (factor * factor <= n) {
-        while (n % factor == 0) {
-            n /= factor;
-            factores.push_back(factor);
+//Sin calcular primos en O(sqrt(n))
+vl primeFactors(ll n) {
+    vl factors;
+    ll idx = 2;
+    while (n != 1) {
+        while (n % idx == 0) {
+            n /= idx;
+            factors.pb(i);
         }
-        factor = primes[++index];
+        idx++;
     }
-    if (n != 1)
-        factores.push_back(n);
-    return factores;
+    return 0;
 }
