@@ -8,12 +8,9 @@ class UnionFind {
                 parent[i] = i;
             numSets = N;
         }
-        int get(int i) { //path compression
-            return (parent[i] == i) ? i : (parent[i] = get(parent[i]));
-        }
-        bool isSame(int i, int j) {
-            return get(i) == get(j);
-        }
+        int get(int i) { return (parent[i] == i) ? i : (parent[i] = get(parent[i])); }
+        bool isSame(int i, int j) { return get(i) == get(j); }
+        int sizeOfSet(int i) { return setSize[get(i)]; }
         void unite(int i, int j) {
             if(!isSame(i, j)) {
                 int x = get(i), y = get(j);
@@ -24,7 +21,6 @@ class UnionFind {
                 --numSets;
             }
         }
-        int sizeOfSet(int i) { return setSize[get(i)]; }
 };
 
 
