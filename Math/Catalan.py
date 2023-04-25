@@ -1,5 +1,6 @@
 # Solution for small range ---> k <= 510
 # if k is greater, use Java's BigInteger class
+# if we need to only store catalan[i] % m, use c++
 catalan = [0 for i in range(510)]
 
 
