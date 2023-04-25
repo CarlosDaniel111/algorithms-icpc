@@ -10,7 +10,7 @@ string s; // cadena
 int D;
 stack<int> st;
 
-bool dp[MAXN][MAXN];
+bool dp[MAXN][MAXN]; //He pasado por aqui? 
 bool solve(int pos, int residuo){
     if (dp[pos][residuo]) return false;
     if (pos == s.length()) return residuo == 0;
