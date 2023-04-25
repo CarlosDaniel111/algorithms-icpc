@@ -6,3 +6,4 @@
 -Funciones útiles de la STL (y también \_\_builtin)?.\
 -Agregar BigInteger y ModInteger en c++.\
 -Agregar metodo de las dos mitades
+-Agregar DP: mochila, caminos en una matriz, suma 2D de su forma iterativa y recursiva (si es posible).
