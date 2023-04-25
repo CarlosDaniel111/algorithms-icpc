@@ -1,3 +1,4 @@
+#define F0R(i, n) for(int i = 0; i < n; i++)
 const int MAXN = 2e4;
  
 //Si no se necesita imprimir la LIS por completo, eliminar p.
@@ -13,9 +14,6 @@ void print_LIS(int i) {                             // backtracking routine
 }
 
 int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(nullptr);
-
     int n;
     cin >> n;
     F0R(i, n) 
