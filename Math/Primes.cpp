@@ -1,3 +1,6 @@
+using ll = long long;
+using vll = vector<ll>;
+
 const int MAXN = 1e6 + 5;
 
 ll sieve_size;
