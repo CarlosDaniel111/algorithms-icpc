@@ -1,21 +1,3 @@
-#include <bits/stdc++.h>
-
-#define all(x) x.begin(), x.end()
-#define eb emplace_back
-#define FOR(x, n) for (long long x = 0; x < (long long)n; x++)
-#define FOR1(x, n) for (long long x = 1; x <= (long long)n; x++)
-#define FORR(x, n) for (long long x = n - 1; x >= 0; x--)
-#define FORR1(x, n) for (long long x = n; x >= 1; x--)
-const long long INF = 1 << 28, MOD = 1e9 + 7, MAXN = 1e5 + 5;
-
-using namespace std;
-
-typedef long long ll;
-typedef unsigned long long ull;
-typedef pair<int, int> ii;
-typedef vector<int> vi;
-typedef vector<pair<int, int>> vii;
-
 /*Grafo de ejemplo:
   5 7
   0 1 4
@@ -28,9 +10,16 @@ typedef vector<pair<int, int>> vii;
   Salida esperada: 18
 */
 
+#define eb emplace_back;
+
+template <class T>
+using pqg = priority_queue<T, vector<T>, greater<T>>;
+
+const int MAXN = 1e5 + 5;
+
 vii graph[MAXN];
 bool taken[MAXN]; //Inicialmente en false todos
-priority_queue<ii, vii, greater<ii>> pq; //Para ir seleccionando las aristas de menor peso
+pqg<ii> pq; //Para ir seleccionando las aristas de menor peso
 
 void process(int u) {
     taken[u] = 1;
@@ -45,7 +34,8 @@ int main() {
         int u, v, w;
         cin >> u >> v >> w;
         //u--; v--;
-        graph[u].eb(v, w); graph[v].eb(u, w);
+        graph[u].eb(v, w); 
+        graph[v].eb(u, w);
     }
 
     process(0);                                    // take+process vertex 0

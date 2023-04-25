@@ -5,11 +5,9 @@
 
 [Templates]
 templatecpp.cpp	Plantilla C++
-Main.java	Plantilla Java
 templatepy.py	Plantilla Phyton
 
 [Data Structures]
-UnionFind.cpp	Union Find
 Trie.cpp	Trie
 FenwickTree.cpp	Fenwick Tree
 BIT.cpp	Binary Indexed Tree
@@ -20,23 +18,25 @@ LazyRMQ.cpp	Lazy Range Min/Max Query
 
 [Math]
 Primes.cpp	Numeros Primos
-Operaciones_con_bits.cpp	Operaciones con Bits
-GCD_LCM.cpp	MCD y MCM
+Bits.cpp	Operaciones con Bits
+Formulas_Rapidas.cpp	Formulas Rapidas
 MatrixOperations.cpp	Operaciones de Matriz
 Catalan.py	Numeros Catalan
 
 [Dynamic Programming]
 Problema_de_la_mochila.cpp	Problema de la mochila
+LIS.cpp	Longest Increasing Subsequence (LIS)
+DP_con_digitos.cpp	Dp con Digitos
+Tecnica_con_pila.cpp	Tecnica con pila
 
 [Graphs]
 Recorridos.cpp	Recorrido BFS y DFS
 Dijkstra.cpp	Dijkstra
 Bellman-Ford.cpp	Bellman-Ford
 Floyd-Warshall.cpp	Floyd-Warshall
-KthAncestor.cpp	Kth Ancestor
 LCA.cpp	Lowest Common Ancestor
-Kruskal.cpp	Kruskal
+Kruskal_(UnionFind).cpp	Kruskal UnionFind
 Prim.cpp	Prim
 BridgeDetection.cpp	Bridge Detection
 TopologicalSort.cpp	Ordenamiento Topologico
-LexicographicallyTopoSort.cpp	Ordenamiento Topologico Lexicograficamente
+LexicographicTopoSort.cpp	Ordenamiento Topologico Lexicografico

@@ -18,7 +18,7 @@ Si queremos elementos repetidos, usar less_equal<T> (sin embargo, ya no servira 
 funcion de eliminacion).
 
 Si queremos elementos repetidos y necesitamos la eliminacion, utilizar una
-técnica con pares, donde el second es un numero unico para cada valor.
+tecnica con pares, donde el second es un numero unico para cada valor.
 */
 
 // Implementacion

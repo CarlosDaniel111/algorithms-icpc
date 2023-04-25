@@ -5,7 +5,7 @@ vi sorted_nodes;              // Arreglo de nodos ordenados topologicamente
 bool visited[MAXN] = {false}; // Arreglo de visitados
 stack<int> s;
 
-// Función DFS para recorrer el grafo en profundidad
+// Funcion DFS para recorrer el grafo en profundidad
 void dfs(int u) {
     visited[u] = true;
     for (auto v : graph[u]) {
