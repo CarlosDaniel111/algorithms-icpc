@@ -1,34 +1,40 @@
+/* Enunciado.
+   Dada una cadena s de la forma ?????d???d?d??, donde d es un digito cualquiera
+   asignar a los caracteres '?' digitos, para formar el numero mas pequeño posible
+   que ademas sea divisible por D y no tenga ceros a la izquierda
+*/
+
 const int MAXN = 1e5 +5;
 
 string s; // cadena
-int num;
+int D;
 stack<int> st;
 
 bool dp[MAXN][MAXN];
-bool solve(int i, int r){
-    if (dp[i][r]) return false;
-    if (i == s.length()) return r == 0;
+bool solve(int pos, int residuo){
+    if (dp[pos][residuo]) return false;
+    if (pos == s.length()) return residuo == 0;
  
-    if (s[i] == '?'){ 
-        for (int k = (i == 0); k <= 9; k++){
-            if (solve(i+1, (r*10 + k) % num)) {
+    if (s[pos] == '?'){ 
+        for (int k = (pos == 0); k <= 9; k++){
+            if (solve(pos+1, (residuo*10 + k) % D)) {
                 st.push(k);
                 return true;
             }
         } 
     }
     else{
-        if (solve(i+1, (r*10 + (s[i]-'0')) % num)) {
-            st.push(s[i]-'0');
+        if (solve(pos+1, (residuo*10 + (s[pos]-'0')) % D)) {
+            st.push(s[pos]-'0');
             return true;
         }
     }   
-    dp[i][r] = true;
+    dp[pos][residuo] = true;
     return false; 
 }
  
 int main() { 
-    cin >> s >> num;
+    cin >> s >> D;
  
     if(solve(0, 0)){
         while(!st.empty()){
