@@ -16,9 +16,8 @@ void sieve(ll n) {
     is_prime[0] = is_prime[1] = 0;
     for (ll p = 2; p < sieve_size; p++) {
         if (is_prime[p]) {
-            for (ll i = p * p; i < sieve_size; i += p) {
+            for (ll i = p * p; i < sieve_size; i += p)
                 is_prime[i] = 0;
-            }
             primes.push_back(p);
         }
     }
