@@ -22,7 +22,7 @@ ll fastpow(ll a, ll b, ll m) { //(a^b) mod m
     return res;
 }
 
-// Codigo para calcular el inverso de a modulo m (si es que existe)
+// Codigo para calcular (a^-1)%m (si es que existe)
 
 // Si m es primo
 int modInverse(int b, int m) { return fastpow(b, m - 2, m) % m; }
