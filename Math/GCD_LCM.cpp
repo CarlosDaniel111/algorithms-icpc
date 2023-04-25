@@ -7,13 +7,13 @@
     lcm(m,n)
 */
 
-int GCD(int a, int b) {
+int gcd(int a, int b) {
     if (b == 0)
         return a;
     return GCD(b, a % b);
 }
 
-ll LCM(int a, int b) { return ((a * b) / GCD(a, b)); }
+ll lcm(int a, int b) { return ((a * b) / gcd(a, b)); }
 
 ll fastpow(ll a, ll b, ll m) { //(a^b) mod m
     ll res = 1;
