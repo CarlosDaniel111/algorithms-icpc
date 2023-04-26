@@ -1,34 +1,34 @@
-\contentsline {section}{\numberline {1}Templates}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Plantilla C++}{1}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Plantilla Phyton}{1}{subsection.1.2}%
-\contentsline {section}{\numberline {2}Data Structures}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Trie}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Fenwick Tree}{2}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Binary Indexed Tree}{3}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Order Statistics Tree}{3}{subsection.2.4}%
+\contentsline {section}{\numberline {1}Templates}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Plantilla C++}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Plantilla Phyton}{2}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Data Structures}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Trie}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Fenwick Tree}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Binary Indexed Tree}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Order Statistics Tree}{4}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}Segment Tree}{4}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Lazy Segment Tree}{4}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}Lazy Range Min/Max Query}{5}{subsection.2.7}%
-\contentsline {section}{\numberline {3}Math}{5}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Numeros Primos}{5}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Operaciones con Bits}{6}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Formulas Rapidas}{6}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Operaciones de Matriz}{7}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Numeros Catalan}{7}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Fechas}{7}{subsection.3.6}%
-\contentsline {section}{\numberline {4}Dynamic Programming}{7}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Problema de la mochila}{7}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Longest Increasing Subsequence (LIS)}{8}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Dp con Digitos}{8}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Tecnica con pila}{9}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Graphs}{9}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Recorrido BFS y DFS}{9}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Dijkstra}{9}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Bellman-Ford}{10}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Floyd-Warshall}{10}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}Lowest Common Ancestor}{10}{subsection.5.5}%
-\contentsline {subsection}{\numberline {5.6}Kruskal UnionFind}{10}{subsection.5.6}%
-\contentsline {subsection}{\numberline {5.7}Prim}{11}{subsection.5.7}%
-\contentsline {subsection}{\numberline {5.8}Bridge Detection}{11}{subsection.5.8}%
-\contentsline {subsection}{\numberline {5.9}Ordenamiento Topologico}{12}{subsection.5.9}%
-\contentsline {subsection}{\numberline {5.10}Ordenamiento Topologico Lexicografico}{12}{subsection.5.10}%
+\contentsline {subsection}{\numberline {2.6}Lazy Segment Tree}{5}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Lazy Range Min/Max Query}{6}{subsection.2.7}%
+\contentsline {section}{\numberline {3}Math}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Numeros Primos}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Operaciones con Bits}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Formulas Rapidas}{7}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Operaciones de Matriz}{8}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Numeros Catalan}{8}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Fechas}{8}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Dynamic Programming}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Problema de la mochila}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Longest Increasing Subsequence (LIS)}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Dp con Digitos}{9}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Tecnica con pila}{10}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Graphs}{11}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Recorrido BFS y DFS}{11}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Dijkstra}{11}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Bellman-Ford}{11}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Floyd-Warshall}{12}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Lowest Common Ancestor}{12}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Kruskal UnionFind}{12}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Prim}{13}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}Bridge Detection}{13}{subsection.5.8}%
+\contentsline {subsection}{\numberline {5.9}Ordenamiento Topologico}{13}{subsection.5.9}%
+\contentsline {subsection}{\numberline {5.10}Ordenamiento Topologico Lexicografico}{14}{subsection.5.10}%

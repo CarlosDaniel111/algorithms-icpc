@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.21)  25 APR 2023 17:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.21)  25 APR 2023 18:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -484,11 +484,11 @@ fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 77.
+(Font)              <12> on input line 75.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 77.
+(Font)              <8> on input line 75.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 77.
+(Font)              <6> on input line 75.
  (notebook.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 1.
@@ -498,7 +498,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write4
 \openout4 = `notebook.toc'.
 
- (contents.tex
+ [1{C:/Users/beltr/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
+
+] (contents.tex
 (C:\Users\beltr\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
@@ -523,32 +525,30 @@ LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <7> not available
 (C:\Users\beltr\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
-(code/templatepy.py [1{C:/Users/beltr/AppData/Local/MiKTeX/fonts/map/pdftex/pdf
-tex.map}
+(code/templatepy.py) [2
 
-
-{C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]) (c
-ode/Trie.cpp) (code/FenwickTree.cpp [2]) (code/BIT.cpp)
-(code/Order_Statistics_Tree.cpp [3]) (code/SegmentTree.cpp)
-(code/LazySegmentTree.cpp [4]) (code/LazyRMQ.cpp) (code/Primes.cpp [5])
-(code/Bits.cpp) (code/Formulas_Rapidas.cpp [6]) (code/MatrixOperations.cpp)
-(code/Catalan.py) (code/Dates.cpp) (code/Problema_de_la_mochila.cpp [7])
-(code/LIS.cpp) (code/DP_con_digitos.cpp [8]) (code/Tecnica_con_pila.cpp)
-(code/Recorridos.cpp) (code/Dijkstra.cpp [9]) (code/Bellman-Ford.cpp)
-(code/Floyd-Warshall.cpp) (code/LCA.cpp) (code/Kruskal_(UnionFind).cpp [10])
-(code/Prim.cpp) (code/BridgeDetection.cpp [11]) (code/TopologicalSort.cpp)
-(code/LexicographicTopoSort.cpp)) [12] (notebook.aux)
+{C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] (co
+de/Trie.cpp) (code/FenwickTree.cpp [3]) (code/BIT.cpp)
+(code/Order_Statistics_Tree.cpp) (code/SegmentTree.cpp [4])
+(code/LazySegmentTree.cpp [5]) (code/LazyRMQ.cpp) [6] (code/Primes.cpp)
+(code/Bits.cpp) (code/Formulas_Rapidas.cpp [7]) (code/MatrixOperations.cpp)
+(code/Catalan.py) (code/Dates.cpp) [8] (code/Problema_de_la_mochila.cpp)
+(code/LIS.cpp) (code/DP_con_digitos.cpp [9]) (code/Tecnica_con_pila.cpp)
+[10] (code/Recorridos.cpp) (code/Dijkstra.cpp) (code/Bellman-Ford.cpp) [11]
+(code/Floyd-Warshall.cpp) (code/LCA.cpp) (code/Kruskal_(UnionFind).cpp)
+(code/Prim.cpp [12]) (code/BridgeDetection.cpp) (code/TopologicalSort.cpp
+[13]) (code/LexicographicTopoSort.cpp) [14]) (notebook.aux)
 Package rerunfilecheck Info: File `notebook.out' has not changed.
 (rerunfilecheck)             Checksum: 8BF1686ABC6DB44035940601253B7896;4741.
  ) 
 Here is how much of TeX's memory you used:
- 14068 strings out of 476331
- 218469 string characters out of 5787765
- 2656660 words of memory out of 5000000
+ 14070 strings out of 476331
+ 218483 string characters out of 5787765
+ 2632660 words of memory out of 5000000
  32803 multiletter control sequences out of 15000+600000
  518796 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,12n,92p,467b,2394s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,12n,92p,467b,2287s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx12.pfb><C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmbx9.pfb><C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/type1/pu
@@ -559,9 +559,9 @@ s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/beltr/AppData/Local/
 Programs/MiKTeX/fonts/type1/urw/courier/ucrb8a.pfb><C:/Users/beltr/AppData/Loca
 l/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/beltr/AppData/Lo
 cal/Programs/MiKTeX/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on notebook.pdf (12 pages, 390249 bytes).
+Output written on notebook.pdf (14 pages, 391798 bytes).
 PDF statistics:
- 1982 PDF objects out of 2073 (max. 8388607)
- 1461 named destinations out of 1728 (max. 500000)
+ 1991 PDF objects out of 2073 (max. 8388607)
+ 1463 named destinations out of 1728 (max. 500000)
  273 words of extra memory for PDF output out of 10000 (max. 10000000)
 

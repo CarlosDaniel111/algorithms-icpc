@@ -60,6 +60,7 @@ def get_tex(sections):
             tex += '\\raggedbottom\\lstinputlisting[style=%s]{%s/%s}\n' % (
                 get_style(filename), code_dir, filename)
             tex += '\\hrulefill\n'
+        tex += '\\newpage\n'
         tex += '\n'
     return tex
 

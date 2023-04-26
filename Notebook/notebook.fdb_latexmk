@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1682470359 "notebook.tex" "notebook.pdf" "notebook" 1682470363 0
+["pdflatex"] 1682471047 "notebook.tex" "notebook.pdf" "notebook" 1682471051 0
   "C:/Users/beltr/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1682135298 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/beltr/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1682135202 23178960 0115c71c9c9e4ae6904035044f421de1 ""
   "C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -122,11 +122,11 @@
   "code/Trie.cpp" 1680718769 1562 30455418e8c2446b418a7f2a8e2f97b1 ""
   "code/templatecpp.cpp" 1682204125 1484 91389b4d0a33b627ad79978101d35440 ""
   "code/templatepy.py" 1681427264 896 200483666cd943f0dcd002fcfdb675e8 ""
-  "contents.tex" 1682470353 3252 9c176599cc877e36ed63f0d479acae34 ""
-  "notebook.aux" 1682470363 8074 05adfd23b46fa68461189087dfff6aba "pdflatex"
-  "notebook.out" 1682470363 4741 8bf1686abc6db44035940601253b7896 "pdflatex"
-  "notebook.tex" 1682470228 2074 61eccbf7454542fd564fb9e8ab581f3d ""
-  "notebook.toc" 1682470363 2747 51718c3a9f7a7e3ccc6866c9a427259b "pdflatex"
+  "contents.tex" 1682471042 3302 83e8c70401556f1d9babf862aaed837c ""
+  "notebook.aux" 1682471051 8081 70f5a78aeb2d8dc5c71cbc7e7f2f67eb "pdflatex"
+  "notebook.out" 1682471051 4741 8bf1686abc6db44035940601253b7896 "pdflatex"
+  "notebook.tex" 1682471039 2084 92ab4f6c97a54da83722e63d67471b84 ""
+  "notebook.toc" 1682471051 2751 17593a2e200e3a31a16cbfb3146bf838 "pdflatex"
   (generated)
   "notebook.aux"
   "notebook.log"
