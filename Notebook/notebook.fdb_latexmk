@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1682464033 "notebook.tex" "notebook.pdf" "notebook" 1682464037 0
+["pdflatex"] 1682465239 "notebook.tex" "notebook.pdf" "notebook" 1682465243 0
   "C:/Users/beltr/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1682135298 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/beltr/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1682135202 23178960 0115c71c9c9e4ae6904035044f421de1 ""
   "C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -100,7 +100,7 @@
   "code/Dijkstra.cpp" 1682462284 1546 fa7d72d4bfbff2c79c17d5952a375aa9 ""
   "code/FenwickTree.cpp" 1681425450 3190 281e28714766f589c9ec0e248bbb0088 ""
   "code/Floyd-Warshall.cpp" 1682462284 304 fe332937afa3b9e83bdfdfe140923f8e ""
-  "code/Formulas_Rapidas.cpp" 1682462284 1021 9abf877d5cdaeaca242c26ccff061afd ""
+  "code/Formulas_Rapidas.cpp" 1682465082 1243 86a61ef5807a079f54054d1206084ea4 ""
   "code/Kruskal_(UnionFind).cpp" 1682462284 1553 8be28a9025b86c57f6c08248f2fb7be3 ""
   "code/LCA.cpp" 1682462284 1221 eddf32776aef34833d6b1c9746c7eb11 ""
   "code/LIS.cpp" 1682462284 1174 2645291e2cc84bd95c1ea33cfec26f49 ""
@@ -110,7 +110,7 @@
   "code/MatrixOperations.cpp" 1682133371 829 a08354652c4ff16bc6e47ba32afd511c ""
   "code/Order_Statistics_Tree.cpp" 1682463081 1569 90249b19dc259000c228ff5124a10bd5 ""
   "code/Prim.cpp" 1682462284 1269 ccb662b3b5211652b5dee02634d224b2 ""
-  "code/Primes.cpp" 1682462284 1020 aeb7ffa397cb189f4ffa6fb1ce54a7d0 ""
+  "code/Primes.cpp" 1682464671 1321 2fad305666f3af2bddfd377b6b204aaf ""
   "code/Problema_de_la_mochila.cpp" 1682463212 938 9e46fe777f15070bfb48b2e24f5cd554 ""
   "code/Recorridos.cpp" 1680718769 737 3eb5ddc8859f15828b09edbd26fd0f96 ""
   "code/SegmentTree.cpp" 1681528218 1996 b574ad35d02b08d9b420c86384d8471a ""
@@ -119,11 +119,11 @@
   "code/Trie.cpp" 1680718769 1562 30455418e8c2446b418a7f2a8e2f97b1 ""
   "code/templatecpp.cpp" 1682204125 1484 91389b4d0a33b627ad79978101d35440 ""
   "code/templatepy.py" 1681427264 896 200483666cd943f0dcd002fcfdb675e8 ""
-  "contents.tex" 1682464032 3161 a6dc1cc20162e2eff42ce537b84fcb5f ""
-  "notebook.aux" 1682464036 7840 0170d2205327154a38cd03cfbfac9bf9 "pdflatex"
-  "notebook.out" 1682464036 4653 167f1edead605623a12213b7e76015c9 "pdflatex"
+  "contents.tex" 1682465235 3161 a6dc1cc20162e2eff42ce537b84fcb5f ""
+  "notebook.aux" 1682465242 7840 3af12dc5434b1f17e292a7295a6d0342 "pdflatex"
+  "notebook.out" 1682465242 4653 167f1edead605623a12213b7e76015c9 "pdflatex"
   "notebook.tex" 1682464023 2092 056b5848c7144344f1cb01dd5bafc0f6 ""
-  "notebook.toc" 1682464036 2667 9557bc8167d90cbe35010d1910db66f0 "pdflatex"
+  "notebook.toc" 1682465243 2667 8aece7d3949a925cf1fc656f3d76fa66 "pdflatex"
   (generated)
   "notebook.aux"
   "notebook.log"

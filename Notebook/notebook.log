@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.21)  25 APR 2023 16:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.21)  25 APR 2023 16:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -535,9 +535,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--53
 []\OT1/cmr/bx/n/12 Longest In-creas-ing Sub-se-quence
  []
 
-(code/LIS.cpp) (code/DP_con_digitos.cpp [4]) (code/Tecnica_con_pila.cpp)
+(code/LIS.cpp [4]) (code/DP_con_digitos.cpp) (code/Tecnica_con_pila.cpp)
 (code/Recorridos.cpp) (code/Dijkstra.cpp) (code/Bellman-Ford.cpp)
-(code/Floyd-Warshall.cpp) (code/LCA.cpp [5]) (code/Kruskal_(UnionFind).cpp)
+(code/Floyd-Warshall.cpp) [5] (code/LCA.cpp) (code/Kruskal_(UnionFind).cpp)
 (code/Prim.cpp) (code/BridgeDetection.cpp) (code/TopologicalSort.cpp [6])
 Underfull \hbox (badness 10000) in paragraph at lines 91--91
 []\OT1/cmr/bx/n/12 Ordenamiento Topo-logico Lex-i-
@@ -552,10 +552,10 @@ Package rerunfilecheck Info: File `notebook.out' has not changed.
 (rerunfilecheck)             Checksum: 167F1EDEAD605623A12213B7E76015C9;4653.
  ) 
 Here is how much of TeX's memory you used:
- 13892 strings out of 476331
- 215493 string characters out of 5787765
+ 13918 strings out of 476331
+ 215867 string characters out of 5787765
  3203660 words of memory out of 5000000
- 32709 multiletter control sequences out of 15000+600000
+ 32715 multiletter control sequences out of 15000+600000
  518498 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,12n,92p,467b,2272s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -569,9 +569,9 @@ s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/beltr/AppData/Local/
 Programs/MiKTeX/fonts/type1/urw/courier/ucrb8a.pfb><C:/Users/beltr/AppData/Loca
 l/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/beltr/AppData/Lo
 cal/Programs/MiKTeX/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on notebook.pdf (7 pages, 366783 bytes).
+Output written on notebook.pdf (7 pages, 369900 bytes).
 PDF statistics:
- 1873 PDF objects out of 2073 (max. 8388607)
- 1386 named destinations out of 1440 (max. 500000)
+ 1898 PDF objects out of 2073 (max. 8388607)
+ 1406 named destinations out of 1440 (max. 500000)
  265 words of extra memory for PDF output out of 10000 (max. 10000000)
 
