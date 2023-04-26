@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1682471047 "notebook.tex" "notebook.pdf" "notebook" 1682471051 0
+["pdflatex"] 1682473212 "notebook.tex" "notebook.pdf" "notebook" 1682473218 0
   "C:/Users/beltr/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1682135298 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/beltr/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1682135202 23178960 0115c71c9c9e4ae6904035044f421de1 ""
   "C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -120,13 +120,14 @@
   "code/Tecnica_con_pila.cpp" 1682462284 584 029a9d087ec3b72b1cec445ec1a78103 ""
   "code/TopologicalSort.cpp" 1682463526 1226 8ef13aca414c1fbd7402e172376f5ec0 ""
   "code/Trie.cpp" 1680718769 1562 30455418e8c2446b418a7f2a8e2f97b1 ""
+  "code/Trucos.cpp" 1682473107 2023 379efe6f49bf8cf2578001d6406910ae ""
   "code/templatecpp.cpp" 1682204125 1484 91389b4d0a33b627ad79978101d35440 ""
   "code/templatepy.py" 1681427264 896 200483666cd943f0dcd002fcfdb675e8 ""
-  "contents.tex" 1682471042 3302 83e8c70401556f1d9babf862aaed837c ""
-  "notebook.aux" 1682471051 8081 70f5a78aeb2d8dc5c71cbc7e7f2f67eb "pdflatex"
-  "notebook.out" 1682471051 4741 8bf1686abc6db44035940601253b7896 "pdflatex"
+  "contents.tex" 1682473204 3424 2f4991c50be1d3628d5bc32a7eeb6b8c ""
+  "notebook.aux" 1682473217 8407 b2d9167ff3c0b5368bc17bcb8045f514 "pdflatex"
+  "notebook.out" 1682473217 4903 8189192840f98778c4804b4534dc4bdc "pdflatex"
   "notebook.tex" 1682471039 2084 92ab4f6c97a54da83722e63d67471b84 ""
-  "notebook.toc" 1682471051 2751 17593a2e200e3a31a16cbfb3146bf838 "pdflatex"
+  "notebook.toc" 1682473217 2888 0c59702a51bc28c3ccc7b84737f82234 "pdflatex"
   (generated)
   "notebook.aux"
   "notebook.log"
