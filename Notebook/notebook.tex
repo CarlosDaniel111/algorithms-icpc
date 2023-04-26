@@ -1,4 +1,4 @@
-\documentclass[9pt, a4paper]{article}
+\documentclass[14pt,spanish]{article}
 \usepackage[left=0.4in,right=0.4in,top=0.7in,bottom=0.4in]{geometry}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
@@ -7,12 +7,13 @@
 \usepackage{tocloft}
 \usepackage{pdflscape}
 \usepackage{multicol}
+\usepackage{graphicx}
 
 \renewcommand*{\ttdefault}{pcr}
-\renewcommand\cftsecfont{\fontsize{8}{9}\bfseries}
-\renewcommand\cftsecpagefont{\fontsize{8}{9}\mdseries}
-\renewcommand\cftsubsecfont{\fontsize{5}{6}\mdseries}
-\renewcommand\cftsubsecpagefont{\fontsize{5}{6}\mdseries}
+\renewcommand\cftsecfont{\fontsize{9}{10}\bfseries}
+\renewcommand\cftsecpagefont{\fontsize{9}{10}\mdseries}
+\renewcommand\cftsubsecfont{\fontsize{6}{7}\mdseries}
+\renewcommand\cftsubsecpagefont{\fontsize{6}{7}\mdseries}
 \renewcommand\cftsecafterpnum{\vspace{-1ex}}
 \renewcommand\cftsubsecafterpnum{\vspace{-1ex}}
 
@@ -21,24 +22,23 @@
     breaklines=true,
     xleftmargin=\parindent,
     showstringspaces=false,
-    basicstyle=\fontsize{5.5}{6}\ttfamily,
+    basicstyle=\fontsize{7}{8}\ttfamily,
 }
 \lstdefinestyle{cpp}{
 	style=shared,
     language=C++,
-%    keywordstyle=\bfseries\color{green!40!black},
-%    commentstyle=\itshape\color{red!80!black},
-%    identifierstyle=\color{blue},
-%    stringstyle=\color{purple!40!black},
-%    basicstyle=\fontsize{9}{9}
+    keywordstyle=\bfseries\color{green!40!black},
+    commentstyle=\itshape\color{red!80!black},
+    identifierstyle=\color{blue},
+    stringstyle=\color{purple!40!black},
 }
 \lstdefinestyle{java}{
     style=shared,
     language=Java,
-%    keywordstyle=\bfseries\color{green!40!black},
-%    commentstyle=\itshape\color{purple!40!black},
-%    identifierstyle=\color{blue},
-%    stringstyle=\color{orange},
+    keywordstyle=\bfseries\color{green!40!black},
+    commentstyle=\itshape\color{purple!40!black},
+    identifierstyle=\color{blue},
+    stringstyle=\color{orange},
 }
 \lstdefinestyle{py}{
     style=shared,
@@ -65,13 +65,13 @@
 \fancyfoot[C]{}
 }
 
-\title{\vspace{-4ex}\Large{ICPC Team AC2++ Notebook}}
+\title{\vspace{-4ex}\Large{AC2++ ICPC Team Notebook}}
 \author{}
 \date{}
 
 \begin{document}
 \begin{landscape}
-\begin{multicols*}{3}
+\begin{multicols}{2}
 
 \maketitle
 \vspace{-13ex}
@@ -80,6 +80,7 @@
 
 \input contents.tex
 
-\end{multicols*}
+\end{multicols}
 \end{landscape}
+
 \end{document}

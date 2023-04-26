@@ -22,6 +22,7 @@ Bits.cpp	Operaciones con Bits
 Formulas_Rapidas.cpp	Formulas Rapidas
 MatrixOperations.cpp	Operaciones de Matriz
 Catalan.py	Numeros Catalan
+Dates.cpp	Fechas
 
 [Dynamic Programming]
 Problema_de_la_mochila.cpp	Problema de la mochila

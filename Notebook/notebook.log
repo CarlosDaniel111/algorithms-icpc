@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.21)  25 APR 2023 16:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.21)  25 APR 2023 17:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -380,6 +380,11 @@ Package: multicol 2021/11/30 v1.9d multicolumn formatting (FMi)
 \colbreak@box=\box97
 \mc@col@check@num=\count292
 )
+(C:\Users\beltr\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+\Gin@req@height=\dimen166
+\Gin@req@width=\dimen167
+)
 (C:\Users\beltr\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2023-03-30 L3 backend support: PDF output (pdfTeX)
@@ -388,7 +393,7 @@ File: l3backend-pdftex.def 2023-03-30 L3 backend support: PDF output (pdfTeX)
 )
 
 LaTeX Warning: Unused global option(s):
-    [9pt].
+    [14pt].
 
 (notebook.aux)
 \openout1 = `notebook.aux'.
@@ -416,16 +421,16 @@ LaTeX Font Info:    ... okay on input line 72.
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
 * driver: pdftex
-* paper: a4paper
+* paper: <default>
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(28.90755pt, 539.69278pt, 28.90755pt)
-* v-part:(T,H,B)=(50.58878pt, 765.55052pt, 28.90755pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=539.69278pt
-* \textheight=765.55052pt
+* h-part:(L,W,R)=(28.90755pt, 556.4799pt, 28.90755pt)
+* v-part:(T,H,B)=(50.58878pt, 715.47366pt, 28.90755pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=556.4799pt
+* \textheight=715.47366pt
 * \oddsidemargin=-43.36244pt
 * \evensidemargin=-43.36244pt
 * \topmargin=-58.68121pt
@@ -433,7 +438,7 @@ LaTeX Font Info:    ... okay on input line 72.
 * \headsep=25.0pt
 * \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=57.0pt
+* \marginparwidth=65.0pt
 * \marginparsep=11.0pt
 * \columnsep=10.0pt
 * \skip\footins=9.0pt plus 4.0pt minus 2.0pt
@@ -457,13 +462,13 @@ Package hyperref Info: Link coloring OFF on input line 72.
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count295
-\scratchdimen=\dimen166
+\scratchdimen=\dimen168
 \scratchbox=\box99
 \nofMPsegments=\count296
 \nofMParguments=\count297
 \everyMPshowfont=\toks19
 \MPscratchCnt=\count298
-\MPscratchDim=\dimen167
+\MPscratchDim=\dimen169
 \MPnumerator=\count299
 \makeMPintoPDFobject=\count300
 \everyMPtoPDFconversion=\toks20
@@ -512,66 +517,51 @@ LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 3
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 (code/templatecpp.cpp
-LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <5.5> not available
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <7> not available
 (Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 20.
 )
 (C:\Users\beltr\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
-(code/templatepy.py) (code/Trie.cpp) (code/FenwickTree.cpp
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 16.
-
-[1{C:/Users/beltr/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
+(code/templatepy.py [1{C:/Users/beltr/AppData/Local/MiKTeX/fonts/map/pdftex/pdf
+tex.map}
 
 
 {C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]) (c
-ode/BIT.cpp) (code/Order_Statistics_Tree.cpp) (code/SegmentTree.cpp) [2]
-(code/LazySegmentTree.cpp) (code/LazyRMQ.cpp) (code/Primes.cpp) (code/Bits.cpp
-[3]) (code/Formulas_Rapidas.cpp) (code/MatrixOperations.cpp) (code/Catalan.py)
-(code/Problema_de_la_mochila.cpp)
-Underfull \hbox (badness 10000) in paragraph at lines 53--53
-[]\OT1/cmr/bx/n/12 Longest In-creas-ing Sub-se-quence
- []
-
-(code/LIS.cpp [4]) (code/DP_con_digitos.cpp) (code/Tecnica_con_pila.cpp)
-(code/Recorridos.cpp) (code/Dijkstra.cpp) (code/Bellman-Ford.cpp)
-(code/Floyd-Warshall.cpp) [5] (code/LCA.cpp) (code/Kruskal_(UnionFind).cpp)
-(code/Prim.cpp) (code/BridgeDetection.cpp) (code/TopologicalSort.cpp [6])
-Underfull \hbox (badness 10000) in paragraph at lines 91--91
-[]\OT1/cmr/bx/n/12 Ordenamiento Topo-logico Lex-i-
- []
-
-(code/LexicographicTopoSort.cpp)) [7] (notebook.aux)
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.5pt have occurred.
-
+ode/Trie.cpp) (code/FenwickTree.cpp [2]) (code/BIT.cpp)
+(code/Order_Statistics_Tree.cpp [3]) (code/SegmentTree.cpp)
+(code/LazySegmentTree.cpp [4]) (code/LazyRMQ.cpp) (code/Primes.cpp [5])
+(code/Bits.cpp) (code/Formulas_Rapidas.cpp [6]) (code/MatrixOperations.cpp)
+(code/Catalan.py) (code/Dates.cpp) (code/Problema_de_la_mochila.cpp [7])
+(code/LIS.cpp) (code/DP_con_digitos.cpp [8]) (code/Tecnica_con_pila.cpp)
+(code/Recorridos.cpp) (code/Dijkstra.cpp [9]) (code/Bellman-Ford.cpp)
+(code/Floyd-Warshall.cpp) (code/LCA.cpp) (code/Kruskal_(UnionFind).cpp [10])
+(code/Prim.cpp) (code/BridgeDetection.cpp [11]) (code/TopologicalSort.cpp)
+(code/LexicographicTopoSort.cpp)) [12] (notebook.aux)
 Package rerunfilecheck Info: File `notebook.out' has not changed.
-(rerunfilecheck)             Checksum: 167F1EDEAD605623A12213B7E76015C9;4653.
+(rerunfilecheck)             Checksum: 8BF1686ABC6DB44035940601253B7896;4741.
  ) 
 Here is how much of TeX's memory you used:
- 13918 strings out of 476331
- 215867 string characters out of 5787765
- 3203660 words of memory out of 5000000
- 32715 multiletter control sequences out of 15000+600000
- 518498 words of font info for 53 fonts, out of 8000000 for 9000
+ 14068 strings out of 476331
+ 218469 string characters out of 5787765
+ 2656660 words of memory out of 5000000
+ 32803 multiletter control sequences out of 15000+600000
+ 518796 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,12n,92p,467b,2272s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,12n,92p,467b,2394s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx12.pfb><C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmbx8.pfb><C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+fonts/cm/cmbx9.pfb><C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmr10.pfb><C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/amsfonts/cm/cmr12.pfb><C:/Users/beltr/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/beltr/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/beltr/AppData/Local/
+X/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/beltr/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/beltr/AppData/Local/
 Programs/MiKTeX/fonts/type1/urw/courier/ucrb8a.pfb><C:/Users/beltr/AppData/Loca
 l/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/beltr/AppData/Lo
 cal/Programs/MiKTeX/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on notebook.pdf (7 pages, 369900 bytes).
+Output written on notebook.pdf (12 pages, 390249 bytes).
 PDF statistics:
- 1898 PDF objects out of 2073 (max. 8388607)
- 1406 named destinations out of 1440 (max. 500000)
- 265 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1982 PDF objects out of 2073 (max. 8388607)
+ 1461 named destinations out of 1728 (max. 500000)
+ 273 words of extra memory for PDF output out of 10000 (max. 10000000)
 
