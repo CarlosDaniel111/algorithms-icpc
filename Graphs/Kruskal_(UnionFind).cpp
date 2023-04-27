@@ -48,7 +48,7 @@ int main() {
     sort(edges, edges + E);
 
     int totalWeight = 0;
-    for (int i = 0; i < E && UF.numSets > 1; i++) {
+    for (int i = 0; i < E && UF.numOfSets() > 1; i++) {
         auto [w, u, v] = edges[i]; // desempaquetamiento de arista
         if (!UF.isSame(u, v)) {       // Si no estan en el mismo conjunto, la tomamos
             totalWeight += w;
