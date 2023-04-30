@@ -1,4 +1,4 @@
-// Cuando el rango (0, n - 1) es muy largo, se puede utilizar un Sparse S. T., el cual usa punteros para los 2 hijos de cada nodo en lugar de un arreglo predefinido
+// Cuando el rango (0, n - 1) es muy largo y sea muy pesado guardar un arreglo de tamanio n * 4 se puede utilizar un Sparse S. T., el cual usa punteros para los 2 hijos de cada nodo en lugar de un arreglo predefinido
 
 const int SZ = 1<<17;
 
