@@ -12,7 +12,6 @@ ll lcm(int a, int b) { return ((a * b) / gcd(a, b)); }
 ll fastpow(ll a, ll b, ll m) { //(a^b) mod m
     ll res = 1;
     a %= m;
-    b %= m;
     while (b) {
         if (b & 1)
             res = (res * a) % m;
