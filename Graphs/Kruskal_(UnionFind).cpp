@@ -1,26 +1,13 @@
-const int MAXN = 1e5 + 5;
-
-class UnionFind {
-    public:
-        int numSets, parent[MAXN], rank[MAXN], setSize[MAXN];
-        UnionFind(int &N) {
-            iota(parent, parent + N, 0);
-            fill(setSize, setSize + N, 1);
-            numSets = N;
-        }
-        int get(int i) { return (parent[i] == i) ? i : (parent[i] = get(parent[i])); }
-        bool isSame(int i, int j) { return get(i) == get(j); }
-        
-        void unite(int i, int j) {
-            if(!isSame(i, j)) {
-                int x = get(i), y = get(j);
-                if (rank[x] > rank[y]) swap(x, y);
-                parent[x] = y;
-                if (rank[x] == rank[y]) ++rank[y];
-                setSize[y] += setSize[x];
-                numSets--;
-            }
-        }
+struct DSU {//Indice base 0
+    vi e; void init(int N) { e = vi(N,-1); }
+    int get(int x) { return e[x] < 0 ? x : e[x] = get(e[x]); }
+    bool sameSet(int a, int b) { return get(a) == get(b); }
+    int size(int x) { return -e[get(x)]; }
+    bool unite(int x, int y) { // union by size
+        x = get(x), y = get(y); if (x == y) return 0;
+        if (e[x] > e[y]) swap(x,y);
+        e[x] += e[y]; e[y] = x; return 1;
+    }
 };
 
 using Edge = tuple<int, int, int>;
@@ -32,7 +19,8 @@ int main() {
     int V, E;
     cin >> V >> E;
     
-    UnionFind UF(V);
+    DFS UF; 
+    UF.init(V); 
     Edge edges[V];
     
     F0R(i, E) {
@@ -45,7 +33,7 @@ int main() {
     int totalWeight = 0;
     for (int i = 0; i < E && UF.numSets > 1; i++) {
         auto [w, u, v] = edges[i]; // desempaquetamiento de arista
-        if (!UF.isSame(u, v)) {       // Si no estan en el mismo conjunto, la tomamos
+        if (!UF.sameSet(u, v)) {       // Si no estan en el mismo conjunto, la tomamos
             totalWeight += w;
             UF.unite(u, v);
         }
