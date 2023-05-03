@@ -19,7 +19,7 @@ int main() {
     int V, E;
     cin >> V >> E;
     
-    DFS UF; 
+    DSU UF; 
     UF.init(V); 
     Edge edges[V];
     
@@ -31,11 +31,11 @@ int main() {
     sort(edges, edges + E);
 
     int totalWeight = 0;
-    for (int i = 0; i < E && UF.numSets > 1; i++) {
+    for (int i = 0; i < E && V > 1; i++) {
         auto [w, u, v] = edges[i]; // desempaquetamiento de arista
         if (!UF.sameSet(u, v)) {       // Si no estan en el mismo conjunto, la tomamos
             totalWeight += w;
-            UF.unite(u, v);
+            V -= UF.unite(u, v);
         }
     }
     cout << "MST weight: " << totalWeight << '\n';
