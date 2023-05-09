@@ -1,3 +1,5 @@
+//problem: Given a, b and n. Find x and y that satisfies ax + by = n. Print any of the x and y satisfying the equation
+
 int gcd(int a, int b,int &x, int &y){
     if(b == 0){
         x= 1; y = 0;
