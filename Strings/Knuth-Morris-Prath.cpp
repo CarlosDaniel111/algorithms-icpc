@@ -3,7 +3,7 @@ Encuentra todas las ocurrencias del patron string p en el
 texto string t. Tiempo de ejecucion es O(n + m), donde n y m
 son las longitudes de p y t, respectivamente.
 */
-void buildPi(string &p, vi&pi) {
+void buildPi(string &p, vi& pi) {
     pi = vi(sz(p));
     int k = -2;
     F0R (i, sz(p)) {
