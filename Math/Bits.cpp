@@ -25,6 +25,7 @@ for (int i = 1; i < limit; i++) {
   ....
 } 
 */
+
 // Funciones integradas por el compilador GNU (GCC)
 // IMPORTANTE ---> Si x cabe en un int quitar el ll de cada metodo :D
     
