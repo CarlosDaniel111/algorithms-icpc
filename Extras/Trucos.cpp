@@ -55,24 +55,4 @@ int main() {
 
     // Ordena de forma que si hay 2 cincos, el primer cinco estara acomodado antes del segundo, tras ser ordenado
     stable_sort(begin(x), end(x));
-    
-    // Funciones integradas por el compilador GNU (GCC)
-    // IMPORTANTE ---> Si x cabe en un int quitar el ll de cada metodo :D
-    
-    // Numero de bits encendidos de x
-    __builtin_popcountll(x);
-        
-    // Indice del primer (de derecha a izquierda) bit encendido de x
-    // Por ejemplo __builtin_ffs(0b0001'0010'1100) = 3
-    __builtin_ffsll(x);
-    
-    // Cuenta de ceros a la izquierda del primer bit encendido de x    
-    // Utilizado para calcular piso(log2(x)) -> 63 - __builtin_clzll(x)
-    // Si x es int, utilizar 31 en lugar de 63
-    // Por ejemplo __builtin_clz(0b0001'0010'1100) = 23 (YA QUE X SE TOMA COMO ENTERO)
-    __builtin_clzll(x);
-     
-    // Cuenta de ceros a la derecha del primer uno (de derecha a izquierda
-    // Por ejemplo __builtin_ctzll(0b0001'0010'1100) = 2
-    __builtin_ctzll(x);
 }
