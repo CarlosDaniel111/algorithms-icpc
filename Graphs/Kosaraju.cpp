@@ -1,6 +1,6 @@
 /*
 Busqueda de componentes fuertemente conexos (Grafo dirigido) - Kosaraju O(V + E)
-Un SCC se define de la siguiente manera: si elegimo cualquier par de vertices u y v
+Un SCC se define de la siguiente manera: si elegimos cualquier par de vertices u y v
 en el SCC, podemos encontrar un camino de u a v y viceversa
 
 El algoritmo de Kosaraju realiza dos pasadas DFS, la primera para almacenar el orden
