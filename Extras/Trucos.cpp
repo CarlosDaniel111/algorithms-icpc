@@ -1,12 +1,11 @@
-// Imprimir una cantidad especifica de digitos despues del punto decimal
-// en este caso 5
+// Imprimir una cantidad especifica de digitos  
+// despues del punto decimal en este caso 5
 cout.setf(ios::fixed); cout << setprecision(5);
 cout << 100.0/7.0 << '\n';
 cout.unsetf(ios::fixed);
 
 // Imprimir el numero con su decimal y el cero a su derecha
-// Salida -> 100.50
-// Si fuese 100.0, la salida seria -> 100.00
+// Salida -> 100.50, si fuese 100.0, la salida seria -> 100.00
 cout.setf(ios::showpoint);
 cout << 100.5 << '\n';
 cout.unsetf(ios::showpoint);
