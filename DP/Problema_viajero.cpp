@@ -1,9 +1,9 @@
 /*
 Problema de agente viajero TSP
 El problema del agente viajero consiste en encontrar un recorrido
-que visite todos los vértices de una gráfica, sin repetir y a costo mínimo.
-Escribe un programa que resuelva la versión del problema en la que el agente
-viajero puede comenzar en cualquier vértice y no necesita regresar al vértice inicial.
+que visite todos los vertices de un grafo, sin repetir y a costo minimo.
+Escribe un programa que resuelva la version del problema en la que el agente
+viajero puede comenzar en cualquier vertice y no necesita regresar al vertice inicial.
 */
 
 int dist[MAXN][MAXN];
