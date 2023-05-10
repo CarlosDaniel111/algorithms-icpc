@@ -3,8 +3,8 @@ class LazySegmentTree {
     int n;
     vi A, st, lazy;
 
-    int l(int p) { return p << 1; }       // ir al hijo izquierdo
-    int r(int p) { return (p << 1) + 1; } // ir al hijo derecho
+    int l(int p) { return (p << 1) + 1; }       // ir al hijo izquierdo
+    int r(int p) { return (p << 1) + 2; } // ir al hijo derecho
 
     void build(int index, int start, int end) {
         if (start == end) {
@@ -42,6 +42,7 @@ class LazySegmentTree {
             return;
         }
         int mid = (start + end) / 2;
+      
         update(l(index), start, mid, i, j, val);
         update(r(index), mid + 1, end, i, j, val);
 
@@ -54,11 +55,10 @@ class LazySegmentTree {
             return 0;
         if ((i <= start) && (end <= j))
             return st[index];
+      
         int mid = (start + end) / 2;
-        int q1 = query(l(index), start, mid, i, j);
-        int q2 = query(r(index), mid + 1, end, i, j);
 
-        return (q1 + q2);
+        return query(l(index), start, mid, i, j) + query(r(index), mid + 1, end, i, j);
     }
 
   public:
@@ -69,7 +69,7 @@ class LazySegmentTree {
         build(1, 0, n - 1);
     }
 
-    void update(int i, int j, int val) { update(1, 0, n - 1, i, j, val); }
+    void update(int i, int j, int val) { update(0, 0, n - 1, i, j, val); }
 
-    int query(int i, int j) { return query(1, 0, n - 1, i, j); }
+    int query(int i, int j) { return query(0, 0, n - 1, i, j); }
 };
