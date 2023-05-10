@@ -1,21 +1,23 @@
-/*Esta implementado para obtener la suma en un rango, pero es posible usar cualquier
-operacion conmutativa como la multiplicacion, XOR, AND, OR, MIN, MAX, etc.*/
+/* Implementado para RSQ, pero es posible usar cualquier operacion conmutativa 
+   (no importa el orden) como la multiplicacion, XOR, OR, AND, MIN, MAX, etc. */
 
 class SegmentTree {
   private:
     int n;
     vi arr, st;
 
-    int l(int p) { return p << 1; }       // ir al hijo izquierdo
-    int r(int p) { return (p << 1) + 1; } // ir al hijo derecho
-
+    int l(int p) { return (p << 1) + 1; }     // Ir al hijo izquierdo
+    int r(int p) { return (p << 1) + 2; }     // Ir al hijo derecho
+  
     void build(int index, int start, int end) {
-        if (start == end) {
+        if (start == end)
             st[index] = arr[start];
-        } else {
+        else {
             int mid = (start + end) / 2;
+          
             build(l(index), start, mid);
             build(r(index), mid + 1, end);
+          
             st[index] = st[l(index)] + st[r(index)];
         }
     }
@@ -28,16 +30,14 @@ class SegmentTree {
             return st[index];
 
         int mid = (start + end) / 2;
-        int q1 = query(l(index), start, mid, i, j);
-        int q2 = query(r(index), mid + 1, end, i, j);
-
-        return q1 + q2;
+      
+        return query(l(index), start, mid, i, j) + query(r(index), mid + 1, end, i, j);
     }
 
     void update(int index, int start, int end, int idx, int val) {
-        if (start == end) {
+        if (start == end)
             st[index] = val;
-        } else {
+        else {
             int mid = (start + end) / 2;
             if (start <= idx && idx <= mid)
                 update(l(index), start, mid, idx, val);
@@ -56,7 +56,7 @@ class SegmentTree {
         build(1, 0, n - 1);
     }
 
-    void update(int i, int val) { update(1, 0, n - 1, i, val); }
+    void update(int i, int val) { update(0, 0, n - 1, i, val); }
 
-    int query(int i, int j) { return query(1, 0, n - 1, i, j); }
+    int query(int i, int j) { return query(0, 0, n - 1, i, j); }
 };
