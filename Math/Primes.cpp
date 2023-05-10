@@ -34,7 +34,7 @@ bool isPrime(ll n) {
     return true;
 }
 
-// Sin calcular primos en O(sqrt(n))
+// O(sqrt(n))
 vl primeFactors(ll n) {
     vl factors;
     ll idx = 2;
@@ -49,6 +49,7 @@ vl primeFactors(ll n) {
 }
 
 // Contar el numero de factores primos del entero N
+// O(sqrt(n))
 int numPF(ll n) {
     int ans = 0;
     for (int i = 0; (i < (int)primes.size()) && (primes[i] * primes[i] <= n); ++i)
