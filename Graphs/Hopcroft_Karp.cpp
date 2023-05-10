@@ -1,6 +1,6 @@
 // Algoritmo para resolver el problema de maximum bipartite matching
 // Nota. Modelar bien el grafo :)
-// O(|V|)
+// O(sqrt(|V|) + E)
 
 int dist[MAXN], pairU[MAXN], pairV[MAXN], c1, c2;
 vi graph[MAXN];
