@@ -8,21 +8,6 @@ Se cuenta con una coleccion de N objetos donde cada uno tiene un peso y un valor
 y una mochila a la que le caben C unidades de peso.
 Escribe un programa que calcule la maxima suma de valores que se puede lograr guardando
 objetos en la mochila sin superar su capacidad de peso.
-
-Ejemplo:
-
-Entrada
-5
-4
-4 4
-1 3
-3 2
-9 5
-1 3
-
-Salida
-6
-
 */
 
 ii objeto[MAXN]; // {peso, valor}

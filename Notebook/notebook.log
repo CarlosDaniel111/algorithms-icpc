@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.21)  25 APR 2023 18:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.21)  11 MAY 2023 17:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -530,26 +530,30 @@ File: lstlang1.sty 2023/02/27 1.9 listings language file
 {C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] (co
 de/Trie.cpp) (code/FenwickTree.cpp [3]) (code/BIT.cpp)
 (code/Order_Statistics_Tree.cpp) (code/SegmentTree.cpp [4])
-(code/LazySegmentTree.cpp [5]) (code/LazyRMQ.cpp) [6] (code/Primes.cpp)
-(code/Bits.cpp) (code/Formulas_Rapidas.cpp [7]) (code/MatrixOperations.cpp)
-(code/Catalan.py) [8] (code/Problema_de_la_mochila.cpp) (code/LIS.cpp)
-(code/DP_con_digitos.cpp [9]) (code/Tecnica_con_pila.cpp) [10]
-(code/Recorridos.cpp) (code/Dijkstra.cpp) (code/Bellman-Ford.cpp) [11]
-(code/Floyd-Warshall.cpp) (code/LCA.cpp) (code/Kruskal_(UnionFind).cpp)
-(code/Prim.cpp [12]) (code/BridgeDetection.cpp) (code/TopologicalSort.cpp
-[13]) (code/LexicographicTopoSort.cpp) [14] (code/Dates.cpp) (code/Trucos.cpp)
-[15]) (notebook.aux)
+(code/LazySegmentTree.cpp [5]) (code/LazyRMQ.cpp) (code/SparseSegmentTree.cpp)
+[6] (code/Primes.cpp) (code/Bits.cpp) (code/Formulas_Rapidas.cpp [7])
+(code/Catalan.py) (code/Linear_Diophantine.cpp) [8]
+(code/Knuth-Morris-Prath.cpp) [9] (code/Problema_de_la_mochila.cpp)
+(code/LIS.cpp) (code/Problema_viajero.cpp) [10] (code/DP_con_digitos.cpp)
+(code/Tecnica_con_pila.cpp) (code/Tecnica_deque.cpp) (code/Suma_2D.cpp)
+[11] (code/Recorridos.cpp) (code/Dijkstra.cpp) (code/Bellman-Ford.cpp) [12]
+(code/Floyd-Warshall.cpp) (code/LCA.cpp) (code/Kruskal_(UnionFind).cpp [13])
+(code/Prim.cpp) (code/BridgeDetection.cpp) (code/TopologicalSort.cpp [14])
+(code/LexicographicTopoSort.cpp) (code/Tarjan.cpp [15]) (code/Kosaraju.cpp)
+(code/Hierholzer.cpp) (code/EulerTourRSQ.cpp [16]) (code/Hopcroft_Karp.cpp
+[17]) (code/MaxFlow.cpp) [18] (code/Operaciones_con_matrices.cpp)
+(code/Dates.cpp) (code/Trucos.cpp [19]) [20]) (notebook.aux)
 Package rerunfilecheck Info: File `notebook.out' has not changed.
-(rerunfilecheck)             Checksum: 8189192840F98778C4804B4534DC4BDC;4903.
+(rerunfilecheck)             Checksum: DFDDEB3E3F80BA789BC522CD0FB0642F;6859.
  ) 
 Here is how much of TeX's memory you used:
- 14175 strings out of 476331
- 220057 string characters out of 5787765
- 2632660 words of memory out of 5000000
- 32843 multiletter control sequences out of 15000+600000
+ 14994 strings out of 476331
+ 233456 string characters out of 5787765
+ 2666660 words of memory out of 5000000
+ 33020 multiletter control sequences out of 15000+600000
  518796 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,12n,92p,467b,2287s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,12n,92p,467b,2291s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx12.pfb><C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmbx9.pfb><C:/Users/beltr/AppData/Local/Programs/MiKTeX/fonts/type1/pu
@@ -560,9 +564,9 @@ s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/beltr/AppData/Local/
 Programs/MiKTeX/fonts/type1/urw/courier/ucrb8a.pfb><C:/Users/beltr/AppData/Loca
 l/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/beltr/AppData/Lo
 cal/Programs/MiKTeX/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on notebook.pdf (15 pages, 404394 bytes).
+Output written on notebook.pdf (20 pages, 513547 bytes).
 PDF statistics:
- 2078 PDF objects out of 2487 (max. 8388607)
- 1525 named destinations out of 1728 (max. 500000)
- 289 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2872 PDF objects out of 2984 (max. 8388607)
+ 2131 named destinations out of 2487 (max. 500000)
+ 393 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,34 +1,44 @@
+const int MAXN = 1e6 + 5;
+
 int n;                   // number of nodes
-vector<vector<int>> adj; // adjacency list of graph
+vector<int> adj[MAXN]; // adjacency list of graph
+bool articulation[MAXN];
+int tin[MAXN], low[MAXN], timer, dfsRoot, rootChildren;
 
-vector<bool> visited;
-vector<int> tin, low;
-int timer;
-
-void dfs(int v, int p = -1) {
-    visited[v] = true;
-    tin[v] = low[v] = timer++;
-    for (int to : adj[v]) {
+void dfs(int u, int p = -1) {
+    tin[u] = low[u] = timer++;
+    for (int to : adj[u]) {
         if (to == p)
             continue;
-        if (visited[to]) {
-            low[v] = min(low[v], tin[to]);
-        } else {
-            dfs(to, v);
-            low[v] = min(low[v], low[to]);
-            if (low[to] > tin[v])
-                IS_BRIDGE(v, to);
+        if (tin[to] != -1)
+            low[u] = min(low[u], tin[to]);
+        else {
+            if (u == dfsRoot)
+                ++rootChildren; // Caso especial si es raiz
+
+            dfs(to, u);
+
+            if (low[to] >= tin[u]) // Busca si es un punto de articulacion
+                articulation[u] = 1;
+            if (low[to] > tin[u]) // Busca si es un puente
+                IS_BRIDGE(u, to);
+
+            low[u] = min(low[u], low[to]);
         }
     }
 }
 
-void find_bridges() {
+void find_bridges_articulations() {
     timer = 0;
-    visited.assign(n, false);
-    tin.assign(n, -1);
-    low.assign(n, -1);
+    fill(tin, tin + n, - 1);
+    fill(low, low + n, - 1);
+    
     for (int i = 0; i < n; ++i) {
-        if (!visited[i])
+        if (tin[i] == -1) {
+            dfsRoot = i;
+            rootChildren = 0;
             dfs(i);
+            articulation[dfsRoot] = (rootChildren > 1);
+        }
     }
 }

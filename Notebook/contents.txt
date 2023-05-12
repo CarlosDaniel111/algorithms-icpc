@@ -15,19 +15,26 @@ Order_Statistics_Tree.cpp	Order Statistics Tree
 SegmentTree.cpp	Segment Tree
 LazySegmentTree.cpp	Lazy Segment Tree
 LazyRMQ.cpp	Lazy Range Min/Max Query
+SparseSegmentTree.cpp	Sparse Segment Tree
 
 [Math]
 Primes.cpp	Numeros Primos
 Bits.cpp	Operaciones con Bits
 Formulas_Rapidas.cpp	Formulas Rapidas
-MatrixOperations.cpp	Operaciones de Matriz
 Catalan.py	Numeros Catalan
+Linear_Diophantine.cpp	Linear Diophantine
+
+[Strings]
+Knuth-Morris-Prath.cpp	Knuth-Morris-Prath
 
 [Dynamic Programming]
 Problema_de_la_mochila.cpp	Problema de la mochila
 LIS.cpp	Longest Increasing Subsequence (LIS)
+Problema_viajero.cpp	Problema del viajero
 DP_con_digitos.cpp	Dp con Digitos
 Tecnica_con_pila.cpp	Tecnica con pila
+Tecnica_deque.cpp	Tecnica con deque
+Suma_2D.cpp	Suma en 2D
 
 [Graphs]
 Recorridos.cpp	Recorrido BFS y DFS
@@ -40,7 +47,14 @@ Prim.cpp	Prim
 BridgeDetection.cpp	Bridge Detection
 TopologicalSort.cpp	Ordenamiento Topologico
 LexicographicTopoSort.cpp	Ordenamiento Topologico Lexicografico
+Tarjan.cpp	Algoritmo de Tarjan (SCC)
+Kosaraju.cpp	Algoritmo de Kosaraju (SCC)
+Hierholzer.cpp	Hierholzer (Camino euleriano)
+EulerTourRSQ.cpp	EulerTour RSQ
+Hopcroft_Karp.cpp	Hopcroft-Karp
+MaxFlow.cpp	Max Flow
 
 [Extras]
+Operaciones_con_matrices.cpp	Operaciones con matrices
 Dates.cpp	Fechas
 Trucos.cpp	Trucos

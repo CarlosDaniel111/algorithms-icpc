@@ -3,8 +3,8 @@ class LazyRMQ {
     int n;
     vi A, st, lazy;
 
-    int l(int p) { return p << 1; }       // ir al hijo izquierdo
-    int r(int p) { return (p << 1) + 1; } // ir al hijo derecho
+    int l(int p) { return (p << 1) + 1; }   // Ir al hijo izquierdo
+    int r(int p) { return (p << 1) + 2; }   // Ir al hijo derecho
 
     int conquer(int a, int b) {
         if (a == -1)
@@ -28,8 +28,8 @@ class LazyRMQ {
     void propagate(int p, int L, int R) {
         if (lazy[p] != -1) {
             st[p] = lazy[p];
-            if (L != R)                            // chechar que no es una hoja
-                lazy[l(p)] = lazy[r(p)] = lazy[p]; // propagar hacia abajo
+            if (L != R)                            // Checar que no sea una hoja
+                lazy[l(p)] = lazy[r(p)] = lazy[p]; // Propagar hacia abajo
             else
                 A[L] = lazy[p];
             lazy[p] = -1;
@@ -72,17 +72,7 @@ class LazyRMQ {
         build(1, 0, n - 1);
     }
 
-    void update(int i, int j, int val) { update(1, 0, n - 1, i, j, val); }
+    void update(int i, int j, int val) { update(0, 0, n - 1, i, j, val); }
 
-    int query(int i, int j) { return query(1, 0, n - 1, i, j); }
+    int query(int i, int j) { return query(0, 0, n - 1, i, j); }
 };
-
-// Implementacion
-vi A = {18, 17, 13, 19, 15, 11, 20, 99};
-SegmentTree st(A);
-
-st.query(1, 3); // RMQ(1,3);
-
-st.update(5, 5, 77); // actualiza A[5] a 77
-
-st.update(0, 3, 30); // actualiza A[0..3] a 30
