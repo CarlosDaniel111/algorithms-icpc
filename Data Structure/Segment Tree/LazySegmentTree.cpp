@@ -3,7 +3,7 @@ class LazySegmentTree {
     int n;
     vi A, st, lazy;
 
-    int l(int p) { return (p << 1) + 1; }       // ir al hijo izquierdo
+    int l(int p) { return (p << 1) + 1; } // ir al hijo izquierdo
     int r(int p) { return (p << 1) + 2; } // ir al hijo derecho
 
     void build(int index, int start, int end) {
@@ -17,6 +17,7 @@ class LazySegmentTree {
         }
     }
 
+    // Nota: Si se utiliza para el minimo o maximo de un rango no se le agrega el (end - start + 1)
     void propagate(int index, int start, int end) {
         if (lazy[index] != 0) {
             st[index] += (end - start + 1) * lazy[index];
@@ -42,7 +43,7 @@ class LazySegmentTree {
             return;
         }
         int mid = (start + end) / 2;
-      
+
         update(l(index), start, mid, i, j, val);
         update(r(index), mid + 1, end, i, j, val);
 
@@ -55,7 +56,7 @@ class LazySegmentTree {
             return 0;
         if ((i <= start) && (end <= j))
             return st[index];
-      
+
         int mid = (start + end) / 2;
 
         return query(l(index), start, mid, i, j) + query(r(index), mid + 1, end, i, j);
@@ -66,7 +67,7 @@ class LazySegmentTree {
 
     LazySegmentTree(const vi &initialA) : LazySegmentTree((int)initialA.size()) { // Constructor de st con arreglo inicial
         A = initialA;
-        build(1, 0, n - 1);
+        build(0, 0, n - 1);
     }
 
     void update(int i, int j, int val) { update(0, 0, n - 1, i, j, val); }
