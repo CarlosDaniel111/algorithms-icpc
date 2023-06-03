@@ -22,13 +22,6 @@ ll fastpow(ll a, ll b, ll m) {
     return res;
 }
 
-// Coeficientes binomiales (Combinatoria) - O(n)
-ll C(int n, int k) { // O(log p)
-    if (n < k)
-        return 0;
-    return (((fact[n] * modInverse(fact[k])) % p) * modInverse(fact[n - k])) % p;
-}
-
 // Codigo para calcular (a^-1)%m (si es que existe), O(log n)
 
 // Si m es primo
@@ -49,4 +42,11 @@ int modInverse(int a, int m) {
     if (d > 1)
         return 0; // Si no existe
     return (x + m) % m;
+}
+
+// Coeficientes binomiales (Combinatoria) - O(n)
+ll C(int n, int k) { // O(log p)
+    if (n < k)
+        return 0;
+    return (((fact[n] * modInverse(fact[k])) % p) * modInverse(fact[n - k])) % p;
 }
