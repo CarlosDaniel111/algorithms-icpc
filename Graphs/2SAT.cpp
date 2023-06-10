@@ -1,3 +1,4 @@
+// Funciona, tal vez se puede dejar mas concisa? 
 int n;
 vector<vector<int>> adj, adj_t;
 vector<bool> used;
