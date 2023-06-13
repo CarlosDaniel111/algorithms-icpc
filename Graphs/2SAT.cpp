@@ -1,6 +1,6 @@
 // Funciona, tal vez se puede dejar mas concisa? 
-int n;
-vector<vector<int>> adj, adj_t;
+int n; // Importante asignar |V| * 2
+vector<int> adj[MAXN], adj_t[MAXN];
 vector<bool> used;
 vector<int> order, comp;
 vector<bool> assignment;
