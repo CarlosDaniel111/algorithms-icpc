@@ -10,7 +10,7 @@ transpuesto a partir del orden topologico para hallar los SCC
 
 vi graph[MAXN];   // Grafo
 vi graph_T[MAXN]; // Grafo transpuesto
-vi dfs_num[MAXN];
+vi dfs_num;
 vi S;
 int N, numSCC;
 

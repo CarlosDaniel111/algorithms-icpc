@@ -1,6 +1,6 @@
 const int MAXN = 1e6 + 5;
 
-int n;                   // number of nodes
+int n;                 // number of nodes
 vector<int> adj[MAXN]; // adjacency list of graph
 bool articulation[MAXN];
 int tin[MAXN], low[MAXN], timer, dfsRoot, rootChildren;
@@ -14,7 +14,7 @@ void dfs(int u, int p = -1) {
             low[u] = min(low[u], tin[to]);
         else {
             if (u == dfsRoot)
-                ++rootChildren; // Caso especial si es raiz
+                ++rootChildren; // Caso especial si la raiz es un punto de articulacion
 
             dfs(to, u);
 
@@ -30,9 +30,9 @@ void dfs(int u, int p = -1) {
 
 void find_bridges_articulations() {
     timer = 0;
-    fill(tin, tin + n, - 1);
-    fill(low, low + n, - 1);
-    
+    fill(tin, tin + n, -1);
+    fill(low, low + n, -1);
+
     for (int i = 0; i < n; ++i) {
         if (tin[i] == -1) {
             dfsRoot = i;
