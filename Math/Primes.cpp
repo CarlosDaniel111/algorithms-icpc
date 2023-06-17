@@ -7,7 +7,8 @@ ll sieve_size;
 vl primes;
 
 // O(n * sqrt(n))
-void sieve(ll n) {
+void sieve(ll n)
+{
     sieve_size = n + 1;
     // faster than bitset
     bool is_prime[sieve_size];
@@ -17,8 +18,10 @@ void sieve(ll n) {
         is_prime[i] = 1;
 
     is_prime[0] = is_prime[1] = 0;
-    for (ll p = 2; p < sieve_size; p++) {
-        if (is_prime[p]) {
+    for (ll p = 2; p < sieve_size; p++)
+    {
+        if (is_prime[p])
+        {
             for (ll i = p * p; i < sieve_size; i += p)
                 is_prime[i] = 0;
             primes.push_back(p);
@@ -27,7 +30,8 @@ void sieve(ll n) {
 }
 
 // O(sqrt(n))
-bool isPrime(ll n) {
+bool isPrime(ll n)
+{
     for (ll i = 0; i * i <= n; i++)
         if (n % i == 0)
             return false;
@@ -35,11 +39,14 @@ bool isPrime(ll n) {
 }
 
 // O(sqrt(n))
-vl primeFactors(ll n) {
+vl primeFactors(ll n)
+{
     vl factors;
     ll idx = 2;
-    while (n != 1) {
-        while (n % idx == 0) {
+    while (n != 1)
+    {
+        while (n % idx == 0)
+        {
             n /= idx;
             factors.pb(idx);
         }
@@ -50,10 +57,12 @@ vl primeFactors(ll n) {
 
 // Contar el numero de factores primos del entero N
 // O(sqrt(n))
-int numPF(ll n) {
+int numPF(ll n)
+{
     int ans = 0;
     for (int i = 0; (i < (int)primes.size()) && (primes[i] * primes[i] <= n); ++i)
-        while (n % primes[i] == 0) {
+        while (n % primes[i] == 0)
+        {
             n /= primes[i];
             ans++;
         }
