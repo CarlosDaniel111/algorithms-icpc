@@ -6,8 +6,8 @@ class SegmentTree {
     int n;
     vi arr, st;
 
-    int l(int p) { return p << 1; }     // Ir al hijo izquierdo
-    int r(int p) { return (p << 1) + 1; }     // Ir al hijo derecho
+    int l(int p) { return (p << 1) + 1; }     // Ir al hijo izquierdo
+    int r(int p) { return (p << 1) + 2; }     // Ir al hijo derecho
   
     void build(int index, int start, int end) {
         if (start == end)
