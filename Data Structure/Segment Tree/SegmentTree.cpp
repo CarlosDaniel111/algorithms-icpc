@@ -6,8 +6,8 @@ class SegmentTree {
     int n;
     vi arr, st;
 
-    int l(int p) { return (p << 1) + 1; }     // Ir al hijo izquierdo
-    int r(int p) { return (p << 1) + 2; }     // Ir al hijo derecho
+    int l(int p) { return p << 1; }     // Ir al hijo izquierdo
+    int r(int p) { return (p << 1) + 1; }     // Ir al hijo derecho
   
     void build(int index, int start, int end) {
         if (start == end)
@@ -53,7 +53,7 @@ class SegmentTree {
 
     SegmentTree(const vi &initialArr) : SegmentTree((int)initialArr.size()) { // Constructor de st con arreglo inicial
         arr = initialArr;
-        build(1, 0, n - 1);
+        build(0, 0, n - 1);
     }
 
     void update(int i, int val) { update(0, 0, n - 1, i, val); }
