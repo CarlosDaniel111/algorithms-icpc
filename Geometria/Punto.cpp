@@ -11,9 +11,7 @@ bool operator==(pt a, pt b) { return a.x == b.x && a.y == b.y; }
 bool operator!=(pt a, pt b) { return !(a == b); }
 
 // Para poder hacer cout << miPunto
-ostream& operator<<(ostream& os, pt p) {
-return os << "("<< p.x << "," << p.y << ")";
-}
+ostream& operator<<(ostream& os, pt p) { return os << "("<< p.x << "," << p.y << ")"; }
 
 // Ejemplos de uso
 pt a{3,4}, b{2,-1};
