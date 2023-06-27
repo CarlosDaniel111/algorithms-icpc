@@ -1,10 +1,5 @@
-using ll = long long;
+const long long INF = 1e18;                             // large enough
 using edge = tuple<int, ll, ll>;
-using vi = vector<int>;
-using pi = pair<int, int>;
-
-const ll INF = 1e18;                             // large enough
-
 class max_flow {
 private:
   int V;
