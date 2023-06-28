@@ -19,8 +19,8 @@ using vpd = vector<pd>;
 
 // pairs
 #define mp make_pair
-#define f first
-#define s second
+#define fi first
+#define se second
 
 // vectors
 #define sz(x) int((x).size())
@@ -45,12 +45,13 @@ tcT > int lwb(vector<T> &a, const T &b) { return int(lb(all(a), b) - bg(a)); }
 
 #define ENDL '\n'
 #define LSOne(S) ((S) & -(S))
+#define MSET(arr, val) memset(arr, val, sizeof arr)
 
 const int MOD = 1e9 + 7;
 const int MAXN = 1e5 + 5;
 const int INF = 1 << 28;
 const ll LLINF = 1e18;
-const int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1}; // abajo, derecha, arriba, izquierda
+const int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1};  // abajo, derecha, arriba, izquierda
 
 template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
