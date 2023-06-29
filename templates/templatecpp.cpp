@@ -5,8 +5,8 @@ using ll = long long;
 using pi = pair<int, int>;
 using vi = vector<int>;
 
-#define f first
-#define s second
+#define fi first
+#define se second
 #define pb push_back
 #define SZ(x) int((x).size())
 #define ALL(x) begin(x), end(x)
