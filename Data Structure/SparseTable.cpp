@@ -1,6 +1,6 @@
 // La Sparse Table es una estructura de datos que nos permite realizar operaciones
-// conmutativas sobre un arreglo estatico en O(1) con una construccion en O(n logn)
-// ST[k][i] almacena el {op} en el rango [i, i + 2^k - 1]
+// conmutativas sobre un arreglo estatico A en O(1) con una construccion en O(n logn)
+// ST[k][i] almacena el {op} en el rango [i, i + 2^k - 1] de A
 
 template <typename T> 
 struct SparseTable {
