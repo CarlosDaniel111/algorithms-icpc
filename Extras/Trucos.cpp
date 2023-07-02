@@ -21,10 +21,10 @@ cout << hex << 100 << " " << 1000 << " " << 10000 << dec << endl;
 // Redondea el valor dado al entero mas cercano
 round(5.5);
 
-// Se realiza la operacion y redondea, siempre que se pueda, hacia abajo el numero
+// piso(a / b)
 cout << a / b;
 
-// Se realiza la operacion y redondea, siempre que se pueda, hacia arriba el numero
+// techo(a / b)
 cout << (a + b - 1) / b;
   
 // Llena la estructura con el valor (unicamente puede ser -1 o 0)
@@ -50,3 +50,6 @@ is_sorted(begin(x), end(x));
 
 // Ordena de forma que si hay 2 cincos, el primer cinco estara acomodado antes del segundo, tras ser ordenado
 stable_sort(begin(x), end(x));
+
+// Retorna un iterador apuntando al menor elemento en el rango dado (cambiar a max si se desea el mayor), es posible pasarle un comparador.
+min_element(begin(x), end(x));
