@@ -6,19 +6,14 @@ const int MAXN = 1e6 + 5;
 ll sieve_size;
 vl primes;
 
-// O(n * sqrt(n))
-void sieve(ll n) {
-    sieve_size = n + 1;
-    // faster than bitset
-    bool is_prime[sieve_size];
-
-    // primo hasta que se demuestre lo contrario B-)
-    for (int i = 0; i < sieve_size; i++) is_prime[i] = 1;
-
+// O(n log(log n))
+void sieve(int n) {
+    vector<bool> is_prime(n + 1, 1);
+    
     is_prime[0] = is_prime[1] = 0;
-    for (ll p = 2; p < sieve_size; p++) {
+    for (ll p = 3; p <= n; p++) {
         if (is_prime[p]) {
-            for (ll i = p * p; i < sieve_size; i += p) is_prime[i] = 0;
+            for (ll i = p * p; i <= n; i += p) is_prime[i] = 0;
             primes.push_back(p);
         }
     }
