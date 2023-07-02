@@ -1,6 +1,5 @@
-// La Sparse Table es una estructura de datos que nos permite realizar queries de 
-// RMQ sobre un arreglo estatico A en O(1), con una construccion en O(n log n) 
-// ST[k][i] almacena RMQ(i, i + 2^k - 1)
+// Nos permite realizar RMQ sobre un arreglo estatico A en O(1)
+// con una construccion en O(n log n) ST[k][i] almacena RMQ(i, i + 2^k - 1)
 
 template <typename T> 
 struct SparseTable {
