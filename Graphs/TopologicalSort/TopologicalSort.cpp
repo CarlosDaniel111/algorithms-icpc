@@ -1,8 +1,8 @@
 const int MAXN = 1e5 + 5;
-int n, m;                     // Numero de nodos y aristas
-vi graph[MAXN];               // Grafo
-vi sorted_nodes;              // Arreglo de nodos ordenados topologicamente
-bool visited[MAXN] = {false}; // Arreglo de visitados
+int n, m;                      // Numero de nodos y aristas
+vi graph[MAXN];                // Grafo
+vi sorted_nodes;               // Arreglo de nodos ordenados topologicamente
+bool visited[MAXN] = {false};  // Arreglo de visitados
 stack<int> s;
 
 // Funcion DFS para recorrer el grafo en profundidad

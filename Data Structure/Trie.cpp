@@ -10,10 +10,10 @@ struct TrieNode {
 };
 
 class Trie {
-  private:
+   private:
     TrieNode *root;
 
-  public:
+   public:
     Trie() {
         root = new TrieNode();
     }

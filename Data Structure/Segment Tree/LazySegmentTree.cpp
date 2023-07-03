@@ -1,10 +1,10 @@
 class LazySegmentTree {
-  private:
+   private:
     int n;
     vi A, st, lazy;
 
-    int l(int p) { return (p << 1) + 1; } // ir al hijo izquierdo
-    int r(int p) { return (p << 1) + 2; } // ir al hijo derecho
+    int l(int p) { return (p << 1) + 1; }  // ir al hijo izquierdo
+    int r(int p) { return (p << 1) + 2; }  // ir al hijo derecho
 
     void build(int index, int start, int end) {
         if (start == end) {
@@ -62,10 +62,10 @@ class LazySegmentTree {
         return query(l(index), start, mid, i, j) + query(r(index), mid + 1, end, i, j);
     }
 
-  public:
-    LazySegmentTree(int sz) : n(sz), st(4 * n), lazy(4 * n) {} // Constructor de st sin valores
+   public:
+    LazySegmentTree(int sz) : n(sz), st(4 * n), lazy(4 * n) {}  // Constructor de st sin valores
 
-    LazySegmentTree(const vi &initialA) : LazySegmentTree((int)initialA.size()) { // Constructor de st con arreglo inicial
+    LazySegmentTree(const vi &initialA) : LazySegmentTree((int)initialA.size()) {  // Constructor de st con arreglo inicial
         A = initialA;
         build(0, 0, n - 1);
     }

@@ -9,7 +9,7 @@ vl primes;
 // O(n log(log n))
 void sieve(int n) {
     vector<bool> is_prime(n + 1, 1);
-    
+
     is_prime[0] = is_prime[1] = 0;
     for (ll p = 2; p <= n; p++) {
         if (is_prime[p]) {

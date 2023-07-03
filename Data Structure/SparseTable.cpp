@@ -1,7 +1,7 @@
 // Nos permite realizar RMQ sobre un arreglo estatico A en O(1)
 // con una construccion en O(n log n) ST[k][i] almacena RMQ(i, i + 2^k - 1)
 
-template <typename T> 
+template <typename T>
 struct SparseTable {
     vector<vector<T>> ST;
 
@@ -10,9 +10,9 @@ struct SparseTable {
 
         for (int i = 0; i < SZ(A); i++)
             ST[0][i] = A[i];
-        
+
         for (int k = 1; k < 30; k++)
-            for (int i = 0; i + (1 << k) <= SZ(A); i++) 
+            for (int i = 0; i + (1 << k) <= SZ(A); i++)
                 ST[k][i] = min(ST[k - 1][i], ST[k - 1][i + (1 << (k - 1))]);
     }
 

@@ -6,11 +6,11 @@
 
 const int MAXN = 1e5 + 5;
 
-string s; // cadena
+string s;  // cadena
 int D;
 stack<int> st;
 
-bool dp[MAXN][MAXN]; // He pasado por aqui?
+bool dp[MAXN][MAXN];  // He pasado por aqui?
 bool solve(int pos, int residuo) {
     if (dp[pos][residuo])
         return false;

@@ -1,6 +1,6 @@
 const LOG_MAXN = 25;
 vi tree[MAXN];
-int jump[MAXN][LOG_MAXN]; //Donde jump[u][h] es el ancestro 2^h del nodo u
+int jump[MAXN][LOG_MAXN];  // Donde jump[u][h] es el ancestro 2^h del nodo u
 int depth[MAXN];
 
 // DFS para calcular la profundidad y guardar el padre directo en jump[u][0]
@@ -14,7 +14,7 @@ void dfs(int u, int padre = -1, int d = 0) {
 
 void build(int n) {
     memset(jump, -1, sizeof jump);
-    
+
     dfs(0);
 
     // Construccion del binary-lifting
@@ -28,12 +28,12 @@ int LCA(int p, int q) {
     if (depth[p] < depth[q])
         swap(p, q);
 
-    int dist = depth[p] - depth[q]; // Distancia necesaria para estar en la misma profundidad
+    int dist = depth[p] - depth[q];  // Distancia necesaria para estar en la misma profundidad
     FORR(i, LOG_MAXN)
     if ((dist >> i) & 1)
         p = jump[p][i];
 
-    if (p == q) // Verificar si el ancestro es la misma profundidad
+    if (p == q)  // Verificar si el ancestro es la misma profundidad
         return p;
 
     // Busqueda por saltos binarios

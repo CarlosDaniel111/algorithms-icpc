@@ -10,7 +10,7 @@ Escribe un programa que calcule la maxima suma de valores que se puede lograr gu
 objetos en la mochila sin superar su capacidad de peso.
 */
 
-ii objeto[MAXN]; // {peso, valor}
+ii objeto[MAXN];  // {peso, valor}
 int dp[MAXN][MAXN];
 int n;
 

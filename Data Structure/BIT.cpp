@@ -1,5 +1,5 @@
 const int MAXN = 1e5 + 5;
-int n, bit[MAXN]; // Utilizar a partir del 1
+int n, bit[MAXN];  // Utilizar a partir del 1
 
 int query(int index) {
     int sum = 0;

@@ -1,5 +1,5 @@
-// Funciona, tal vez se puede dejar mas concisa? 
-int n; // Importante asignar |V| * 2
+// Funciona, tal vez se puede dejar mas concisa?
+int n;  // Importante asignar |V| * 2
 vector<int> adj[MAXN], adj_t[MAXN];
 vector<bool> used;
 vector<int> order, comp;
@@ -47,9 +47,9 @@ bool solve_2SAT() {
 }
 
 void add_disjunction(int a, bool na, int b, bool nb) {
-    // na and nb signify whether a and b are to be negated 
-    a = 2*a ^ na;
-    b = 2*b ^ nb;
+    // na and nb signify whether a and b are to be negated
+    a = 2 * a ^ na;
+    b = 2 * b ^ nb;
     int neg_a = a ^ 1;
     int neg_b = b ^ 1;
     adj[neg_a].push_back(b);

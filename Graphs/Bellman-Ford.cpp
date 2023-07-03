@@ -1,4 +1,4 @@
-#define F0R(k, n) for(int k = 0; k < n; k++)
+#define F0R(k, n) for (int k = 0; k < n; k++)
 #define ENDL '\n'
 
 int main() {
@@ -13,7 +13,7 @@ int main() {
 
     int x;
     cin >> x;
-    dist[x] = 0; // Nodo de inicio
+    dist[x] = 0;  // Nodo de inicio
     F0R(i, n) {
         for (auto e : edges) {
             auto [a, b, w] = e;

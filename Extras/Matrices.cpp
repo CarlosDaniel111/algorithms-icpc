@@ -14,8 +14,8 @@ vvi matrixMultiplication(vvi &A, vvi &B) {
 // O(log k * n^3)
 vvi matrixExponentiation(vvi &A, ll k) {
     int n = A.size();
-    
-    vvi ret(n, vi(n)), B = A; // Matriz identidad
+
+    vvi ret(n, vi(n)), B = A;  // Matriz identidad
     FOR(i, n)
     ret[i][i] = 1;
 

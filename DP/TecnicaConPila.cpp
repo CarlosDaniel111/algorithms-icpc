@@ -6,14 +6,14 @@ int main() {
 
     int n = 12, heights[n] = {1, 8, 4, 9, 9, 10, 3, 2, 4, 8, 1, 13}, leftSmaller[n];
     stack<int> st;
-    F0R (i, n) {
+    F0R(i, n) {
         while (!st.empty() && heights[st.top()] > heights[i])
             st.pop();
         if (st.empty())
             leftSmaller[i] = -1;
-        else   
+        else
             leftSmaller[i] = st.top();
         st.push(i);
     }
-    //Ahora leftSmaller[i] tiene el indice del elemento menor mas cercano a la izquierda de heights[i]
+    // Ahora leftSmaller[i] tiene el indice del elemento menor mas cercano a la izquierda de heights[i]
 }

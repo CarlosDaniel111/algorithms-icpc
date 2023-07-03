@@ -13,8 +13,8 @@ de estos SCC se pueden identificar obteniendo el contenido actual de la pila, ha
 a llegar al vertice u
 */
 
-int n;                   // number of nodes
-vector<vector<int>> adj; // adjacency list of graph
+int n;                    // number of nodes
+vector<vector<int>> adj;  // adjacency list of graph
 
 vector<int> tin, low, visited;
 int timer, numSCC;

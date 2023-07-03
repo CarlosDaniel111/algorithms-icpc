@@ -4,13 +4,13 @@ using vpi = vector<pi>;
 const int MAXN = 1e5 + 5;
 
 // Si se tiene un grafo sin peso, usar BFS.
-vpi graph[MAXN]; // Grafo guardado como lista de adyascencia.
+vpi graph[MAXN];  // Grafo guardado como lista de adyascencia.
 int dist[MAXN];
 
 template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
 
-/*Llena un arreglo (dist), donde dist[i] indica la distancia mas corta 
+/*Llena un arreglo (dist), donde dist[i] indica la distancia mas corta
 que se tiene que recorrer desde un nodo 'x' para llegar al nodo 'i',
 en caso de que 'i' no sea alcanzable desde 'x', dist[i] = -1
 

@@ -1,11 +1,11 @@
 #define LSOne(S) ((S) & -(S))
 
 class FenwickTree {
-  private:
+   private:
     vll ft;
 
-  public:
-    FenwickTree(int m) { ft.assign(m + 1, 0); } // Constructor de ft vacio
+   public:
+    FenwickTree(int m) { ft.assign(m + 1, 0); }  // Constructor de ft vacio
 
     void build(const vll &f) {
         int m = (int)f.size() - 1;
@@ -17,9 +17,9 @@ class FenwickTree {
         }
     }
 
-    FenwickTree(const vll &f) { build(f); } // Constructor de ft basado en otro ft
+    FenwickTree(const vll &f) { build(f); }  // Constructor de ft basado en otro ft
 
-    FenwickTree(int m, const vi &s) { // Constructor de ft basado en un vector int
+    FenwickTree(int m, const vi &s) {  // Constructor de ft basado en un vector int
         vll f(m + 1, 0);
         F0R(i, (int)s.size()) {
             ++f[s[i]];
@@ -27,7 +27,7 @@ class FenwickTree {
         build(f);
     }
 
-    ll query(int j) { // return query(1,j);
+    ll query(int j) {  // return query(1,j);
         ll sum = 0;
         for (; j; j -= LSOne(j))
             sum += ft[j];
@@ -59,11 +59,11 @@ class FenwickTree {
     }
 };
 
-class RUPQ { // Arbol de Fenwick de consulta de punto y actualizacion de rango
-  private:
+class RUPQ {  // Arbol de Fenwick de consulta de punto y actualizacion de rango
+   private:
     FenwickTree ft;
 
-  public:
+   public:
     RUPQ(int m) : ft(FenwickTree(m)) {}
 
     void range_update(int ui, int uj, ll v) {
@@ -76,8 +76,8 @@ class RUPQ { // Arbol de Fenwick de consulta de punto y actualizacion de rango
     }
 }
 
-class RURQ { // Arbol de Fenwick de consulta de rango y actualizacion de rango
-  private:
+class RURQ {  // Arbol de Fenwick de consulta de rango y actualizacion de rango
+   private:
     RUPQ(int m) : rupq(RUPQ(m)), purq(FenwickTree(m)) {}
 
     void range_update(int ui, int uj, ll v) {
@@ -97,22 +97,22 @@ class RURQ { // Arbol de Fenwick de consulta de rango y actualizacion de rango
 }
 
 // Implementacion
-vll f = {0, 0, 1, 0, 1, 2, 3, 2, 1, 1, 0}; // index 0 siempre sera 0
+vll f = {0, 0, 1, 0, 1, 2, 3, 2, 1, 1, 0};  // index 0 siempre sera 0
 FenwickTree ft(f);
-printf("%lld\n", ft.rsq(1, 6));  // 7 => ft[6]+ft[4] = 5+2 = 7
-printf("%d\n", ft.select(7));    // index 6, query(1, 6) == 7, el cual es >= 7
-ft.update(5, 1);                 // update {0,0,1,0,2,2,3,2,1,1,0}
-printf("%lld\n", ft.rsq(1, 10)); // 12
+printf("%lld\n", ft.rsq(1, 6));   // 7 => ft[6]+ft[4] = 5+2 = 7
+printf("%d\n", ft.select(7));     // index 6, query(1, 6) == 7, el cual es >= 7
+ft.update(5, 1);                  // update {0,0,1,0,2,2,3,2,1,1,0}
+printf("%lld\n", ft.rsq(1, 10));  // 12
 printf("=====\n");
 RUPQ rupq(10);
 RURQ rurq(10);
-rupq.range_update(2, 9, 7); // indices en [2, 3, .., 9] actualizados a +7
+rupq.range_update(2, 9, 7);  // indices en [2, 3, .., 9] actualizados a +7
 rurq.range_update(2, 9, 7);
-rupq.range_update(6, 7, 3); // indices 6&7 son actualizados a +3 (10)
+rupq.range_update(6, 7, 3);  // indices 6&7 son actualizados a +3 (10)
 rurq.range_update(6, 7, 3);
 // idx = 0 (unused) | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |10
 // val = -          | 0 | 7 | 7 | 7 | 7 |10 |10 | 7 | 7 | 0
 for (int i = 1; i <= 10; i++)
     printf("%d -> %lld\n", i, rupq.point_query(i));
-printf("RSQ(1, 10) = %lld\n", rurq.rsq(1, 10)); // 62
-printf("RSQ(6, 7) = %lld\n", rurq.rsq(6, 7));   // 20
+printf("RSQ(1, 10) = %lld\n", rurq.rsq(1, 10));  // 62
+printf("RSQ(6, 7) = %lld\n", rurq.rsq(6, 7));    // 20

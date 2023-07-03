@@ -1,23 +1,23 @@
 /*
-Encuentra todas las ocurrencias del patron string p en el 
+Encuentra todas las ocurrencias del patron string p en el
 texto string t. Tiempo de ejecucion es O(n + m), donde n y m
 son las longitudes de p y t, respectivamente.
 */
-void buildPi(string &p, vi& pi) {
+void buildPi(string& p, vi& pi) {
     pi = vi(sz(p));
     int k = -2;
-    F0R (i, sz(p)) {
+    F0R(i, sz(p)) {
         while (k >= -1 && p[k + 1] != p[i])
             k = (k == -1) ? -2 : pi[k];
         pi[i] = ++k;
     }
 }
 
-int KMP(string &t, string& p) {
+int KMP(string& t, string& p) {
     vi pi;
     buildPi(p, pi);
     int k = -1;
-    F0R (i, sz(t)) {
+    F0R(i, sz(t)) {
         while (k >= -1 && p[k + 1] != t[i])
             k = (k == -1) ? -2 : pi[k];
         k++;
@@ -34,5 +34,5 @@ int KMP(string &t, string& p) {
 int main() {
     string a = "AABAACAADAABAABA", b = "AABA";
     KMP(a, b);
-    //Matches esperados en: 0, 9, 12
+    // Matches esperados en: 0, 9, 12
 }

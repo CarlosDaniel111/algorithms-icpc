@@ -8,8 +8,8 @@ de finalizacion decreciente (orden topologico) y la segunda se realiza en un gra
 transpuesto a partir del orden topologico para hallar los SCC
 */
 
-vi graph[MAXN];   // Grafo
-vi graph_T[MAXN]; // Grafo transpuesto
+vi graph[MAXN];    // Grafo
+vi graph_T[MAXN];  // Grafo transpuesto
 vi dfs_num;
 vi S;
 int N, numSCC;
@@ -33,7 +33,7 @@ int main() {
     }
     dfs_num.assign(N, -1);
     numSCC = 0;
-    R0F(i, N) { // Segunda pasada
+    R0F(i, N) {  // Segunda pasada
         if (dfs_num[S[i]] == -1) {
             ++numSCC;
             Kosaraju(S[i], 2);

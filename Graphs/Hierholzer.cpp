@@ -12,7 +12,7 @@ camino euleriano de u a v
 */
 
 int N;
-vector<vi> graph; // Grafo dirigido
+vector<vi> graph;  // Grafo dirigido
 
 vi hierholzer(int s) {
     vi ans, idx(N, 0), st;

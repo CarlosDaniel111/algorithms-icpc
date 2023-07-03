@@ -1,7 +1,8 @@
-// Imprimir una cantidad especifica de digitos  
+// Imprimir una cantidad especifica de digitos
 // despues del punto decimal en este caso 5
-cout.setf(ios::fixed); cout << setprecision(5);
-cout << 100.0/7.0 << '\n';
+cout.setf(ios::fixed);
+cout << setprecision(5);
+cout << 100.0 / 7.0 << '\n';
 cout.unsetf(ios::fixed);
 
 // Imprimir el numero con su decimal y el cero a su derecha
@@ -26,10 +27,10 @@ cout << a / b;
 
 // techo(a / b)
 cout << (a + b - 1) / b;
-  
+
 // Llena la estructura con el valor (unicamente puede ser -1 o 0)
 memset(estructura, valor, sizeof estrutura);
-    
+
 // Llena el arreglo/vector x, con value en cada posicion.
 fill(begin(x), end(x), value);
 

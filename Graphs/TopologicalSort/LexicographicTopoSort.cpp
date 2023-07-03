@@ -1,8 +1,8 @@
 const int MAXN = 1e5 + 5;
-int n, m;            // Numero de nodos y aristas
-vi graph[MAXN];      // Grafo
-int in_degree[MAXN]; // Grado de entrada de cada nodo
-vi sorted_nodes;     // Arreglo de nodos ordenados topologicamente
+int n, m;             // Numero de nodos y aristas
+vi graph[MAXN];       // Grafo
+int in_degree[MAXN];  // Grado de entrada de cada nodo
+vi sorted_nodes;      // Arreglo de nodos ordenados topologicamente
 
 void topo_sort() {
     priority_queue<int, vector<int>, greater<int>> q;

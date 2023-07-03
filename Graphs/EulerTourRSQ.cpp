@@ -16,7 +16,7 @@ las aristas que no pertenecen al camino deseado, puesto que hasta ese punto no s
 los unicos valores que tendra ST2.RSQ(0, en[x]) son los valores "no deseados", es decir, que pueden ser hijos de algun nodo del
 camino pero no deben de ser tomados en cuenta para la respuesta.
 
-Ahora imaginemonos que el camino desde la raiz hasta x esta dado por los nodos u0(la raiz), u1, u2, u3, ..., x, una observacion 
+Ahora imaginemonos que el camino desde la raiz hasta x esta dado por los nodos u0(la raiz), u1, u2, u3, ..., x, una observacion
 que se puede hacer es que si el numero de aristas entre u0 y x (o su profundidad) es par, se calcula:
 ans[x] = value[x] + sum_camino = value[x] + upd[u0] - upd[u1] + upd[u2] - upd[u3] + ... + upd[x]
 Y si es impar:
@@ -40,10 +40,10 @@ void dfs(int u, int father) {
     for (auto& v : tree[u]) {
         if (v != father) {
             depth[v] = depth[u] + 1;
-            dfs(v, u); 
+            dfs(v, u);
         }
     }
-    
+
     en[u] = toursz++;
 }
 
@@ -51,12 +51,14 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
 
-    int n, q; cin >> n >> q;
-    F0R (i, n)
-        cin >> val[i];
+    int n, q;
+    cin >> n >> q;
+    F0R(i, n)
+    cin >> val[i];
 
-    F0R (i, n - 1) {
-        int u, v; cin >> u >> v;
+    F0R(i, n - 1) {
+        int u, v;
+        cin >> u >> v;
         tree[u - 1].pb(v - 1);
         tree[v - 1].pb(u - 1);
     }
@@ -65,15 +67,16 @@ int main() {
 
     SegmentTree ST1(toursz), ST2(toursz);
     while (q--) {
-        int op, x; cin >> op >> x;
+        int op, x;
+        cin >> op >> x;
         x--;
         int parity = ((depth[x] & 1) ? -1 : 1);
         if (op == 1) {
-            int val; cin >> val;
+            int val;
+            cin >> val;
             ST1.update(st[x], val * parity);
             ST2.update(en[x], -val * parity);
-        }
-        else
+        } else
             cout << (ST1.query(0, st[x]) + ST2.query(0, st[x])) * parity + val[x] << ENDL;
     }
 
