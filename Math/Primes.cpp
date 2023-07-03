@@ -11,7 +11,7 @@ void sieve(int n) {
     vector<bool> is_prime(n + 1, 1);
     
     is_prime[0] = is_prime[1] = 0;
-    for (ll p = 3; p <= n; p++) {
+    for (ll p = 2; p <= n; p++) {
         if (is_prime[p]) {
             for (ll i = p * p; i <= n; i += p) is_prime[i] = 0;
             primes.push_back(p);
