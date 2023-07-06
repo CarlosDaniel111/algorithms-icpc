@@ -141,8 +141,8 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
 
-    vector<string> patterns = {"buda", "tao", "bud", "at", "ao"};
-    string text = "budatao";
+    vector<string> patterns = {"abc", "bcd", "abcd"};
+    string text = "abcd";
     Aho ahoAlg;
     F0R(i, patterns.size()) { ahoAlg.addString(patterns[i], i); }
     ahoAlg.prepareAho();
