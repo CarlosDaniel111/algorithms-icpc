@@ -1,12 +1,12 @@
 // Implementado para minimos, es posible cambiar a cualquier operacion conmutativa
 template <class T> class SegmentTree {
-    private:
+  private:
     const T DEFAULT = 1e18;  // Causa overflow si T es int
 
     vector<T> ST;
     int len;
 
-    public:
+  public:
     SegmentTree(int len) : len(len), ST(len * 2, DEFAULT) {}
     SegmentTree(vector<T>& v) : SegmentTree(v.size()) {
         for (int i = 0; i < len; i++)
