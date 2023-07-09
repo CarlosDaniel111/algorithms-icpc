@@ -16,9 +16,8 @@ public:
     void set(int ind, T val) {
         ind += len;
         ST[ind] = val;
-        for (; ind > 1; ind /= 2) {
+        for (; ind > 1; ind /= 2)
             ST[ind / 2] = min(ST[ind], ST[ind ^ 1]); // Operacion
-        }
     }
 
     T query(int start, int end) {
