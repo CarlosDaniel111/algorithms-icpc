@@ -10,6 +10,10 @@ int query(int index) {
     return sum;
 }
 
+int range_query(int l, int r) {
+    return query(r) - query(l - 1);
+}
+
 void update(int index, int val) {
     while (index <= n) {
         bit[index] += val;
