@@ -10,6 +10,9 @@ struct pt {
 bool operator==(pt a, pt b) { return a.x == b.x && a.y == b.y; }
 bool operator!=(pt a, pt b) { return !(a == b); }
 
+T sq(pt p) {return p.x*p.x + p.y*p.y;}
+double abs(pt p) {return sqrt(sq(p));}
+
 // Para poder hacer cout << miPunto
 ostream& operator<<(ostream& os, pt p) { return os << "(" << p.x << "," << p.y << ")"; }
 
