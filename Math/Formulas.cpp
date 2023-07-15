@@ -44,6 +44,11 @@ int modInverse(int a, int m) {
     return (x + m) % m;
 }
 
+// Si n cabe en un long long, usar 63 en lugar de 31
+int log2Olan(int n) {
+    return 31 - __builtin_clz(n);
+}
+
 // Coeficientes binomiales (Combinatoria) - O(n + n log p)
 // Para aumentar velocidad precalcular los inversos
 ll C(int n, int k) {  // O(log p)
