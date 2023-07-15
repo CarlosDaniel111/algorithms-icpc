@@ -45,6 +45,7 @@ int modInverse(int a, int m) {
 }
 
 // Coeficientes binomiales (Combinatoria) - O(n + n log p)
+// Para aumentar velocidad precalcular los inversos
 ll C(int n, int k) {  // O(log p)
     if (n < k)
         return 0;
