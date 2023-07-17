@@ -51,7 +51,7 @@ int log2Olan(int n) {
 
 // Coeficientes binomiales (Combinatoria) - O(n + n log p)
 // Para aumentar velocidad precalcular los inversos
-ll C(int n, int k) {  // O(log p)
+ll nCr(int n, int k) {  // O(log p)
     if (n < k)
         return 0;
     return fact[n] * modInverse(fact[k]) % p * modInverse(fact[n - k]) % p;
