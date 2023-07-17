@@ -4,7 +4,8 @@
 using namespace std;
 using namespace __gnu_pbds;
 
-typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> ost;
+template <class T>
+using oset = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 /*
 Funciona igual que un set, con 2 operaciones extra en O(log n):
 obj.find_by_order(k) - Retorna un iterador apuntando al elemento k-esimo mas grande
@@ -22,7 +23,7 @@ tecnica con pares, donde el second es un numero unico para cada valor.
 // Implementacion
 int n = 9;
 int A[] = {2, 4, 7, 10, 15, 23, 50, 65, 71};  // as in Chapter 2
-ost tree;
+oset<int> tree;
 for (int i = 0; i < n; ++i)  // O(n log n)
     tree.insert(A[i]);
 // O(log n) select
