@@ -19,6 +19,25 @@ void sieve(int n) {
     }
 }
 
+// Linear Sieve O(n)
+void linear_sieve(int N) {
+    vector<int> lp(N + 1);
+    vector<int> pr;
+
+    for (int i = 2; i <= N; ++i) {
+        if (lp[i] == 0) {
+            lp[i] = i;
+            pr.push_back(i);
+        }
+        for (int j = 0; i * pr[j] <= N; ++j) {
+            lp[i * pr[j]] = pr[j];
+            if (pr[j] == lp[i]) {
+                break;
+            }
+        }
+    }
+}
+
 // O(sqrt(n))
 bool isPrime(ll n) {
     for (ll i = 2; i * i <= n; i++)
