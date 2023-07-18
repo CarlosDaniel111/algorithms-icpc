@@ -38,6 +38,29 @@ void linear_sieve(int N) {
     }
 }
 
+// Calcular Funcion de Mobius O(n)
+void preMobius(int N) {
+    memset(check, false, sizeof(check));
+    mu[1] = 1;
+    int tot = 0;
+    FOR(i, 2, N) {
+        if (!check[i]) {  // i es primo
+            prime[tot++] = i;
+            mu[i] = -1;
+        }
+        FOR(j, 0, tot) {
+            if (i * prime[j] > N) break;
+            check[i * prime[j]] = true;
+            if (i % prime[j] == 0) {
+                mu[i * prime[j]] = 0;
+                break;
+            } else {
+                mu[i * prime[j]] = -mu[i];
+            }
+        }
+    }
+}
+
 // O(sqrt(n))
 bool isPrime(ll n) {
     for (ll i = 2; i * i <= n; i++)
