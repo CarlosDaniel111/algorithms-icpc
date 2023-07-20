@@ -36,6 +36,6 @@ struct Matrix {
 };
 
 // Ejemplo de uso calculando el n-esimo fibonacci
-// Para mas velocidad realizarlo con 4 variables
+// Para una mayor velocidad realizarlo con 4 variables
 Matrix<ll> fibMat({{1, 1}, {1, 0}});
 ll fibonacci(ll n){ return (n <= 2) ? (n != 0) : (fibMat^n).M[1][0]; }
