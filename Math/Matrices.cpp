@@ -6,9 +6,9 @@ vvi matrixMultiplication(vvi &A, vvi &B) {
     vvi C(n, vi(k, 0));
 
     FOR(i, n)
-    FOR(j, k)
-    FOR(l, m)
-    C[i][j] += (A[i][l] * B[l][j]) % MOD;
+        FOR(j, k)
+            FOR(l, m)
+                C[i][j] = (C[i][j] + A[i][l] * B[l][j] % MOD) % MOD;
     return C;
 }
 // O(log k * n^3)
@@ -17,7 +17,7 @@ vvi matrixExponentiation(vvi &A, ll k) {
 
     vvi ret(n, vi(n)), B = A;  // Matriz identidad
     FOR(i, n)
-    ret[i][i] = 1;
+        ret[i][i] = 1;
 
     while (k) {
         if (k & 1)
