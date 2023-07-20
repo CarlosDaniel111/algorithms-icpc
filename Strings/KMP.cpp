@@ -1,6 +1,6 @@
-/* Encuentra todas las ocurrencias del patron string p en el
-texto string t. Tiempo de ejecucion es O(n + m), donde n y m
-son las longitudes de p y t, respectivamente. */
+// Encuentra todas las ocurrencias del patron string pat en el string s
+// Complejidad temporal: O(|s| + |pat|)
+
 vi PI(const string& s) {
 	vi p(SZ(s));
 	FOR(i,1,SZ(s)) {
