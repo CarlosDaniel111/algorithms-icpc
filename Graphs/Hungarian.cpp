@@ -8,8 +8,6 @@
  * Time: O(N^2M)
  * Status: Tested on kattis:cordonbleu, stress-tested
  */
-#pragma once
-
 pair<int, vi> hungarian(const vector<vi> &a) {
 	if (a.empty()) return {0, {}};
 	int n = SZ(a) + 1, m = SZ(a[0]) + 1;
