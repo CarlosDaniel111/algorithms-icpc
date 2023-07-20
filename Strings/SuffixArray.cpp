@@ -46,37 +46,35 @@ struct SuffixArray {
                 ;
     }
 
-    bool subStringSearch(string &sub) {  // O(|sub| log n)
+    int lower(string &sub) {
         int l = 0, r = n - 1;
         while (l < r) {
             int mid = (l + r) / 2;
             int res = S.compare(SuffixArr[mid], SZ(sub), sub);
             (res >= 0) ? r = mid : l = mid + 1;
         }
-        if (S.compare(SuffixArr[l], SZ(sub), sub) != 0) return 0;
-        return 1;
+        return l;
     }
 
-    int countSubString(string &sub) {  // O(|sub| log n)
+    int upper(string &sub) {
         int l = 0, r = n - 1;
-        // Buscar L
-        while (l < r) {
-            int mid = (l + r) / 2;
-            int res = S.compare(SuffixArr[mid], SZ(sub), sub);
-            (res >= 0) ? r = mid : l = mid + 1;
-        }
-        if (S.compare(SuffixArr[l], SZ(sub), sub) != 0) return 0;
-        int L = l;
-
-        // Buscar R
-        l = 0, r = n - 1;
         while (l < r) {
             int mid = (l + r) / 2;
             int res = S.compare(SuffixArr[mid], SZ(sub), sub);
             (res > 0) ? r = mid : l = mid + 1;
         }
         if (S.compare(SuffixArr[r], SZ(sub), sub) != 0) --r;
-        return r - L + 1;
+        return r;
+    }
+
+    bool subStringSearch(string &sub) {  // O(|sub| log n)
+        int L = lower(sub);
+        if (S.compare(SuffixArr[L], SZ(sub), sub) != 0) return 0;
+        return 1;
+    }
+
+    int countSubString(string &sub) {  // O(|sub| log n)
+        return upper(sub) - lower(sub) + 1;
     }
 
     ll countDistinctSubstring() {  // O(n)
