@@ -3,10 +3,7 @@ struct TrieNode {
     bool isEndOfWord;
     int numPrefix;
 
-    TrieNode() {
-        isEndOfWord = false;
-        numPrefix = 0;
-    }
+    TrieNode() : isEndOfWord(false), numPrefix(0){}
 };
 
 class Trie {
