@@ -1,41 +1,41 @@
-// Sea A una matriz de orden n*n y k un numero, podemos calcular A^k en O(log k * n^3)
-typedef vector<vi> vvi;
-// O(n^3)
-vvi matrixMultiplication(vvi &A, vvi &B) {
-    int n = A.size(), m = A[0].size(), k = B[0].size();
-    vvi C(n, vi(k, 0));
+template<typename T> 
+struct Matrix {
+    using VVT = vector<vector<T>>;
 
-    FOR(i, n)
-        FOR(j, k)
-            FOR(l, m)
-                C[i][j] = (C[i][j] + A[i][l] * B[l][j] % MOD) % MOD;
-    return C;
-}
-// O(log k * n^3)
-vvi matrixExponentiation(vvi &A, ll k) {
-    int n = A.size();
+    VVT M;
+    int n, m;
 
-    vvi ret(n, vi(n)), B = A;  // Matriz identidad
-    FOR(i, n)
-        ret[i][i] = 1;
-
-    while (k) {
-        if (k & 1)
-            ret = matrixMultiplication(ret, B);
-        k >>= 1;
-        B = matrixMultiplication(B, B);
+    Matrix(VVT aux) : M(aux), n(M.size()), m(M[0].size()) {}
+    
+    // O(n^3)
+    Matrix operator * (Matrix& other) const {
+        int k = other.M[0].size();
+        VVT C(n, vector<T>(k, 0));
+        FOR (i, 0, n) 
+            FOR (j, 0, k)
+                FOR (l, 0, m)
+                    C[i][j] = (C[i][j] + M[i][l] * other.M[l][j] % MOD) % MOD;
+        return Matrix(C);
     }
-    return ret;
-}
-// Si el problema es el tiempo, implementar struct Matrix
+    
+    // O(n^3 * log p)
+    Matrix operator ^ (ll p) const {
+        assert(p >= 0);
+        Matrix ret(VVT(n, vector<T>(n))), B(*this);
+        FOR (i, 0, n)
+            ret.M[i][i] = 1;
+        
+        while (p) {
+            if (p & 1) 
+                ret = ret * B;
+            p >>= 1;
+            B = B * B;
+        }
+        return ret;
+    }
+};
 
-/*
-Estrategia para calcular el n-esimo fibonacci en O(log n):
-  Utilizar la matriz de fibonacci:
-A = {1, 1} ^ n
-    {1, 0}
-Donde
-A = {F[n+1], F[n]  }
-    {F[n]  , F[n-1]}
-Utilizar exponenciacion binaria de la matriz, con 4 variables para que sea veloz.
-*/
+// Ejemplo de uso calculando el n-esimo fibonacci
+// Para mas velocidad realizarlo con 4 variables
+Matrix<ll> fibMat({{1, 1}, {1, 0}});
+ll fibonacci(ll n){ return (n <= 2) ? (n != 0) : (fibMat^n).M[1][0]; }
