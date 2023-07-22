@@ -29,19 +29,19 @@ int LCA(int p, int q) {
         swap(p, q);
 
     int dist = depth[p] - depth[q];  // Distancia necesaria para estar en la misma profundidad
-    FORR(i, LOG_MAXN)
-    if ((dist >> i) & 1)
-        p = jump[p][i];
+    for (int i = LOG_MAXN - 1; i >= 0; i--)
+        if ((dist >> i) & 1)
+            p = jump[p][i];
 
     if (p == q)  // Verificar si el ancestro es la misma profundidad
         return p;
 
     // Busqueda por saltos binarios
-    FORR(i, LOG_MAXN)
-    if (jump[p][i] != jump[q][i]) {
-        p = jump[p][i];
-        q = jump[q][i];
-    }
+    for (int i = LOG_MAXN - 1; i >= 0; i--)
+        if (jump[p][i] != jump[q][i]) {
+            p = jump[p][i];
+            q = jump[q][i];
+        }
 
     return jump[p][0];
 }
