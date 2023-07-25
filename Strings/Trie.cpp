@@ -1,9 +1,9 @@
 struct TrieNode {
-    map<char, TrieNode *> children;
+    unordered_map<char, TrieNode *> children;
     bool isEndOfWord;
     int numPrefix;
 
-    TrieNode() : isEndOfWord(false), numPrefix(0){}
+    TrieNode() : isEndOfWord(false), numPrefix(0) {}
 };
 
 class Trie {
