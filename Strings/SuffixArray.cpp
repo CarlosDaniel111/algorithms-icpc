@@ -97,4 +97,12 @@ struct SuffixArray {
         }
         return S.substr(indice, maximo);
     }
+
+    vi constructRSA() {
+        vi RSA(n);
+        FOR(i, 0, n) {
+            RSA[SuffixArr[i]] = i;
+        }
+        return RSA;
+    }
 };
