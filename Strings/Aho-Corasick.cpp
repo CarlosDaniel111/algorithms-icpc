@@ -1,19 +1,100 @@
-struct Vertex {
-    unordered_map<char, int> children;
-    bool leaf;
-    int parent, suffixLink, wordID, endWordLink;
-    char parentChar;
+/*
+    Aho-Corasick
+    Este algoritmo te permite buscar rapidamente multiples patrones en un texto
+*/
 
-    Vertex() {
-        children.clear();
-        leaf = false;
-        parent = suffixLink = wordID = endWordLink = -1;
+// Utilizar esta implementacion cuando las letras permitidas sean pocas
+struct AhoCorasick {
+    enum { alpha = 26,
+           first = 'a' };  // change this!
+    struct Node {
+        // (nmatches is optional)
+        int back, next[alpha], start = -1, end = -1, nmatches = 0;
+        Node(int v) { memset(next, v, sizeof(next)); }
+    };
+    vector<Node> N;
+    vi backp;
+    void insert(string& s, int j) {
+        assert(!s.empty());
+        int n = 0;
+        for (char c : s) {
+            int& m = N[n].next[c - first];
+            if (m == -1) {
+                n = m = SZ(N);
+                N.emplace_back(-1);
+            } else
+                n = m;
+        }
+        if (N[n].end == -1) N[n].start = j;
+        backp.push_back(N[n].end);
+        N[n].end = j;
+        N[n].nmatches++;
+    }
+    // O(sum|pat| * C)
+    AhoCorasick(vector<string>& pat) : N(1, -1) {
+        FOR(i, 0, SZ(pat))
+        insert(pat[i], i);
+        N[0].back = SZ(N);
+        N.emplace_back(0);
+
+        queue<int> q;
+        for (q.push(0); !q.empty(); q.pop()) {
+            int n = q.front(), prev = N[n].back;
+            FOR(i, 0, alpha) {
+                int &ed = N[n].next[i], y = N[prev].next[i];
+                if (ed == -1)
+                    ed = y;
+                else {
+                    N[ed].back = y;
+                    (N[ed].end == -1 ? N[ed].end : backp[N[ed].start]) = N[y].end;
+                    N[ed].nmatches += N[y].nmatches;
+                    q.push(ed);
+                }
+            }
+        }
+    }
+
+    // O(|word|)
+    vi find(string word) {
+        int n = 0;
+        vi res;  // ll count = 0;
+        for (char c : word) {
+            n = N[n].next[c - first];
+            res.push_back(N[n].end);
+            // count += N[n].nmatches;
+        }
+        return res;
+    }
+    vector<vi> findAll(vector<string>& pat, string word) {
+        vi r = find(word);
+        vector<vi> res(SZ(word));
+        FOR(i, 0, SZ(word)) {
+            int ind = r[i];
+            while (ind != -1) {
+                res[i - SZ(pat[ind]) + 1].push_back(ind);
+                ind = backp[ind];
+            }
+        }
+        return res;
     }
 };
 
 class Aho {
+    struct Vertex {
+        unordered_map<char, int> children;
+        bool leaf;
+        int parent, suffixLink, wordID, endWordLink;
+        char parentChar;
+
+        Vertex() {
+            children.clear();
+            leaf = false;
+            parent = suffixLink = wordID = endWordLink = -1;
+        }
+    };
+
    private:
-    vector<Vertex *> Trie;
+    vector<Vertex*> Trie;
     vector<int> wordsLength;
     int size, root;
 
@@ -36,16 +117,13 @@ class Aho {
             return;
         }
 
-        // Para calcular el sufijo link para el vértice actual, necesitamos el
-        // sufijo
-        // enlace para el padre del vértice y el personaje que nos movió a la
-        // vértice actual.
+        // Para calcular el suffix link del vértice actual, necesitamos el suffix link
+        // del padre del vértice y el personaje que nos movió al vértice actual.
         int curBetterVertex = Trie[Trie[vertex]->parent]->suffixLink;
         char chVertex = Trie[vertex]->parentChar;
         while (true) {
             if (Trie[curBetterVertex]->children.count(chVertex)) {
-                Trie[vertex]->suffixLink =
-                    Trie[curBetterVertex]->children[chVertex];
+                Trie[vertex]->suffixLink = Trie[curBetterVertex]->children[chVertex];
                 break;
             }
             if (curBetterVertex == root) {
@@ -58,8 +136,7 @@ class Aho {
         if (Trie[vertex]->leaf) {
             Trie[vertex]->endWordLink = vertex;
         } else {
-            Trie[vertex]->endWordLink =
-                Trie[Trie[vertex]->suffixLink]->endWordLink;
+            Trie[vertex]->endWordLink = Trie[Trie[vertex]->suffixLink]->endWordLink;
         }
     }
 
@@ -72,7 +149,7 @@ class Aho {
 
     void addString(string s, int wordID) {
         int curVertex = root;
-        F0R(i, s.length()) {  // Iteracion sobre los caracteres de la cadena
+        FOR(i, 0, s.length()) {  // Iteracion sobre los caracteres de la cadena
             char c = s[i];
             if (!Trie[curVertex]->children.count(c)) {
                 Trie.pb(new Vertex());
@@ -82,8 +159,7 @@ class Aho {
                 Trie[curVertex]->children[c] = size;
                 size++;
             }
-            curVertex = Trie[curVertex]
-                            ->children[c];  // Mover al nuevo vertice en el trie
+            curVertex = Trie[curVertex]->children[c];  // Mover al nuevo vertice en el trie
         }
         // Marcar el final de la palabra y almacene su ID
         Trie[curVertex]->leaf = true;
@@ -107,7 +183,7 @@ class Aho {
     int processString(string text) {
         int currentState = root;
         int result = 0;
-        F0R(j, text.length()) {
+        FOR(j, 0, text.length()) {
             while (true) {
                 if (Trie[currentState]->children.count(text[j])) {
                     currentState = Trie[currentState]->children[text[j]];
@@ -125,11 +201,9 @@ class Aho {
                 if (checkState == root) break;
 
                 result++;
-                int indexOfMatch =
-                    j + 1 - wordsLength[Trie[checkState]->wordID];
+                int indexOfMatch = j + 1 - wordsLength[Trie[checkState]->wordID];
 
-                // Tratando de encontrar todos los patrones combinados de menor
-                // longitud
+                // Tratando de encontrar todos los patrones combinados de menor longitud
                 checkState = Trie[checkState]->suffixLink;
             }
         }
@@ -144,7 +218,7 @@ int main() {
     vector<string> patterns = {"abc", "bcd", "abcd"};
     string text = "abcd";
     Aho ahoAlg;
-    F0R(i, patterns.size()) { ahoAlg.addString(patterns[i], i); }
+    FOR(i, 0, patterns.size()) { ahoAlg.addString(patterns[i], i); }
     ahoAlg.prepareAho();
     cout << ahoAlg.processString(text) << ENDL;
 
