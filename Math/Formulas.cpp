@@ -32,7 +32,7 @@ using iii = tuple<int, int, int>;
 
 iii extendedGCD(int a, int b) {
     if (b == 0)
-        return iii({a, 1, 0});
+        return {a, 1, 0};
     auto [d, x, y] = extendedGCD(b, a % b);
     return {d, y, x - a / b * y};
 }
