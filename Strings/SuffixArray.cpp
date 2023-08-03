@@ -8,19 +8,19 @@
 */
 
 struct SuffixArray {
-    vi SuffixArr, lcp;
+    vi SA, LCP;
     string S;
     int n;
     SuffixArray(string &s, int lim = 256) : S(s), n(SZ(s) + 1) {  // O(n log n)
         int k = 0, a, b;
         vi x(ALL(s) + 1), y(n), ws(max(n, lim)), rank(n);
-        SuffixArr = lcp = y, iota(ALL(SuffixArr), 0);
+        SA = LCP = y, iota(ALL(SA), 0);
 
-        // Calcular SuffixArr
+        // Calcular SA
         for (int j = 0, p = 0; p < n; j = max(1, j * 2), lim = p) {
             p = j, iota(ALL(y), n - j);
             FOR(i, 0, n) {
-                if (SuffixArr[i] >= j) y[p++] = SuffixArr[i] - j;
+                if (SA[i] >= j) y[p++] = SA[i] - j;
             }
             fill(ALL(ws), 0);
             FOR(i, 0, n) {
@@ -29,20 +29,20 @@ struct SuffixArray {
             FOR(i, 1, lim) {
                 ws[i] += ws[i - 1];
             }
-            for (int i = n; i--;) SuffixArr[--ws[x[y[i]]]] = y[i];
-            swap(x, y), p = 1, x[SuffixArr[0]] = 0;
+            for (int i = n; i--;) SA[--ws[x[y[i]]]] = y[i];
+            swap(x, y), p = 1, x[SA[0]] = 0;
             FOR(i, 1, n) {
-                a = SuffixArr[i - 1];
-                b = SuffixArr[i], x[b] = (y[a] == y[b] && y[a + j] == y[b + j]) ? p - 1 : p++;
+                a = SA[i - 1];
+                b = SA[i], x[b] = (y[a] == y[b] && y[a + j] == y[b + j]) ? p - 1 : p++;
             }
         }
 
-        // Calcular lcp (longest common prefix)
+        // Calcular LCP (longest common prefix)
         FOR(i, 1, n) {
-            rank[SuffixArr[i]] = i;
+            rank[SA[i]] = i;
         }
-        for (int i = 0, j; i < n - 1; lcp[rank[i++]] = k)
-            for (k &&k--, j = SuffixArr[rank[i] - 1]; s[i + k] == s[j + k]; k++)
+        for (int i = 0, j; i < n - 1; LCP[rank[i++]] = k)
+            for (k &&k--, j = SA[rank[i] - 1]; s[i + k] == s[j + k]; k++)
                 ;
     }
 
@@ -50,7 +50,7 @@ struct SuffixArray {
         int l = 0, r = n - 1;
         while (l < r) {
             int mid = (l + r) / 2;
-            int res = S.compare(SuffixArr[mid], SZ(sub), sub);
+            int res = S.compare(SA[mid], SZ(sub), sub);
             (res >= 0) ? r = mid : l = mid + 1;
         }
         return l;
@@ -60,16 +60,16 @@ struct SuffixArray {
         int l = 0, r = n - 1;
         while (l < r) {
             int mid = (l + r) / 2;
-            int res = S.compare(SuffixArr[mid], SZ(sub), sub);
+            int res = S.compare(SA[mid], SZ(sub), sub);
             (res > 0) ? r = mid : l = mid + 1;
         }
-        if (S.compare(SuffixArr[r], SZ(sub), sub) != 0) --r;
+        if (S.compare(SA[r], SZ(sub), sub) != 0) --r;
         return r;
     }
 
     bool subStringSearch(string &sub) {  // O(|sub| log n)
         int L = lower(sub);
-        if (S.compare(SuffixArr[L], SZ(sub), sub) != 0) return 0;
+        if (S.compare(SA[L], SZ(sub), sub) != 0) return 0;
         return 1;
     }
 
@@ -80,7 +80,7 @@ struct SuffixArray {
     ll countDistinctSubstring() {  // O(n)
         ll result = 0;
         FOR(i, 1, n) {
-            result += ll(n - SuffixArr[i] - 1 - lcp[i]);
+            result += ll(n - SA[i] - 1 - LCP[i]);
         }
         return result;
     }
@@ -88,10 +88,10 @@ struct SuffixArray {
     string longestCommonSubstring(int lenS, int lenT) {  // O(n)
         int maximo = -1, indice = -1;
         FOR(i, 2, n) {
-            if ((SuffixArr[i] > lenS && SuffixArr[i - 1] < lenS) || (SuffixArr[i] < lenS && SuffixArr[i - 1] > lenS)) {
-                if (lcp[i] > maximo) {
-                    maximo = lcp[i];
-                    indice = SuffixArr[i];
+            if ((SA[i] > lenS && SA[i - 1] < lenS) || (SA[i] < lenS && SA[i - 1] > lenS)) {
+                if (LCP[i] > maximo) {
+                    maximo = LCP[i];
+                    indice = SA[i];
                 }
             }
         }
@@ -101,7 +101,7 @@ struct SuffixArray {
     vi constructRSA() {
         vi RSA(n);
         FOR(i, 0, n) {
-            RSA[SuffixArr[i]] = i;
+            RSA[SA[i]] = i;
         }
         return RSA;
     }
