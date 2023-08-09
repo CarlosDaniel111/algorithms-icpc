@@ -1,6 +1,12 @@
+/* Calcula rapidamente la suma de una submatriz
+   dada sus esquinas superior izquierda e inferior derecha
+   Uso:
+   SubMatrix<int> m(matrix);
+   m.sum(0, 0, 2, 2); // 4 elementos superiores 
+*/
 template <class T>
 struct SubMatrix {
-    vector<vector<T>> p;  // Matriz modificada
+    vector<vector<T>> p; 
     SubMatrix(vector<vector<T>>& v) {
         int R = sz(v), C = sz(v[0]);
         p.assign(R + 1, vector<T>(C + 1));
