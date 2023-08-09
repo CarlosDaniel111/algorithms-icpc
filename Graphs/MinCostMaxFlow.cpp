@@ -8,8 +8,6 @@
  * Status: Tested on kattis:mincostmaxflow, stress-tested against another implementation
  * Time: Approximately O(E^2)
  */
-#pragma once
-
 // #include <bits/extc++.h> /// include-line, keep-include
 
 const ll INF = numeric_limits<ll>::max() / 4;
@@ -35,8 +33,8 @@ struct MCMF {
 	}
 
 	void path(int s) {
-		fill(all(seen), 0);
-		fill(all(dist), INF);
+		fill(ALL(seen), 0);
+		fill(ALL(dist), INF);
 		dist[s] = 0; ll di;
 
 		__gnu_pbds::priority_queue<pair<ll, int>> q;
@@ -61,7 +59,7 @@ struct MCMF {
 			for (int i : red[s]) if (!seen[i])
 				relax(i, flow[i][s], -cost[i][s], 0);
 		}
-		rep(i,0,N) pi[i] = min(pi[i] + dist[i], INF);
+		FOR(i,0,N) pi[i] = min(pi[i] + dist[i], INF);
 	}
 
 	pair<ll, ll> maxflow(int s, int t) {
@@ -75,16 +73,16 @@ struct MCMF {
 				if (r) flow[p][x] += fl;
 				else flow[x][p] -= fl;
 		}
-		rep(i,0,N) rep(j,0,N) totcost += cost[i][j] * flow[i][j];
+		FOR(i,0,N) FOR(j,0,N) totcost += cost[i][j] * flow[i][j];
 		return {totflow, totcost};
 	}
 
 	// If some costs can be negative, call this before maxflow:
 	void setpi(int s) { // (otherwise, leave this out)
-		fill(all(pi), INF); pi[s] = 0;
+		fill(ALL(pi), INF); pi[s] = 0;
 		int it = N, ch = 1; ll v;
 		while (ch-- && it--)
-			rep(i,0,N) if (pi[i] != INF)
+			FOR(i,0,N) if (pi[i] != INF)
 				for (int to : ed[i]) if (cap[i][to])
 					if ((v = pi[i] + cost[i][to]) < pi[to])
 						pi[to] = v, ch = 1;
