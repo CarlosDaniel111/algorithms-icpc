@@ -3,7 +3,7 @@ using namespace std;
 // AC2++
 using ll = long long;
 using pi = pair<int, int>;
-using vi = vector<ll>;
+using vi = vector<int>;
 
 #define fi first
 #define se second
@@ -20,6 +20,7 @@ constexpr int INF = 1e9;
 constexpr ll LLINF = 1e18;
 
 void solve() {
+    
 }
 
 int main() {
@@ -28,9 +29,8 @@ int main() {
 
     int t = 1;
     cin >> t;
-    while (t--) {
+    while (t--)
         solve();
-    }
 
     return 0;
 }
