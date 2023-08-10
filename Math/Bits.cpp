@@ -18,10 +18,9 @@
 #define turnOffLastConsecutiveBits(S) ((S) & (S + 1))
 #define turnOnLastConsecutiveZeroes(S) ((S) | (S - 1))
 /*
-Si en un problema tenemos un conjunto de menos de 30 elementos y tenemos que probar cual es el "bueno"
-Podemos usar una mascara de bits e intentar cada combinacion.
-int limit = 1 << (n + 1);
-for (int i = 1; i < limit; i++) {
+Si n <= 20, podemos iterar sobre todos los subconjuntos:
+int LIMIT = 1 << (n + 1);
+for (int i = 0; i < LIMIT; i++) {
   ....
 }
 */
@@ -45,3 +44,6 @@ __builtin_clzll(x);
 // Cuenta de ceros a la derecha del primer uno (de derecha a izquierda
 // Por ejemplo __builtin_ctzll(0b0001'0010'1100) = 2
 __builtin_ctzll(x);
+
+// Regresa piso(log2(n)), usar 63 si se usa long long
+31 - __builtin_clz(n)

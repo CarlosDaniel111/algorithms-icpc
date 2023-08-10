@@ -1,6 +1,6 @@
-# Solution for small range ---> k <= 510
-# if k is greater, use Java's BigInteger class
-# if we need to only store catalan[i] % m, use c++
+# Solucion para un rango chico ---> k <= 510
+# Si k es mayor, puedes utilizar la clase BigInteger de Java
+# Si solo necesitamos almacenar catalan[i] % m, usa c++
 catalan = [0 for i in range(510)]
 
 def precalculate():
