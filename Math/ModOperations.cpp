@@ -1,6 +1,5 @@
 /**
  * Calcula a * b mod c para cualquier 0 <= a, b <= c <= 7.2 * 10^18
- * Se puede usar este método cuando se hace a^b mod c
  * Tiempo: O(1)
 */
 using ull = unsigned long long;
@@ -13,7 +12,7 @@ constexpr ll MOD = 1e9 + 7;
 /**
  * Calcula a^b mod m, en O(log n)
  * Si hay riesgo de desbordamiento, multiplicar con modmul
- * Tiempo: O(log m)
+ * Tiempo: O(log b)
  */
 ll modpow(ll a, ll b) {
     ll res = 1;
