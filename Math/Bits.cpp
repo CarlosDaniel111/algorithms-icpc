@@ -1,9 +1,8 @@
 /**
- * Algunas operaciones utiles con desplazamiento de bits,
- * si trabajamos con numeros de 64 bits, usar 1LL o 1ULL,
- * siendo la primer parte operaciones nativas y la segunda
- * del compilador GNU (GCC) que necesitan ll al final del
- * nombre del metodo, si no se trabaja con enteros
+ * Algunas operaciones utiles con desplazamiento de bits, si no trabajamos 
+ * con numeros enteros, usar 1LL o 1ULL, siendo la primer parte 
+ * operaciones nativas y la segunda del compilador GNU (GCC), si no se
+ * trabaja con enteros, agregar ll al final del nombre del metodo 
  * Tiempo por operacion: O(1)
 */
 
