@@ -1,7 +1,10 @@
+/**
+ * Calcula por medio de la criba de eratostenes 
+ * los numeros primos en el rango [2, n]
+ * Tiempo: O(n)
+ */
 ll sieve_size;
 vl primes;
-
-// O(n log(log n))
 void sieve(int n) {
     vector<bool> is_prime(n + 1, 1);
 
@@ -14,7 +17,10 @@ void sieve(int n) {
     }
 }
 
-// Linear Sieve O(n)
+/**
+ * Calcula los numeros primos en el rango [2, N]
+ * Tiempo: O(N)
+ */
 void linear_sieve(int N) {
     vector<int> lp(N + 1);
     vector<int> pr;
@@ -33,7 +39,10 @@ void linear_sieve(int N) {
     }
 }
 
-// Calcular Funcion de Mobius O(n)
+/** 
+ * Calcula la funcion de Mobius en el rango [1, N]
+ * Tiempo: O(N)
+ */
 void preMobius(int N) {
     memset(check, false, sizeof(check));
     mu[1] = 1;
@@ -56,7 +65,7 @@ void preMobius(int N) {
     }
 }
 
-// Primes less than 1000:
+// Primos menores a 1000:
 //      2     3     5     7    11    13    17    19    23    29    31    37
 //     41    43    47    53    59    61    67    71    73    79    83    89
 //     97   101   103   107   109   113   127   131   137   139   149   151
@@ -72,22 +81,22 @@ void preMobius(int N) {
 //    829   839   853   857   859   863   877   881   883   887   907   911
 //    919   929   937   941   947   953   967   971   977   983   991   997
 
-// Other primes:
-//    The largest prime smaller than 10 is 7.
-//    The largest prime smaller than 100 is 97.
-//    The largest prime smaller than 1000 is 997.
-//    The largest prime smaller than 10000 is 9973.
-//    The largest prime smaller than 100000 is 99991.
-//    The largest prime smaller than 1000000 is 999983.
-//    The largest prime smaller than 10000000 is 9999991.
-//    The largest prime smaller than 100000000 is 99999989.
-//    The largest prime smaller than 1000000000 is 999999937.
-//    The largest prime smaller than 10000000000 is 9999999967.
-//    The largest prime smaller than 100000000000 is 99999999977.
-//    The largest prime smaller than 1000000000000 is 999999999989.
-//    The largest prime smaller than 10000000000000 is 9999999999971.
-//    The largest prime smaller than 100000000000000 is 99999999999973.
-//    The largest prime smaller than 1000000000000000 is 999999999999989.
-//    The largest prime smaller than 10000000000000000 is 9999999999999937.
-//    The largest prime smaller than 100000000000000000 is 99999999999999997.
-//    The largest prime smaller than 1000000000000000000 is 999999999999999989.
+// Otros primos:
+//    El primo mas grande menor que 10 es 7.
+//    El primo mas grande menor que 100 es 97.
+//    El primo mas grande menor que 1000 es 997.
+//    El primo mas grande menor que 10000 es 9973.
+//    El primo mas grande menor que 100000 es 99991.
+//    El primo mas grande menor que 1000000 es 999983.
+//    El primo mas grande menor que 10000000 es 9999991.
+//    El primo mas grande menor que 100000000 es 99999989.
+//    El primo mas grande menor que 1000000000 es 999999937.
+//    El primo mas grande menor que 10000000000 es 9999999967.
+//    El primo mas grande menor que 100000000000 es 99999999977.
+//    El primo mas grande menor que 1000000000000 es 999999999989.
+//    El primo mas grande menor que 10000000000000 es 9999999999971.
+//    El primo mas grande menor que 100000000000000 es 99999999999973.
+//    El primo mas grande menor que 1000000000000000 es 999999999999989.
+//    El primo mas grande menor que 10000000000000000 es 9999999999999937.
+//    El primo mas grande menor que 100000000000000000 es 99999999999999997.
+//    El primo mas grande menor que 1000000000000000000 es 999999999999999989.
