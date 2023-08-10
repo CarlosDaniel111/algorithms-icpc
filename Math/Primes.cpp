@@ -1,7 +1,7 @@
 /**
  * Calcula por medio de la criba de eratostenes 
  * los numeros primos en el rango [2, n]
- * Tiempo: O(n)
+ * Tiempo: O(n log(log n))
  */
 ll sieve_size;
 vl primes;
