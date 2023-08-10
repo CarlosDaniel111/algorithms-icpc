@@ -4,7 +4,7 @@
  * operaciones nativas y la segunda del compilador GNU (GCC), si no se
  * trabaja con enteros, agregar ll al final del nombre del metodo 
  * Tiempo por operacion: O(1)
-*/
+ */
 
 #define isOn(S, j) (S & (1 << j))
 #define setBit(S, j) (S |= (1 << j))
