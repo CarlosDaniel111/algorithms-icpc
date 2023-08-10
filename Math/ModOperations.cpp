@@ -9,18 +9,19 @@ ull modmul(ull a, ull b, ull MOD) {
     return ret + MOD * (ret < 0) - MOD * (ret >= (ll) MOD); 
 }
 
+constexpr ll MOD = 1e9 + 7;
 /**
  * Calcula a^b mod m, en O(log n)
  * Si hay riesgo de desbordamiento, multiplicar con modmul
  * Tiempo: O(log m)
  */
-ll modpow(ll a, ll b, ll m) {
+ll modpow(ll a, ll b) {
     ll res = 1;
-    a %= m;
+    a %= MOD;
     while (b) {
         if (b & 1)
-            res = (res * a) % m;
-        a = (a * a) % m;
+            res = (res * a) % MOD;
+        a = (a * a) % MOD;
         b >>= 1;
     }
     return res;
@@ -31,7 +32,7 @@ ll modpow(ll a, ll b, ll m) {
  * Se asume que LIM <= MOD y que MOD es primo
  * Tiempo: O(LIM)
  */
-constexpr ll MOD = 1e9+7, LIM = 1e5 + 5;
+constexpr LIM = 1e5 + 5;
 ll inv[LIM + 1];
 inv[1] = 1;
 FOR (i, 2, LIM)
