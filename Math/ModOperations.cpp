@@ -33,9 +33,12 @@ ll modpow(ll a, ll b) {
  */
 constexpr LIM = 1e5 + 5;
 ll inv[LIM + 1];
-inv[1] = 1;
-FOR (i, 2, LIM)
-    inv[i] = MOD - (MOD / i) * inv[MOD % i] % MOD;
+void precalc_inv() {
+    inv[1] = 1;
+    FOR (i, 2, LIM)
+        inv[i] = MOD - (MOD / i) * inv[MOD % i] % MOD;
+}
+
 
 /**
  * Precalculo de un solo inverso, usa el primer metodo

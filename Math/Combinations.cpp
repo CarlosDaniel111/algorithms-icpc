@@ -1,11 +1,20 @@
-// Calculo de coeficientes binomiales, cuando trabajamos con y sin modulos.
+/**
+ * Utilizando el metodo de ModOperations.cpp, calculamos de manera eficiente 
+ * los inversos modulares de x (arreglo inv) y de x! (arreglo invfact),
+ * para toda x < MAXN, se utiliza el hecho de que comb(n, k) = (n!) / (k! * (n - k)!) 
+ * Tiempo: O(MAXN) en el precalculo de inversos modulares y O(1) por query.
+ */
+ll invfact[MAXN];
+void precalc_invfact() {
+    precalc_inv();
+    for (int i = 2; i < MAXN; i++)
+        invfact[i] = invfact[i - 1] * inv[i] % MOD;
+}
 
-// Tiempo: O(MAXN) en el precalculo de inversos modulares y O(1) por query.
-constexpr ll MOD = 1e9 + 7;
 ll comb(int n, int k) {
     if (n < k)
         return 0;
-    return fact[n] * inverse[fact[k]] % MOD * inverse[fact[n - k]] % MOD;
+    return fact[n] * invfact[k] % MOD * invfact[n - k] % MOD;
 }
 
 /*
