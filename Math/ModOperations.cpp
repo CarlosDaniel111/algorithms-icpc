@@ -39,7 +39,6 @@ void precalc_inv() {
         inv[i] = MOD - (MOD / i) * inv[MOD % i] % MOD;
 }
 
-
 /**
  * Precalculo de un solo inverso, usa el primer metodo
  * si MOD es primo, y el segundo en caso contrario
