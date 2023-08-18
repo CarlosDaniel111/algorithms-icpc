@@ -1,4 +1,11 @@
-const int MX = 3e5 + 2;
+/*
+ * Hashing
+ * El objetivo es convertir una cadena en un numero entero
+ * para poder comparar cadenas en O(1)
+ * Tiempo: O(|s|)
+ */
+
+const int MX = 3e5 + 2;  // Tamaño maximo del string S
 
 inline int add(int a, int b, const int &mod) { return a + b >= mod ? a + b - mod : a + b; }
 inline int sbt(int a, int b, const int &mod) { return a - b < 0 ? a - b + mod : a - b; }
@@ -11,7 +18,6 @@ vector<int> xpow[2];
 struct hashing {
     vector<int> h[2];
 
-    // O(n)
     hashing(string &s) {
         int n = s.size();
         for (int j = 0; j < 2; ++j) {
@@ -29,6 +35,7 @@ struct hashing {
     }
 };
 
+// Llamar la funcion antes del hashing
 void calc_xpow(int mxlen = MX) {
     for (int j = 0; j < 2; ++j) {
         xpow[j].resize(mxlen + 1, 1);

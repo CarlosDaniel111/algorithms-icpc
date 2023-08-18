@@ -1,12 +1,10 @@
 /*
-Prefix function. Knuth-Morris-Pratt
-El prefix function para un string S es definido como un arreglo phi donde phi[i] es
-la longitud del prefijo propio de S mas largo de la subcadena S[0..i] el cual tambien
-es sufijo de esta subcadena
-*/
-
-// Encuentra todas las ocurrencias del patron string pat en el string s
-// Complejidad temporal: O(|s| + |pat|)
+ * Prefix function. Knuth-Morris-Pratt
+ * El prefix function para un string S es definido como un arreglo phi donde phi[i] es
+ * la longitud del prefijo propio de S mas largo de la subcadena S[0..i] el cual tambien
+ * es sufijo de esta subcadena
+ * Tiempo: O(|s| + |pat|)
+ */
 
 vi PI(const string& s) {
     vi p(SZ(s));
@@ -26,7 +24,7 @@ vi KMP(const string& s, const string& pat) {
     return res;
 }
 
-// A partir del phi de pat busca las ocurrencias en s
+// A partir del phi de patron busca las ocurrencias en s
 int KMP(const string& s, const string& pat) {
     vi phi = PI(pat);
     int matches = 0;
@@ -41,6 +39,13 @@ int KMP(const string& s, const string& pat) {
     return matches;
 }
 
+/*
+ * Automaton KMP
+ * El estado en el es el valor actual de la prefix function, y la transicion de un
+ * estado a otro se realiza a traves del siguiente caracter
+ * Uso: aut[state][nextCharacter]
+ * Tiempo: O(|s|*C)
+ */
 // Automaton O(|s|*C)
 vector<vector<int>> aut;
 void compute_automaton(string s) {
@@ -56,9 +61,4 @@ void compute_automaton(string s) {
                 aut[i][c] = i + ('a' + c == s[i]);
         }
     }
-}
-
-int main() {
-    string a = "AABAACAADAABAABAABBAABBBAABA", b = "AABA";
-    cout << SZ(KMP(a, b));  // 4
 }

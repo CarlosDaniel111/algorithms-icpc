@@ -20,7 +20,6 @@ constexpr int INF = 1e9;
 constexpr ll LLINF = 1e18;
 
 void solve() {
-    
 }
 
 int main() {

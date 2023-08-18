@@ -1,5 +1,5 @@
 /**
- * Calcula por medio de la criba de eratostenes 
+ * Calcula por medio de la criba de eratostenes
  * los numeros primos en el rango [2, n]
  * Tiempo: O(n log(log n))
  */
@@ -39,7 +39,7 @@ void linear_sieve(int N) {
     }
 }
 
-/** 
+/**
  * Calcula la funcion de Mobius en el rango [1, N]
  * Tiempo: O(N)
  */

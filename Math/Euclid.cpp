@@ -4,7 +4,7 @@
  * el gcd, utiliza __gcd (c++14 o anteriores) o gcd (c++17 en adelante)
  * Si a y b son coprimos, entonces x es el inverso de a mod b
  * Tiempo: O(log n)
-*/
+ */
 
 ll euclid(ll a, ll b, ll &x, ll &y) {
     if (!b) {

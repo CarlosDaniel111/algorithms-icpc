@@ -1,11 +1,12 @@
 /*
-    Un SuffixArray es un array ordenado de todos los sufijos de un string
-    Aplicaciones:
-     - Encontrar todas las ocurrencias de un substring P dentro del string S - O(|P| log n)
-     - Construir el longest common prefix-interval - O(n log n)
-     - Contar todos los substring diferentes en el string S - O(n)
-     - Encontrar el substring mas largo entre dos strings S y T - O(|S|+|T|)
-*/
+ * Un SuffixArray es un array ordenado de todos los sufijos de un string
+ * Tiempo: O(|S|)
+ * Aplicaciones:
+ *  - Encontrar todas las ocurrencias de un substring P dentro del string S - O(|P| log n)
+ *  - Construir el longest common prefix-interval - O(n log n)
+ *  - Contar todos los substring diferentes en el string S - O(n)
+ *  - Encontrar el substring mas largo entre dos strings S y T - O(|S|+|T|)
+ */
 
 struct SuffixArray {
     vi SA, LCP;
@@ -46,6 +47,10 @@ struct SuffixArray {
                 ;
     }
 
+    /*
+     * Retorna el lower_bound de la subcadena sub en el Suffix Array
+     * Tiempo: O(|sub| log n)
+     */
     int lower(string &sub) {
         int l = 0, r = n - 1;
         while (l < r) {
@@ -56,6 +61,10 @@ struct SuffixArray {
         return l;
     }
 
+    /*
+     * Retorna el upper_bound de la subcadena sub en el Suffix Array
+     * Tiempo: O(|sub| log n)
+     */
     int upper(string &sub) {
         int l = 0, r = n - 1;
         while (l < r) {
@@ -67,17 +76,29 @@ struct SuffixArray {
         return r;
     }
 
-    bool subStringSearch(string &sub) {  // O(|sub| log n)
+    /*
+     * Busca si se encuentra la subcadena sub en el Suffix Array
+     * Tiempo: O(|sub| log n)
+     */
+    bool subStringSearch(string &sub) {
         int L = lower(sub);
         if (S.compare(SA[L], SZ(sub), sub) != 0) return 0;
         return 1;
     }
 
-    int countSubString(string &sub) {  // O(|sub| log n)
+    /*
+     * Cuenta la cantidad de ocurrencias de la subcadena sub en el Suffix Array
+     * Tiempo: O(|sub| log n)
+     */
+    int countSubString(string &sub) {
         return upper(sub) - lower(sub) + 1;
     }
 
-    ll countDistinctSubstring() {  // O(n)
+    /*
+     * Cuenta la cantidad de subcadenas distintas en el Suffix Array
+     * Tiempo: O(n)
+     */
+    ll countDistinctSubstring() {
         ll result = 0;
         FOR(i, 1, n) {
             result += ll(n - SA[i] - 1 - LCP[i]);
@@ -85,7 +106,13 @@ struct SuffixArray {
         return result;
     }
 
-    string longestCommonSubstring(int lenS, int lenT) {  // O(n)
+    /*
+     * Busca la subcadena mas grande que se encuentra en el string T y S
+     * Uso: Crear el SuffixArray con una cadena de la concatenacion de T
+     * y S separado por un caracter especial (T + '#' + S)
+     * Tiempo: O(n)
+     */
+    string longestCommonSubstring(int lenS, int lenT) {
         int maximo = -1, indice = -1;
         FOR(i, 2, n) {
             if ((SA[i] > lenS && SA[i - 1] < lenS) || (SA[i] < lenS && SA[i - 1] > lenS)) {
@@ -98,6 +125,11 @@ struct SuffixArray {
         return S.substr(indice, maximo);
     }
 
+    /*
+     * A partir del Suffix Array se crea un Suffix Array inverso donde la
+     * posicion i del string S devuelve la posicion del sufijo S[i..n) en el Suffix Array
+     * Tiempo: O(n)
+     */
     vi constructRSA() {
         vi RSA(n);
         FOR(i, 0, n) {

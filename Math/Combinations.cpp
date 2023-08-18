@@ -1,7 +1,7 @@
 /**
- * Utilizando el metodo de ModOperations.cpp, calculamos de manera eficiente 
+ * Utilizando el metodo de ModOperations.cpp, calculamos de manera eficiente
  * los inversos modulares de x (arreglo inv) y de x! (arreglo invfact),
- * para toda x < MAXN, se utiliza el hecho de que comb(n, k) = (n!) / (k! * (n - k)!) 
+ * para toda x < MAXN, se utiliza el hecho de que comb(n, k) = (n!) / (k! * (n - k)!)
  * Tiempo: O(MAXN) en el precalculo de inversos modulares y O(1) por query.
  */
 ll invfact[MAXN];
