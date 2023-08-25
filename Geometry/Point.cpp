@@ -66,3 +66,14 @@ Point toVector(Point& p1, Point& p2) { return p2 - p1; }
 bool areCollinear(Point& p, Point& q, Point& r) {
     return abs(cross(toVector(p, q), toVector(p, r))) <= EPS;
 }
+
+// Formula de Heron
+double triangleArea(Point& p1, Point& p2, Point& p3) {
+    double a = abs(p2 - p1), b = abs(p3 - p1), c = abs(p3 - p2), s = (a + b + c) / 2.0;
+    return sqrt(s * (s - a) * (s - b) * (s - c));
+}
+
+// Con la magnitud del producto cruz
+double triangleArea(Point &p1, Point& p2, Point& p3) {
+    return cross(p2 - p1, p3 - p1) / 2;   
+}
