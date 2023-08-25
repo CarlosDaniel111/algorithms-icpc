@@ -13,11 +13,11 @@ struct Point {
     Point operator/(T& d) const { return {x / d, y / d}; }  // Solo para punto flotante
 
     bool operator<(Point& other) const {
-        if (abs(x - other.x) <= EPS)
+        if (fabs(x - other.x) > EPS)
             return x < other.x;
         return y < other.y;
     }
-    bool operator==(Point& other) const { return abs(x - other.x) <= EPS && abs(y - other.y) <= EPS; }
+    bool operator==(Point& other) const { return fabs(x - other.x) <= EPS && fabs(y - other.y) <= EPS; }
     bool operator!=(Point& other) const { return !(*this == other); }
 };
 
