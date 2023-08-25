@@ -1,17 +1,19 @@
-constexpr double EPS = 1e-9; // 1e-9 es suficiente para problemas de precision doble
+constexpr double EPS = 1e-9;  // 1e-9 es suficiente para problemas de precision doble
 constexpr double PI = acos(-1.0);
 
-inline double DEG_to_RAD(double d) { return (d*PI/180.0); }
-inline double RAD_to_DEG(double r) { return (r*180.0/PI); }
+inline double DEG_to_RAD(double d) { return (d * PI / 180.0); }
+inline double RAD_to_DEG(double r) { return (r * 180.0 / PI); }
 
 typedef double T;
 struct Point {
     T x, y;
+    Point() { x = y = 0.0; }
+    Point(double _x, double _y) : x(_x), y(_y) {}
     Point operator+(Point& p) const { return {x + p.x, y + p.y}; }
     Point operator-(Point& p) const { return {x - p.x, y - p.y}; }
     Point operator*(T& d) const { return {x * d, y * d}; }
     Point operator/(T& d) const { return {x / d, y / d}; }  // Solo para punto flotante
-    
+
     bool operator<(Point& other) const {
         if (abs(x - other.x) <= EPS)
             return x < other.x;
@@ -21,7 +23,7 @@ struct Point {
     bool operator!=(Point& other) const { return !(*this == other); }
 };
 
-T sq(Point p) { return p.x*p.x + p.y*p.y; }
+T sq(Point p) { return p.x * p.x + p.y * p.y; }
 double abs(Point p) { return sqrt(sq(p)); }
 
 // Para poder hacer cout << miPunto
@@ -50,19 +52,19 @@ double angle(Point v, Point w) {
     return acos(max(-1.0, min(1.0, cosTheta)));
 }
 
-T cross(Point v, Point w) { return v.x*w.y - v.y*w.x; }
-T orient(Point a, Point b, Point c) { return cross(b-a,c-a); }
-
+T cross(Point v, Point w) { return v.x * w.y - v.y * w.x; }
+T orient(Point a, Point b, Point c) { return cross(b - a, c - a); }
 
 // Funcion signum: -1 si x es negativo, 0 si x = 0 y 1 si x es positivo
-template <typename T> int sgn(T x) {
+template <typename T>
+int sgn(T x) {
     return (T(0) < x) - (x < T(0));
 }
 
-int manhattan(Point &p1, Point &p2){ return abs(p1.x-p2.x)+abs(p1.y-p2.y); }
+int manhattan(Point& p1, Point& p2) { return abs(p1.x - p2.x) + abs(p1.y - p2.y); }
 
 // Vector desplazamiento desde el punto p1 a p2
-Point toVector(Point &p1, Point &p2) { return p2 - p1; }
-bool areCollinear(Point &p, Point& q, Point& r) {
+Point toVector(Point& p1, Point& p2) { return p2 - p1; }
+bool areCollinear(Point& p, Point& q, Point& r) {
     return abs(cross(toVector(p, q), toVector(p, r))) <= EPS;
 }
