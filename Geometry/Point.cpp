@@ -7,8 +7,6 @@ inline double RAD_to_DEG(double r) { return (r * 180.0 / PI); }
 typedef double T;
 struct Point {
     T x, y;
-    Point() { x = y = 0.0; }
-    Point(double _x, double _y) : x(_x), y(_y) {}
     Point operator+(Point& p) const { return {x + p.x, y + p.y}; }
     Point operator-(Point& p) const { return {x - p.x, y - p.y}; }
     Point operator*(T& d) const { return {x * d, y * d}; }

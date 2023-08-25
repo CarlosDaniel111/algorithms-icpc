@@ -1,6 +1,5 @@
 struct Line {
     double a, b, c;
-    Line(double _a, double _b, double _c) : a(_a), b(_b), c(_c) {}
     bool operator<(Line& other) const {
         if (fabs(a - other.a) >= EPS)
             return a < other.a;
@@ -14,7 +13,7 @@ Line pointsToLine(Point& p1, Point& p2) {
     if (abs(p1.x - p2.x) <= EPS)
         return Line{1.0, 0.0, -p1.x};
     double a = -(double)(p1.y - p2.y) / (p1.x - p2.x);
-    return Line(a, 1.0, -(double)(a * p1.x) - p1.y);
+    return Line{a, 1.0, -(double)(a * p1.x) - p1.y};
 }
 
 Line pointSlopeToLine(Point& p, double& m) { return Line{-m, 1, -((-m * p.x) + p.y)}; }
