@@ -38,7 +38,7 @@ struct Frac{
         Frac o(1, x);
         return (*this) * o;
     }
-    bool operator<(Frac& other) const {
+    bool operator<(Frac& other) const { // PROVISIONAL, IMPLEMENTARLA MEJOR SI HACEN FALTA LOWER BOUNDS 
         if (a != other.a)
             return a < other.a;
         return b < other.b;
