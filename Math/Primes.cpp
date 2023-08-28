@@ -1,7 +1,9 @@
 /**
- * Calcula por medio de la criba de eratostenes
- * los numeros primos en el rango [2, n]
- * Tiempo: O(n log(log n))
+ * Descripcion: Estos 2 algoritmos encuentran por medio de la Criba 
+ * de Eratostenes todos los numeros primos menor o iguales a n, difieren
+ * por su estrategia y por consecuente su complejidad temporal.
+ * Tiempo metodo #1: O(n log(log n))
+ * Tiempo metodo #2: O(n)
  */
 ll sieve_size;
 vl primes;
@@ -16,12 +18,7 @@ void sieve(int n) {
         }
     }
 }
-
-/**
- * Calcula los numeros primos en el rango [2, N]
- * Tiempo: O(N)
- */
-void linear_sieve(int N) {
+void sieve(int N) {
     vector<int> lp(N + 1);
     vector<int> pr;
 
@@ -40,7 +37,8 @@ void linear_sieve(int N) {
 }
 
 /**
- * Calcula la funcion de Mobius en el rango [1, N]
+ * Descripcion: Calcula la funcion de Mobius 
+ * para todo entero menor o igual a n
  * Tiempo: O(N)
  */
 void preMobius(int N) {

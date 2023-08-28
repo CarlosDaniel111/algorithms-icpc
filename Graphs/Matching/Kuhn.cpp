@@ -1,8 +1,8 @@
-/*
-Kuhn's algorithm can be thought as a series of n depth/breadth-first traversal runs
-on the entire graph. Therefore, the whole algorithm is executed in time O(nm), which
-in the worst case is O(n^3)
-*/
+/**
+ * Descripcion: Soluciona el problema de maximo emparejamiento bipartito, 
+ * se basa en el algoritmo que puede ser pensado como n DFS siendo ejecutadas.
+ * Tiempo: O(n^2)
+ */
 int n, k;
 vector<vector<int>> g;
 vector<int> mt;

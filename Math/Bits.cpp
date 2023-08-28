@@ -1,5 +1,5 @@
 /**
- * Algunas operaciones utiles con desplazamiento de bits, si no trabajamos 
+ * Descripcion: Algunas operaciones utiles con desplazamiento de bits, si no trabajamos 
  * con numeros enteros, usar 1LL o 1ULL, siendo la primer parte 
  * operaciones nativas y la segunda del compilador GNU (GCC), si no se
  * trabaja con enteros, agregar ll al final del nombre del metodo 
@@ -12,7 +12,7 @@
 #define toggleBit(S, j) (S ^= (1 << j))
 #define lowBit(S) (S & (-S))
 #define setAll(S, n) (S = (1 << n) - 1)
-#define modulo(S, N) ((S) & (N - 1))  // retorna S % N, siendo N una potencia de 2
+#define modulo(S, N) ((S) & (N - 1))  // Siendo N potencia de 2
 #define isOdd(S) (s & 1)
 #define isPowerOfTwo(S) (!(S & (S - 1)))
 #define nearestPowerOfTwo(S) (1 << lround(log2(S)))
@@ -29,9 +29,9 @@
 #define countTrailingZeroes(n) __builtin_ctz(n)
 
 /**
- * Si n <= 20 y manejamos subconjuntos, podemos revisar cada uno de ellos
- * representandolos como una mascara de bits, en donde el i-esimo elemento
- * es tomado si el i-esimo bit esta encendido
+ * Descripcion: Si n <= 20 y manejamos subconjuntos, podemos revisar 
+ * cada uno de ellos representandolos como una mascara de bits, en 
+ * donde el i-esimo elemento es tomado si el i-esimo bit esta encendido
  * Tiempo: O(2^n)
  */
 int LIMIT = 1 << (n + 1);

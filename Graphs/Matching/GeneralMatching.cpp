@@ -1,9 +1,9 @@
 /**
- * Description: Variant on Gabow's Impl of Edmond's Blossom Algorithm. 
-    * General unweighted max matching with 1-based indexing. If 
-    * \texttt{white[v] = 0} after \texttt{solve()} returns, \texttt{v} is part
-    * of every max matching.
- * Time: O(NM), faster in practice
+ * Descripcion: Variante de la implementacion de Gabow para el algoritmo
+ * de Edmonds-Blossom. Maximo emparejamiento sin peso para un grafo en
+ * general, con 1-indexacion. Si despues de terminar la llamada a solve(), 
+ * white[v] = 0, v es parte de cada matching maximo. 
+ * Tiempo: O(NM), mas rapido en la practica.
  */
 struct MaxMatching {
     int N; 

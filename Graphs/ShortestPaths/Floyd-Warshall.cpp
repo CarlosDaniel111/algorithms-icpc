@@ -1,4 +1,9 @@
-// Matrix adjacency necessary.
+/**
+ * Descripcion: modifica la matriz de adyacencia graph[n][n], 
+ * tal que graph[i][j] pasa a indicar el costo minimo para ir 
+ * desde el nodo i al j, para cualquier (i, j).
+ * Tiempo: O(n^3)
+ */
 int graph[MAXN][MAXN];
 int p[MAXN][MAXN];  // Guardar camino
 
@@ -19,7 +24,6 @@ void floydWarshall() {
             }
         }
     }
-    // Now, graph[a][b] has the min distance from node a to node b, for all a and b.
 }
 
 void printPath(int i, int j) {

@@ -1,14 +1,11 @@
 /**
- * Author: Stanford
- * Date: Unknown
- * Source: Stanford Notebook
- * Description: Min-cost max-flow. cap[i][j] != cap[j][i] is allowed; double edges are not.
- *  If costs can be negative, call setpi before maxflow, but note that negative cost cycles are not supported.
- *  To obtain the actual flow, look at positive values only.
- * Status: Tested on kattis:mincostmaxflow, stress-tested against another implementation
- * Time: Approximately O(E^2)
+ * Descripcion: maximo flujo de coste minimo. Se permite que cap[i][j] != cap[j][i], pero
+ * las aristas dobles no lo estan, si los costos pueden ser negativos, llamar a setpi antes
+ * que calc, los ciclos con costos negativos no son soportados.
+ * Tiempo: aproximadamente O(E^2)
  */
-// #include <bits/extc++.h> /// include-line, keep-include
+
+// #include <bits/extc++.h> importante de incluir
 
 const ll INF = numeric_limits<ll>::max() / 4;
 typedef vector<ll> VL;
@@ -62,7 +59,7 @@ struct MCMF {
 		FOR(i,0,N) pi[i] = min(pi[i] + dist[i], INF);
 	}
 
-	pair<ll, ll> maxflow(int s, int t) {
+	pair<ll, ll> calc(int s, int t) {
 		ll totflow = 0, totcost = 0;
 		while (path(s), seen[t]) {
 			ll fl = INF;
@@ -77,8 +74,7 @@ struct MCMF {
 		return {totflow, totcost};
 	}
 
-	// If some costs can be negative, call this before maxflow:
-	void setpi(int s) { // (otherwise, leave this out)
+	void setpi(int s) {
 		fill(ALL(pi), INF); pi[s] = 0;
 		int it = N, ch = 1; ll v;
 		while (ch-- && it--)
@@ -86,6 +82,6 @@ struct MCMF {
 				for (int to : ed[i]) if (cap[i][to])
 					if ((v = pi[i] + cost[i][to]) < pi[to])
 						pi[to] = v, ch = 1;
-		assert(it >= 0); // negative cost cycle
+		assert(it >= 0);
 	}
 };

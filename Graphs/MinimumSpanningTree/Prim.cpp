@@ -1,56 +1,37 @@
-/*Grafo de ejemplo:
-  5 7
-  0 1 4
-  0 2 4
-  0 3 6
-  0 4 6
-  1 2 2
-  2 3 8
-  3 4 9
-  Salida esperada: 18
-*/
+/**
+ * Descripcion: tiene como principal funcion calcular la suma del
+ * peso de las aristas del arbol minimo de expansion (MST) de un grafo,
+ * la estrategia es ir construyendo gradualmente el MST, se selecciona un
+ * nodo arbitrario y se agregan sus aristas con nodos que no hayan
+ * sido agregados con anterioridad y se va tomando la de menor peso hasta
+ * completar el MST.
+ * Tiempo: O(E log E)
+ */
 
-#define eb emplace_back;
-
-template <class T>
-using pqg = priority_queue<T, vector<T>, greater<T>>;
-
-const int MAXN = 1e5 + 5;
-
-vii graph[MAXN];
-bool taken[MAXN];  // Inicialmente en false todos
-pqg<ii> pq;        // Para ir seleccionando las aristas de menor peso
+int V, E;
+vector<pi> graph[MAXN];
+bool taken[MAXN];
+priority_queue<pi> pq;
 
 void process(int u) {
     taken[u] = 1;
     for (auto &[v, w] : graph[u])
         if (!taken[v])
-            pq.emplace(w, v);
+            pq.push({-w, v});
 }
 
-int main() {
-    int V, E;
-    cin >> V >> E;
-    FOR(i, E) {
-        int u, v, w;
-        cin >> u >> v >> w;
-        // u--; v--;
-        graph[u].eb(v, w);
-        graph[v].eb(u, w);
-    }
-
-    process(0);                                   // take+process vertex 0
-    int totalWeight = 0, takenEdges = 0;          // no edge has been taken
-    while (!pq.empty() && takenEdges != V - 1) {  // up to O(E)
-        auto [w, u] = pq.top();                   // Se desempaqueta la arista con menor peso
+int prim() {
+    process(0);
+    int totalWeight = 0, takenEdges = 0;
+    while (!pq.empty() && takenEdges != V - 1) {
+        auto [w, u] = pq.top();
         pq.pop();
+        
+        if (taken[u]) continue;
 
-        if (taken[u]) continue;  // Si ha sido tomada
-
-        totalWeight += w;
+        totalWeight -= w;
         process(u);
         ++takenEdges;
     }
-    cout << "MST weight: " << totalWeight << '\n';
-    return 0;
+    return totalWeight;
 }

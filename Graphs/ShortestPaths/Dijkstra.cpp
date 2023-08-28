@@ -1,3 +1,8 @@
+/**
+ * Descripcion: calcula el costo minimo para ir de un nodo hacia todos los demas alcanzables.
+ * Tiempo: O(E log V)
+ */
+
 vector<pi> graph[MAXN];
 int dist[MAXN];
 

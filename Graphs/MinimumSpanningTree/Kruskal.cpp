@@ -1,19 +1,25 @@
+/**
+ * Descripcion: tiene como principal funcion calcular la suma del
+ * peso de las aristas del arbol minimo de expansion (MST) de un grafo,
+ * la estrategia es ir construyendo gradualmente el MST, donde
+ * iterativamente se coloca la arista disponible con menor peso y 
+ * ademas no conecte 2 nodos que pertenezcan al mismo componente.
+ * Tiempo: O(E log E)
+ */
+
 #include<../Data Structure/DSU.h>
 
 using Edge = tuple<int, int, int>;
 
 int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(nullptr);
-
     int V, E;
     cin >> V >> E;
 
-    DSU UF;
-    UF.init(V);
+    DSU dsu;
+    dsu.init(V);
     Edge edges[E];
 
-    F0R(i, E) {
+    for (int i = 0; i < E; i++) {
         int u, v, w;
         cin >> u >> v >> w;
         edges[i] = {w, u, v};
@@ -22,12 +28,11 @@ int main() {
 
     int totalWeight = 0;
     for (int i = 0; i < E && V > 1; i++) {
-        auto [w, u, v] = edges[i];  // desempaquetamiento de arista
-        if (!UF.sameSet(u, v)) {    // Si no estan en el mismo conjunto, la tomamos
+        auto [w, u, v] = edges[i];
+        if (!dsu.sameSet(u, v)) {
             totalWeight += w;
-            V -= UF.unite(u, v);
+            V -= dsu.unite(u, v);
         }
     }
     cout << "MST weight: " << totalWeight << '\n';
-    return 0;
 }

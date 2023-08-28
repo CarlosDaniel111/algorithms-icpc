@@ -1,3 +1,7 @@
+/**
+ * Descripcion: dado un arbol, encuentra su centroide
+ * Tiempo: O(V) 
+ */
 int dfs(int u, int p) {
     for (auto v : tree[u])
         if (v != p) 

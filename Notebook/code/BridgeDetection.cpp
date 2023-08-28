@@ -1,13 +1,13 @@
 const int MAXN = 1e6 + 5;
 
 int n;                   // number of nodes
-vector<int> adj[MAXN]; // adjacency list of graph
+vector<int> g[MAXN]; // adjacency list of graph
 bool articulation[MAXN];
 int tin[MAXN], low[MAXN], timer, dfsRoot, rootChildren;
 
 void dfs(int u, int p = -1) {
     tin[u] = low[u] = timer++;
-    for (int to : adj[u]) {
+    for (int to : g[u]) {
         if (to == p)
             continue;
         if (tin[to] != -1)

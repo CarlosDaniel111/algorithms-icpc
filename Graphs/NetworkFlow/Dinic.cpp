@@ -1,7 +1,6 @@
 /**
- * Description: Flow algorithm with complexity $O(VE\log U)$ where $U = \max |\text{cap}|$.
- * $O(\min(E^{1/2}, V^{2/3})E)$ if $U = 1$; $O(\sqrt{V}E)$ for bipartite matching.
- * Status: Tested on SPOJ FASTFLOW and SPOJ MATCHING, stress-tested
+ * Descripcion: algoritmo para calcular el flujo maximo en un grafo
+ * Tiempo: O(V^2 E)
  */
 
 struct Dinic {

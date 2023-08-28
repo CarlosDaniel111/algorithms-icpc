@@ -1,11 +1,15 @@
-#define F0R(k, n) for (int k = 0; k < n; k++)
-#define ENDL '\n'
+/**
+ * Descripcion: calcula el costo minimo para ir de un nodo hacia todos los 
+ * demas alcanzables. Puede detectar ciclos negativos, dando una ultima 
+ * pasada y revisando si alguna distancia se acorta.
+ * Tiempo: O(VE)
+ */
 
 int main() {
     int n, m, A, B, W;
     cin >> n >> m;
     tuple<int, int, int> edges[m];
-    F0R(i, m) {
+    for (int i = 0; i < m; i++) {
         cin >> A >> B >> W;
         edges[i] = make_tuple(A, B, W);
     }
@@ -14,7 +18,7 @@ int main() {
     int x;
     cin >> x;
     dist[x] = 0;  // Nodo de inicio
-    F0R(i, n) {
+    for (int i = 0; i < n; i++) {
         for (auto e : edges) {
             auto [a, b, w] = e;
             dist[b] = min(dist[b], dist[a] + w);
@@ -30,7 +34,7 @@ int main() {
     }
 
     cout << "Shortest distances from source " << x << ENDL;
-    FOR(i, n) {
+    for (int i = 0; i < n; i++) {
         cout << (dist[i] == INF ? -1 : dist[i]) << " ";
     }
 

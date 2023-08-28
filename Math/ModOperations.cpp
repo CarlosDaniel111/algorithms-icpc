@@ -1,5 +1,6 @@
 /**
- * Calcula a * b mod m para cualquier 0 <= a, b <= c <= 7.2 * 10^18
+ * Descripcion : Calcula a * b mod m para 
+ * cualquier 0 <= a, b <= c <= 7.2 * 10^18
  * Tiempo: O(1)
  */
 using ull = unsigned long long;
@@ -10,7 +11,7 @@ ull modmul(ull a, ull b, ull m) {
 
 constexpr ll MOD = 1e9 + 7;
 /**
- * Calcula a^b mod m, en O(log n)
+ * Descripcion: Calcula a^b mod m, en O(log n)
  * Si hay riesgo de desbordamiento, multiplicar con modmul
  * Tiempo: O(log b)
  */
@@ -27,8 +28,8 @@ ll modpow(ll a, ll b) {
 }
 
 /**
- * Precalculo de modulos inversos para toda x <= LIM.
- * Se asume que LIM <= MOD y que MOD es primo
+ * Descripcion: Precalculo de modulos inversos para toda
+ * x <= LIM. Se asume que LIM <= MOD y que MOD es primo
  * Tiempo: O(LIM)
  */
 constexpr LIM = 1e5 + 5;
@@ -40,8 +41,8 @@ void precalc_inv() {
 }
 
 /**
- * Precalculo de un solo inverso, usa el primer metodo
- * si MOD es primo, y el segundo en caso contrario
+ * Descripcion: Precalculo de un solo inverso, usa el primer 
+ * metodo si MOD es primo, y el segundo en caso contrario
  * Tiempo: O(log MOD)
  */
 ll modInverse(ll b) { return modpow(b, MOD - 2, MOD) % MOD; }

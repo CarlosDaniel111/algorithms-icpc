@@ -1,37 +1,39 @@
-const int MAXN = 1e6 + 5;
+/**
+ * Descripcion: algoritmo para buscar puentes en un grafo
+ * Tiempo: O(V + E)
+ */
 
-int n;                  // number of nodes
-vector<int> adj[MAXN];  // adjacency list of graph
+int n;
+vector<int> g[MAXN];
 bool articulation[MAXN];
 int tin[MAXN], low[MAXN], timer, dfsRoot, rootChildren;
 
 void dfs(int u, int p = -1) {
     tin[u] = low[u] = timer++;
-    for (int to : adj[u]) {
-        if (to == p)
+    for (int v : g[u]) {
+        if (v == p)
             continue;
-        if (tin[to] != -1)
-            low[u] = min(low[u], tin[to]);
+        if (tin[v] != -1)
+            low[u] = min(low[u], tin[v]);
         else {
-            if (u == dfsRoot)
-                ++rootChildren;  // Caso especial si la raiz es un punto de articulacion
+            if (u == dfsRoot) // La raiz es un punto de articulacion
+                ++rootChildren; 
 
-            dfs(to, u);
+            dfs(v, u);
 
-            if (low[to] >= tin[u])  // Busca si es un punto de articulacion
+            if (low[v] >= tin[u]) 
                 articulation[u] = 1;
-            if (low[to] > tin[u])  // Busca si es un puente
-                IS_BRIDGE(u, to);
+            if (low[v] > tin[u])
+                // La arista (u, v) es un puente
 
-            low[u] = min(low[u], low[to]);
+            low[u] = min(low[u], low[v]);
         }
     }
 }
 
 void find_bridges_articulations() {
-    timer = 0;
-    fill(tin, tin + n, -1);
-    fill(low, low + n, -1);
+    memset(tin, tin + n, -1);
+    memset(low, low + n, -1);
 
     for (int i = 0; i < n; ++i) {
         if (tin[i] == -1) {

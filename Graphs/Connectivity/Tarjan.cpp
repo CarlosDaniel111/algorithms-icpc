@@ -1,17 +1,17 @@
-/*
-Busqueda de componentes fuertemente conexos (Grafo dirigido) - Tarjan O(V + E)
-Un SCC se define de la siguiente manera: si elegimo cualquier par de vertices u y v
-en el SCC, podemos encontrar un camino de u a v y viceversa
-
-La idea basica del algoritmo de Tarjan es que los SCC forman subarboles en el arbol de
-expansion de la DFS. Ademas de calcular tin(u) y low(u) para cada vertice, anadimos el
-vertice u al final de una pila y mantenemos la informacion de que vertices estan siendo
-explorados, mediante vi visited. Solo los vertices que estan marcados como visited (parte
-del SCC actual) pueden actualizar low(u). Ahora, si tenemos el vertice u en este arbol de
-expansion DFS con low(u) = tin(u), podemos concluir que u es la raiz de un SCC y los miembros
-de estos SCC se pueden identificar obteniendo el contenido actual de la pila, hasta que volvamos
-a llegar al vertice u
-*/
+/**
+ * Descripcion: sirve para la busqueda de componentes fuertemente conexos (SCC)
+ * Un SCC se define de la siguiente manera: si elegimo cualquier par de vertices u y v
+ * en el SCC, podemos encontrar un camino de u a v y viceversa
+ * Explicacion: La idea basica del algoritmo de Tarjan es que los SCC forman subarboles
+ * en el arbol de expansion de la DFS. Ademas de calcular tin(u) y low(u) para cada vertice,
+ * anadimos el vertice u al final de una pila y mantenemos la informacion de que vertices 
+ * estan siendo explorados, mediante vi visited. Solo los vertices que estan marcados como 
+ * visited (parte del SCC actual) pueden actualizar low(u). Ahora, si tenemos el vertice u 
+ * en este arbol de expansion DFS con low(u) = tin(u), podemos concluir que u es la raiz de 
+ * un SCC y los miembros de estos SCC se pueden identificar obteniendo el contenido actual 
+ * de la pila, hasta que volvamos a llegar al vertice u
+ * Tiempo: O(V + E)
+ */
 
 int n;                    // number of nodes
 vector<vector<int>> adj;  // adjacency list of graph

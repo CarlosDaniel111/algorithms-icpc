@@ -1,5 +1,5 @@
 /* Enunciado.
-   Dada una cadena s de la forma ?????d???d?d?? o ?d????d?d, donde d es un digito cualquiera
+   Dada una cadena s de la forma "?????d???d?d??" o "?d????d?d", donde d es un digito cualquiera
    asignar a los caracteres ? algun digito, para formar el numero mas pequenio posible
    que ademas sea divisible por D y no tenga ceros a la izquierda
 */

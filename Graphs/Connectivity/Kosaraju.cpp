@@ -1,12 +1,10 @@
-/*
-Busqueda de componentes fuertemente conexos (Grafo dirigido) - Kosaraju O(V + E)
-Un SCC se define de la siguiente manera: si elegimos cualquier par de vertices u y v
-en el SCC, podemos encontrar un camino de u a v y viceversa
-
-El algoritmo de Kosaraju realiza dos pasadas DFS, la primera para almacenar el orden
-de finalizacion decreciente (orden topologico) y la segunda se realiza en un grafo
-transpuesto a partir del orden topologico para hallar los SCC
-*/
+/**
+ * Descripcion: sirve para la busqueda de componentes fuertemente conexos (SCC), 
+ * este realiza dos pasadas DFS, la primera para almacenar el orden de finalizacion 
+ * decreciente (orden topologico) y la segunda se realiza en un grafo transpuesto a 
+ * partir del orden topologico para hallar los SCC.
+ * Tiempo: O(V + E)
+ */
 
 vi graph[MAXN];    // Grafo
 vi graph_T[MAXN];  // Grafo transpuesto

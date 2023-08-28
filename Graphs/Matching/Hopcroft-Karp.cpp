@@ -1,6 +1,8 @@
-// Algoritmo para resolver el problema de maximum bipartite matching
-// Los nodos para c1 y c2 deben comenzar desde el indice 1
-// O(sqrt(|V|) * E)
+/**
+ * Descripcion: Algoritmo para resolver el problema de maximum bipartite
+ * matching. Los nodos para c1 y c2 deben comenzar desde el indice 1
+ * Tiempo: O(sqrt(|V|) * E)
+ */
 
 int dist[MAXN], pairU[MAXN], pairV[MAXN], c1, c2;
 vi graph[MAXN];

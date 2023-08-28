@@ -1,10 +1,11 @@
 /** 
-   Calcula rapidamente la suma de una submatriz dadas sus 
-   esquinas superior izquierda e inferior derecha (no inclusiva)
-   Uso: SubMatrix<int> m(matrix);
-   m.sum(0, 0, 2, 2); // 4 elementos superiores
-   Tiempo: O(n * m) en preprocesamiento y O(1) por query 
-*/
+ * Descripcion: Calcula rapidamente la suma de una submatriz dadas sus 
+ * esquinas superior izquierda e inferior derecha (no inclusiva)
+ * Uso: 
+ * SubMatrix<int> m(matrix);
+ * m.sum(0, 0, 2, 2); // 4 elementos superiores
+ * Tiempo: O(n * m) en preprocesamiento y O(1) por query 
+ */
 template <class T>
 struct SubMatrix {
     vector<vector<T>> p; 

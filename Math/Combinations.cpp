@@ -1,6 +1,6 @@
 /**
- * Utilizando el metodo de ModOperations.cpp, calculamos de manera eficiente
- * los inversos modulares de x (arreglo inv) y de x! (arreglo invfact),
+ * Descripcion: Utilizando el metodo de ModOperations.cpp, calculamos de manera
+ * eficiente los inversos modulares de x (arreglo inv) y de x! (arreglo invfact),
  * para toda x < MAXN, se utiliza el hecho de que comb(n, k) = (n!) / (k! * (n - k)!)
  * Tiempo: O(MAXN) en el precalculo de inversos modulares y O(1) por query.
  */
@@ -17,9 +17,9 @@ ll comb(int n, int k) {
     return fact[n] * invfact[k] % MOD * invfact[n - k] % MOD;
 }
 
-/*
- * Se basa en el teorema de lucas, se puede utilizar cuando tenemos una MAXN larga
- * y un modulo m relativamente chico.
+/**
+ * Descripcion: Se basa en el teorema de lucas, se puede utilizar cuando tenemos
+ * una MAXN larga y un modulo m relativamente chico.
  * Tiempo: O(m log_m(n))
  */
 ll comb(int n, int k) {
@@ -31,8 +31,8 @@ ll comb(int n, int k) {
 }
 
 /*
- * Se basa en el triangulo de pascal, vale la pena su uso cuando no
- * trabajamos con modulos (pues no tenemos una mejor opcion), usa DP.
+ * Descripcion: Se basa en el triangulo de pascal, vale la pena su uso cuando
+ * no trabajamos con modulos (pues no tenemos una mejor opcion), usa DP.
  * Tiempo: O(n^2)
  */
 ll dp[MAXN][MAXN];
