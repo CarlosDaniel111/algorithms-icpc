@@ -31,3 +31,33 @@ bool areIntersect(Line l1, Line l2, Point& p) {
         p.y = -(l2.a * p.x + l2.c);
     return true;
 }
+
+// convert point and gradient/slope to Line
+void pointSlopeToLine(Point p, double m, Line& l) {
+    l.a = -m;
+    l.b = 1;
+    l.c = -((l.a * p.x) + (l.b * p.y));
+}
+
+void closestPoint(Line l, Point p, Point& ans) {
+    Line perpendicular;
+    if (fabs(l.b) < EPS) {  // vertical Line
+        ans.x = -(l.c);
+        ans.y = p.y;
+        return;
+    }
+    if (fabs(l.a) < EPS) {  // horizontal Line
+        ans.x = p.x;
+        ans.y = -(l.c);
+        return;
+    }
+    pointSlopeToLine(p, 1 / l.a, perpendicular);  // normal Line
+    areIntersect(l, perpendicular, ans);
+}
+
+void reflectionPoint(Line l, Point p, Point& ans) {
+    Point b;
+    closestPoint(l, p, b);
+    vec v = toVec(p, b);
+    ans = translate(translate(p, v), v);
+}

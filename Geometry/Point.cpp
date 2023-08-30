@@ -37,6 +37,7 @@ Point translate(Point v, Point p) { return p + v; }
 Point scale(Point c, double factor, Point p) { return c + (p - c) * factor; }
 Point rotate(Point p, double a) { return {p.x * cos(a) - p.y * sin(a), p.x * sin(a) + p.y * cos(a)}; }
 Point perpendicular(Point p) { return {-p.y, p.x}; }
+double dist(Point p1, Point p2) { return hypot(p1.x - p2.x, p1.y - p2.y); }
 
 // Operaciones vectoriales, en donde nuestro punto indica el fin del vector, siendo el origen su inicio
 T dot(Point v, Point w) { return v.x * w.x + v.y * w.y; }
@@ -65,15 +66,4 @@ int manhattan(Point& p1, Point& p2) { return abs(p1.x - p2.x) + abs(p1.y - p2.y)
 Point toVector(Point& p1, Point& p2) { return p2 - p1; }
 bool areCollinear(Point& p, Point& q, Point& r) {
     return abs(cross(toVector(p, q), toVector(p, r))) <= EPS;
-}
-
-// Formula de Heron
-double triangleArea(Point& p1, Point& p2, Point& p3) {
-    double a = abs(p2 - p1), b = abs(p3 - p1), c = abs(p3 - p2), s = (a + b + c) / 2.0;
-    return sqrt(s * (s - a) * (s - b) * (s - c));
-}
-
-// Con la magnitud del producto cruz
-double triangleArea(Point &p1, Point& p2, Point& p3) {
-    return cross(p2 - p1, p3 - p1) / 2;   
 }
