@@ -117,8 +117,8 @@ class Aho {
             return;
         }
 
-        // Para calcular el suffix link del vértice actual, necesitamos el suffix link
-        // del padre del vértice y el personaje que nos movió al vértice actual.
+        // Para calcular el suffix link del vertice actual, necesitamos el suffix link
+        // del padre del vertice y el personaje que nos movio al vertice actual.
         int curBetterVertex = Trie[Trie[vertex]->parent]->suffixLink;
         char chVertex = Trie[vertex]->parentChar;
         while (true) {

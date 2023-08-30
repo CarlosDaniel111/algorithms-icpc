@@ -1,7 +1,7 @@
 vi manacher(string _S) {
-    string S = "@";
-    for (char c : _S) S += c, S += "#";
-    S.back() = '&';
+    string S = char(64);
+    for (char c : _S) S += c, S += char(35);
+    S.back() = char(38);
     vi ans(SZ(S) - 1);
     int lo = 0, hi = 0;
     FOR(i, 1, SZ(S) - 1) {

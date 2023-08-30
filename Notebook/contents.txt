@@ -4,57 +4,87 @@
 #   [filename within code directory][tab character \t][subsection title]
 
 [Templates]
-templatecpp.cpp	Plantilla C++
-templatepy.py	Plantilla Phyton
+Templates/templatecpp.cpp	Plantilla C++
+Templates/templatepy.py	Plantilla Phyton
+Templates/templatemax.cpp	Plantilla C++ Max
 
 [Data Structures]
-Trie.cpp	Trie
-FenwickTree.cpp	Fenwick Tree
-BIT.cpp	Binary Indexed Tree
-Order_Statistics_Tree.cpp	Order Statistics Tree
-SegmentTree.cpp	Segment Tree
-LazySegmentTree.cpp	Lazy Segment Tree
-LazyRMQ.cpp	Lazy Range Min/Max Query
-SparseSegmentTree.cpp	Sparse Segment Tree
+DataStructure/BIT.cpp	Binary Indexed Tree
+DataStructure/DSU.cpp	Union-Find
+DataStructure/DSU_Rollback.cpp	DSU RollBack
+DataStructure/FenwickTree.cpp	Fenwick Tree
+DataStructure/OrderStatisticsTree.cpp	Order Statistics Tree
+DataStructure/SparseTable.cpp	Sparse Table
+DataStructure/SegmentTree/SegmentTree.cpp	Segment Tree
+DataStructure/SegmentTree/LazySegmentTree.cpp	Lazy Segment Tree
+DataStructure/SegmentTree/LazyRMQ.cpp	LazyRMQ
+DataStructure/SegmentTree/SparseSegmentTree.cpp	Sparse Segment Tree
+DataStructure/SegmentTree/PersistentLazyPropagation.cpp	Persistent Lazy Propagation
+DataStructure/SegmentTree/Iterative.cpp	Iterative Segment Tree
 
 [Math]
-Primes.cpp	Numeros Primos
-Bits.cpp	Operaciones con Bits
-Formulas_Rapidas.cpp	Formulas Rapidas
-Catalan.py	Numeros Catalan
-Linear_Diophantine.cpp	Linear Diophantine
+Math/Bits.cpp	Operaciones con Bits
+Math/Combinations.cpp	Combinaciones
+Math/Euclid.cpp	Algoritmo Ext. de Euclides
+Math/LinearDiophantine.cpp	Linear Diophantine
+Math/Matrix.cpp	Matrix
+Math/ModOperations.cpp	Operaciones con MOD
+Math/Primes.cpp	Numeros Primos
+Math/Simpson.cpp	Simpson
 
 [Strings]
-Knuth-Morris-Prath.cpp	Knuth-Morris-Prath
+Strings/Aho-Corasick.cpp	Aho-Corasick
+Strings/Dynamic_Aho-Corasick.cpp	Dynamic Aho-Corasick
+Strings/Hashing.cpp	Hashing
+Strings/KMP.cpp	KMP
+Strings/Manacher.cpp	Manacher
+Strings/SuffixArray.cpp	Suffix Array
+Strings/SuffixAutomaton.cpp	Suffix Automaton
+Strings/SuffixTree.cpp	Suffix Tree
+Strings/Trie.cpp	Trie
+Strings/Z-algorithm.cpp	Z-Algorithm
 
 [Dynamic Programming]
-Problema_de_la_mochila.cpp	Problema de la mochila
-LIS.cpp	Longest Increasing Subsequence (LIS)
-Problema_viajero.cpp	Problema del viajero
-DP_con_digitos.cpp	Dp con Digitos
-Tecnica_con_pila.cpp	Tecnica con pila
-Tecnica_deque.cpp	Tecnica con deque
-Suma_2D.cpp	Suma en 2D
+DP/2DSUM.cpp	2D Sum
+DP/DequeTecnique.cpp	Tecnica con Deque
+DP/Digit.cpp	DP con digitos
+DP/Knapsack.cpp	Knapsack
+DP/LIS.cpp	Longest Increasing Subsequence
+DP/MonotonicStack.cpp	Monotonic Stack
+DP/TSP.cpp	Travelling Salesman Problem
 
 [Graphs]
-Recorridos.cpp	Recorrido BFS y DFS
-Dijkstra.cpp	Dijkstra
-Bellman-Ford.cpp	Bellman-Ford
-Floyd-Warshall.cpp	Floyd-Warshall
-LCA.cpp	Lowest Common Ancestor
-Kruskal_(UnionFind).cpp	Kruskal UnionFind
-Prim.cpp	Prim
-BridgeDetection.cpp	Bridge Detection
-TopologicalSort.cpp	Ordenamiento Topologico
-LexicographicTopoSort.cpp	Ordenamiento Topologico Lexicografico
-Tarjan.cpp	Algoritmo de Tarjan (SCC)
-Kosaraju.cpp	Algoritmo de Kosaraju (SCC)
-Hierholzer.cpp	Hierholzer (Camino euleriano)
-EulerTourRSQ.cpp	EulerTour RSQ
-Hopcroft_Karp.cpp	Hopcroft-Karp
-MaxFlow.cpp	Max Flow
+Graphs/Connectivity/2SAT.cpp	2SAT
+Graphs/Connectivity/BridgeDetection.cpp	Bridge Detection
+Graphs/Connectivity/Kosaraju.cpp	Kosaraju (SCC)
+Graphs/Connectivity/Tarjan.cpp	Tarjan (SCC)
+Graphs/Matching/GeneralMatching.cpp	General Matching
+Graphs/Matching/Hopcroft-Karp.cpp	Hopcroft Karp
+Graphs/Matching/Hungarian.cpp	Hungaro
+Graphs/Matching/Kuhn.cpp	Kuhn
+Graphs/MinimumSpanningTree/Kruskal.cpp	Kruskal (MST)
+Graphs/MinimumSpanningTree/Prim.cpp	Prim (MST)
+Graphs/NetworkFlow/Dinic.cpp	Dinic
+Graphs/NetworkFlow/MinCostMaxFlow.cpp	Min Cost Max Flow
+Graphs/NetworkFlow/PushRelabel.cpp	Push Relabel
+Graphs/ShortestPaths/Bellman-Ford.cpp	Bellman-Ford
+Graphs/ShortestPaths/Dijkstra.cpp	Dijkstra
+Graphs/ShortestPaths/Floyd-Warshall.cpp	Floyd-Warshall
+Graphs/Misc/BinaryLiftingLCA.cpp	Binary Lifting LCA
+Graphs/Misc/EulerTour.cpp	Euler Tour
+Graphs/Misc/FindCentroid.cpp	Find Centroid
+Graphs/Misc/Hierholzer.cpp	Hierholzer
+Graphs/Misc/TopologicalSort.cpp	Orden Topologico
+
+[Geometry]
+Geometry/Point.cpp	Punto
+Geometry/Line.cpp	Linea
+Geometry/Polygon.cpp	Poligono
+Geometry/Fraction.cpp	Fracciones
+Geometry/ConvexHull.cpp	Convex Hull
+Geometry/Point3D.cpp	Punto 3D
 
 [Extras]
-Operaciones_con_matrices.cpp	Operaciones con matrices
-Dates.cpp	Fechas
-Trucos.cpp	Trucos
+Extras/Dates.cpp	Fechas
+Extras/HashPair.cpp	HashPair
+Extras/Trucos.cpp	Trucos

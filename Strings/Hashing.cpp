@@ -5,7 +5,7 @@
  * Tiempo: O(|s|)
  */
 
-const int MX = 3e5 + 2;  // Tamaño maximo del string S
+const int MX = 3e5 + 2;  // Tamano maximo del string S
 
 inline int add(int a, int b, const int &mod) { return a + b >= mod ? a + b - mod : a + b; }
 inline int sbt(int a, int b, const int &mod) { return a - b < 0 ? a - b + mod : a - b; }

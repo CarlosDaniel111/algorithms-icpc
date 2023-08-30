@@ -1,6 +1,6 @@
-#!/usr/bin/python
 import subprocess
-code_dir = "code"
+import os
+code_dir = "../"
 title = "AC2++"
 
 
@@ -72,3 +72,8 @@ if __name__ == "__main__":
         f.write(tex)
     latexmk_options = ["latexmk", "-pdf", "notebook.tex"]
     subprocess.call(latexmk_options)
+    remove_files = ["notebook.fls", "notebook.aux", "notebook.fdb_latexmk", 
+    "notebook.log", "notebook.out", "notebook.toc"]
+    for file in remove_files:
+        if os.path.exists(file):
+            os.remove(file)
