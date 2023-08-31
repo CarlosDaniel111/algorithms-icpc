@@ -1,17 +1,18 @@
 /**
- * Description: Disjoint-set data structure with undo.
- * If undo is not needed, skip st, time() and rollback().
- * Usage: int t = uf.time(); ...; uf.rollback(t);
- * Time: $O(\log(N))$
+ * Descripcion: Estructura de conjuntos disjuntos con la 
+ * capacidad de regresar a estados anteriores.
+ * Si no es necesario, ignorar st, time() y rollback().
+ * Uso: int t = uf.time(); ...; uf.rollback(t)
+ * Tiempo: O(log n)
  */
 
-struct RollbackUF {
-    vi e;
-    vector<pi> st;
-    RollbackUF(int n) : e(n, -1) {}
+struct RollbackDSU {
+    vector<int> e;
+    vector<pair<int, int>> st;
+    RollbackDS(int n) : e(n, -1) {}
     int size(int x) { return -e[find(x)]; }
     int find(int x) { return e[x] < 0 ? x : find(e[x]); }
-    int time() { return SZ(st); }
+    int time() { return st.size(); }
     void rollback(int t) {
         for (int i = time(); i-- > t;)
             e[st[i].first] = st[i].second;

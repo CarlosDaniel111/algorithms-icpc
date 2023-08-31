@@ -1,3 +1,11 @@
+/**
+ * Descripcion: arbol de segmentos persistente que
+ * permite consultas de rango de manera eficiente.
+ * Una estructura persistente es aquella que guarda
+ * sus estados anteriores y puede volver a ellos.
+ * Tiempo: O(log n) por consulta
+ */
+
 ll arr[MAXN];
 
 ll l[45 * MAXN], r[45 * MAXN], st[45 * MAXN], nodes = 0;

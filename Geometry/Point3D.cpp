@@ -1,44 +1,44 @@
-struct p3 {
+struct Point {
     double x, y, z;
-    p3() {}
-    p3(double xx, double yy, double zz) { x = xx, y = yy, z = zz; }
+    Point() {}
+    Point(double xx, double yy, double zz) { x = xx, y = yy, z = zz; }
     /// scalar operators
-    p3 operator*(double f) { return p3(x * f, y * f, z * f); }
-    p3 operator/(double f) { return p3(x / f, y / f, z / f); }
+    Point operator*(double f) { return Point(x * f, y * f, z * f); }
+    Point operator/(double f) { return Point(x / f, y / f, z / f); }
     /// p3 operators
-    p3 operator-(p3 p) { return p3(x - p.x, y - p.y, z - p.z); }
-    p3 operator+(p3 p) { return p3(x + p.x, y + p.y, z + p.z); }
-    p3 operator%(p3 p) { return p3(y * p.z - z * p.y, z * p.x - x * p.z, x * p.y - y * p.x); }  /// (|p||q|sin(ang))* normal
-    double operator|(p3 p) { return x * p.x + y * p.y + z * p.z; }
+    Point operator-(Point p) { return Point(x - p.x, y - p.y, z - p.z); }
+    Point operator+(Point p) { return Point(x + p.x, y + p.y, z + p.z); }
+    Point operator%(Point p) { return Point(y * p.z - z * p.y, z * p.x - x * p.z, x * p.y - y * p.x); }  /// (|p||q|sin(ang))* normal
+    double operator|(Point p) { return x * p.x + y * p.y + z * p.z; }
     /// Comparators
-    bool operator==(p3 p) { return tie(x, y, z) == tie(p.x, p.y, p.z); }
-    bool operator!=(p3 p) { return !operator==(p); }
-    bool operator<(p3 p) { return tie(x, y, z) < tie(p.x, p.y, p.z); }
+    bool operator==(Point p) { return tie(x, y, z) == tie(p.x, p.y, p.z); }
+    bool operator!=(Point p) { return !operator==(p); }
+    bool operator<(Point p) { return tie(x, y, z) < tie(p.x, p.y, p.z); }
 };
-p3 zero = p3(0, 0, 0);
+Point zero = Point(0, 0, 0);
 
 /// BASICS
-double sq(p3 p) { return p | p; }
-double abs(p3 p) { return sqrt(sq(p)); }
-p3 unit(p3 p) { return p / abs(p); }
+double sq(Point p) { return p | p; }
+double abs(Point p) { return sqrt(sq(p)); }
+Point unit(Point p) { return p / abs(p); }
 
 /// ANGLES
-double angle(p3 p, p3 q) {  ///[0, pi]
+double angle(Point p, Point q) {  ///[0, pi]
     double co = (p | q) / abs(p) / abs(q);
     return acos(max(-1.0, min(1.0, co)));
 }
-double small_angle(p3 p, p3 q) {  ///[0, pi/2]
+double small_angle(Point p, Point q) {  ///[0, pi/2]
     return acos(min(abs(p | q) / abs(p) / abs(q), 1.0))
 }
 
 /// 3D - ORIENT
-double orient(p3 p, p3 q, p3 r, p3 s) { return (q - p) % (r - p) | (s - p); }
-bool coplanar(p3 p, p3 q, p3 r, p3 s) {
+double orient(Point p, Point q, Point r, Point s) { return (q - p) % (r - p) | (s - p); }
+bool coplanar(Point p, Point q, Point r, Point s) {
     return abs(orient(p, q, r, s)) < eps;
 }
-bool skew(p3 p, p3 q, p3 r, p3 s) {        /// skew := neither intersecting/parallel
+bool skew(Point p, Point q, Point r, Point s) {        /// skew := neither intersecting/parallel
     return abs(orient(p, q, r, s)) > eps;  /// lines: PQ, RS
 }
-double orient_norm(p3 p, p3 q, p3 r, p3 n) {  /// n := normal to a given plane PI
+double orient_norm(Point p, Point q, Point r, Point n) {  /// n := normal to a given plane PI
     retrurn(q - p) % (r - p) | n;             /// equivalent to 2D cross on PI (of ortogonal proj)
 }

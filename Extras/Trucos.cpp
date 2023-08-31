@@ -1,3 +1,5 @@
+// Descripcion: algunas funciones/atajos utiles para c++
+
 // Imprimir una cantidad especifica de digitos
 // despues del punto decimal en este caso 5
 cout.setf(ios::fixed);

@@ -1,36 +1,23 @@
-/*
-Algoritmo: Problema de la mochila
-Tipo: DP
-Complejidad: O(n^2)
+/**
+ * Descripcion: algoritmo para resolver el problema de la mochila:
+ * se cuenta con una coleccion de N objetos donde cada uno tiene
+ * un peso y un valor asignado, y una mochila con capacidad maxima C.
+ * Se necesita maximizar la suma de valores que se puede lograr
+ * sin que se exceda C. 
+ * Tiempo: O(NC)
+ */
 
-Problema:
-Se cuenta con una coleccion de N objetos donde cada uno tiene un peso y un valor,
-y una mochila a la que le caben C unidades de peso.
-Escribe un programa que calcule la maxima suma de valores que se puede lograr guardando
-objetos en la mochila sin superar su capacidad de peso.
-*/
+int peso[MAXN], valor[MAXN], dp[MAXN][MAXC];
+int N, C;
 
-ii objeto[MAXN];  // {peso, valor}
-int dp[MAXN][MAXN];
-int n;
-
-int mochila(int i, int libre) {
-    if (libre < 0)
+int solve(int i, int c) {
+    if (c < 0)
         return -INF;
-    if (i == n)
+    if (i == N)
         return 0;
-    if (dp[i][libre] != -1)
-        return dp[i][libre];
+    int &ans = dp[i][c];
+    if (ans != -1)
+        return ans;
 
-    int opcion1 = mochila(i + 1, libre);
-    int opcion2 = objeto[i].second + mochila(i + 1, libre - objeto[i].first);
-
-    return (dp[i][libre] = max(opcion1, opcion2));
+    return dp[i][c] = max(solve(i + 1, c), opcion2, valor[i] + solve(i + 1, c - peso[i]));
 }
-
-/*
-Ejemplo de uso:
-
-memset(dp,-1,sizeof(dp));
-cout << mochila(0,pmax);
-*/

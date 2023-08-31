@@ -1,4 +1,11 @@
-int n, bit[MAXN];  // Utilizar a partir del 1
+/**
+ * Descripcion: arbol binario indexado, util para consultas en
+ * donde es posible hacer inclusion-exclusion, suma, multiplicacion,
+ * etc. Utilizar indices 1-indexados, checar MAX, query -> [1, index]
+ * Tiempo: O(log n)
+ */
+
+int n, bit[MAX];
 
 int query(int index) {
     int sum = 0;

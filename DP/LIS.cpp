@@ -1,8 +1,12 @@
-#define F0R(i, n) for (int i = 0; i < n; i++)
-const int MAXN = 2e4;
+/**
+ * Descripcion: algoritmo para resolver el problema de la
+ * subsecuencia creciente mas larga de un arreglo (LIS) a
+ * partir de una estrategia de divide y venceras. Si no
+ * es necesario recuperar la subsecuencia, ignorar p.
+ * Tiempo: O(n log n)
+ */
 
-// Si no se necesita imprimir la LIS por completo, eliminar p.
-int p[MAXN], nums[MAXN];
+int n, nums[MAX], L[MAX], L_id[MAX], p[MAX];
 
 void print_LIS(int i) {  // backtracking routine
     if (p[i] == -1) {
@@ -13,30 +17,24 @@ void print_LIS(int i) {  // backtracking routine
     cout << nums[i];
 }
 
-int main() {
-    int n;
-    cin >> n;
-    F0R(i, n)
-    cin >> nums[i];
-
+int solve_LIS() {
     int lis_sz = 0, lis_end = 0;
-    int L[n], L_id[n];
-    F0R(i, n) {
+    for (int i = 0; i < n; i++) {
         L[i] = L_id[i] = 0;
         p[i] = -1;
     }
 
-    F0R(i, n) {  // O(n)
+    for (int i = 0; i < n; i++) {
         int pos = lower_bound(L, L + lis_sz, nums[i]) - L;
-        L[pos] = nums[i];  // greedily overwrite this
-        L_id[pos] = i;     // remember the index too
+        L[pos] = nums[i];
+        L_id[pos] = i;
 
-        p[i] = pos ? L_id[pos - 1] : -1;  // predecessor info
+        p[i] = pos ? L_id[pos - 1] : -1;
 
-        if (pos == lis_sz) {   // can extend LIS?
-            lis_sz = pos + 1;  // k = longer LIS by +1
-            lis_end = i;       // keep best ending i
+        if (pos == lis_sz) {
+            lis_sz = pos + 1;
+            lis_end = i;
         }
     }
-    cout << lis_sz << ENDL;
+    return lis_sz;
 }

@@ -1,36 +1,40 @@
-/* Enunciado.
-   Dada una cadena s de la forma "?????d???d?d??" o "?d????d?d", donde d es un digito cualquiera
-   asignar a los caracteres ? algun digito, para formar el numero mas pequenio posible
-   que ademas sea divisible por D y no tenga ceros a la izquierda
-*/
+/**
+ * Descripcion: algoritmo que resuelve un problema de DP de digitos. 
+ * La DP de digitos se requiere cuando se trabaja sobre cadenas 
+ * (normalmente numeros) de una gran cantidad de digitos y se 
+ * requiere saber cuantos numeros en un rango cumplen con cierta 
+ * propiedad. Enunciado del problema resuelto:
+ * Dada una cadena s que contiene numeros y caracteres ? encontrar 
+ * el minimo entero, tal que se forme asignandole valores a los ? y 
+ * ademas sea divisible por D; si no existe, imprimir un *
+ * Tiempo: O(n^2)
+ */
 
-const int MAXN = 1e5 + 5;
-
-string s;  // cadena
+string s;
 int D;
 stack<int> st;
 
 bool dp[MAXN][MAXN];  // He pasado por aqui?
-bool solve(int pos, int residuo) {
-    if (dp[pos][residuo])
+bool solve(int i, int residuo) {
+    if (dp[i][residuo])
         return false;
-    if (pos == s.length())
+    if (i == s.length())
         return residuo == 0;
 
-    if (s[pos] == '?') {
-        for (int k = (pos == 0); k <= 9; k++) {
-            if (solve(pos + 1, (residuo * 10 + k) % D)) {
+    if (s[i] == '?') {
+        for (int k = (i == 0); k <= 9; k++) {
+            if (solve(i + 1, (residuo * 10 + k) % D)) {
                 st.push(k);
                 return true;
             }
         }
     } else {
-        if (solve(pos + 1, (residuo * 10 + (s[pos] - '0')) % D)) {
-            st.push(s[pos] - '0');
+        if (solve(i + 1, (residuo * 10 + (s[i] - '0')) % D)) {
+            st.push(s[i] - '0');
             return true;
         }
     }
-    dp[pos][residuo] = true;
+    dp[i][residuo] = true;
     return false;
 }
 

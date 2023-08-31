@@ -1,6 +1,6 @@
 /**
- * Estructura para manejar fracciones, puede ser util cuando necesitamos una
- * gran precision y no se manejen numeros irracionales
+ * Descripcion: estructura para manejar fracciones, es util cuando
+ * necesitamos gran precision y solo usamos fracciones
  * Tiempo: O(1) 
  */
 struct Frac{

@@ -1,20 +1,29 @@
+/**
+ * Descripcion: arbol de segmentos, bastante poderoso para
+ * realizar consultas de min/max en un rango y actualizaciones
+ * en un rango de manera eficiente.
+ * Uso: LazyRMQ ST(arr)
+ * Tiempo: O(log n)
+ */
+
+
 class LazyRMQ {
    private:
     int n;
     vi A, st, lazy;
 
-    int l(int p) { return (p << 1) + 1; }  // Ir al hijo izquierdo
-    int r(int p) { return (p << 1) + 2; }  // Ir al hijo derecho
+    int l(int p) { return (p << 1) + 1; }
+    int r(int p) { return (p << 1) + 2; }
 
     int conquer(int a, int b) {
         if (a == -1)
             return b;
         if (b == -1)
             return a;
-        return min(a, b);  // RMQ - Cambiar esta linea para modificar la operacion del st
+        return min(a, b);
     }
 
-    void build(int p, int L, int R) {  // O(n)
+    void build(int p, int L, int R) {
         if (L == R)
             st[p] = A[L];
         else {
@@ -28,15 +37,15 @@ class LazyRMQ {
     void propagate(int p, int L, int R) {
         if (lazy[p] != -1) {
             st[p] = lazy[p];
-            if (L != R)                             // Checar que no sea una hoja
-                lazy[l(p)] = lazy[r(p)] = lazy[p];  // Propagar hacia abajo
+            if (L != R)
+                lazy[l(p)] = lazy[r(p)] = lazy[p];
             else
                 A[L] = lazy[p];
             lazy[p] = -1;
         }
     }
 
-    int query(int p, int L, int R, int i, int j) {  // O(log n)
+    int query(int p, int L, int R, int i, int j) {
         propagate(p, L, R);
         if (i > j)
             return -1;
@@ -47,7 +56,7 @@ class LazyRMQ {
                        query(r(p), m + 1, R, max(i, m + 1), j));
     }
 
-    void update(int p, int L, int R, int i, int j, int val) {  // O(log n)
+    void update(int p, int L, int R, int i, int j, int val) {
         propagate(p, L, R);
         if (i > j)
             return;
@@ -65,14 +74,13 @@ class LazyRMQ {
     }
 
    public:
-    LazyRMQ(int sz) : n(sz), st(4 * n), lazy(4 * n, -1) {}  // Constructor de st sin valores
+    LazyRMQ(int sz) : n(sz), st(4 * n), lazy(4 * n, -1) {}
 
-    LazyRMQ(const vi &initialA) : LazyRMQ((int)initialA.size()) {  // Constructor de st con arreglo inicial
+    LazyRMQ(const vi &initialA) : LazyRMQ((int)initialA.size()) {
         A = initialA;
         build(1, 0, n - 1);
     }
 
-    void update(int i, int j, int val) { update(0, 0, n - 1, i, j, val); }
-
-    int query(int i, int j) { return query(0, 0, n - 1, i, j); }
+    void update(int i, int j, int val) { update(0, 0, n - 1, i, j, val); } // [i, j]
+    int query(int i, int j) { return query(0, 0, n - 1, i, j); } // [i, j]
 };

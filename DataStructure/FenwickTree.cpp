@@ -1,3 +1,12 @@
+/**
+ * Descripcion: arbol binario indexado, util para consultas en
+ * donde es posible hacer inclusion-exclusion, suma, multiplicacion,
+ * etc. Utilizar indices 1-indexados, query -> [1, index]
+ * La diferencia entre BIT.cpp y este es la cantidad de operaciones
+ * soportadas, con este, son posibles las actualizaciones en rango.
+ * Tiempo: O(log n)
+ */
+
 #define LSOne(S) ((S) & -(S))
 
 class FenwickTree {
@@ -5,7 +14,7 @@ class FenwickTree {
     vll ft;
 
    public:
-    FenwickTree(int m) { ft.assign(m + 1, 0); }  // Constructor de ft vacio
+    FenwickTree(int m) { ft.assign(m + 1, 0); }
 
     void build(const vll &f) {
         int m = (int)f.size() - 1;
@@ -17,9 +26,9 @@ class FenwickTree {
         }
     }
 
-    FenwickTree(const vll &f) { build(f); }  // Constructor de ft basado en otro ft
+    FenwickTree(const vll &f) { build(f); }
 
-    FenwickTree(int m, const vi &s) {  // Constructor de ft basado en un vector int
+    FenwickTree(int m, const vi &s) {
         vll f(m + 1, 0);
         F0R(i, (int)s.size()) {
             ++f[s[i]];
@@ -27,7 +36,7 @@ class FenwickTree {
         build(f);
     }
 
-    ll query(int j) {  // return query(1,j);
+    ll query(int j) {
         ll sum = 0;
         for (; j; j -= LSOne(j))
             sum += ft[j];
@@ -59,7 +68,7 @@ class FenwickTree {
     }
 };
 
-class RUPQ {  // Arbol de Fenwick de consulta de punto y actualizacion de rango
+class RUPQ {  // Consulta de punto y actualizacion de rango
    private:
     FenwickTree ft;
 
@@ -76,7 +85,7 @@ class RUPQ {  // Arbol de Fenwick de consulta de punto y actualizacion de rango
     }
 }
 
-class RURQ {  // Arbol de Fenwick de consulta de rango y actualizacion de rango
+class RURQ {  // Consulta de rango y actualizacion de rango
    private:
     RUPQ(int m) : rupq(RUPQ(m)), purq(FenwickTree(m)) {}
 

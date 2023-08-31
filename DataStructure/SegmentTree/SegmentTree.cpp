@@ -1,13 +1,19 @@
-/* Implementado para RSQ, pero es posible usar cualquier operacion conmutativa
-   (no importa el orden) como la multiplicacion, XOR, OR, AND, MIN, MAX, etc. */
+/**
+ * Descripcion: arbol de segmentos, bastante poderoso para
+ * realizar consultas de rango y actualizaciones de punto,
+ * se puede utilizar cualquier operacion conmutativa, es decir,
+ * aquella en donde el orden de evaluacion no importe: suma,
+ * multiplicacion, XOR, OR, AND, MIN, MAX, etc.
+ * Tiempo: O(n log n) en construccion y O(log n) por consulta
+ */
 
 class SegmentTree {
    private:
     int n;
     vi arr, st;
 
-    int l(int p) { return (p << 1) + 1; }  // Ir al hijo izquierdo
-    int r(int p) { return (p << 1) + 2; }  // Ir al hijo derecho
+    int l(int p) { return (p << 1) + 1; }
+    int r(int p) { return (p << 1) + 2; }
 
     void build(int index, int start, int end) {
         if (start == end)
@@ -49,14 +55,14 @@ class SegmentTree {
     }
 
    public:
-    SegmentTree(int sz) : n(sz), st(4 * n) {}  // Constructor de st sin valores
+    SegmentTree(int sz) : n(sz), st(4 * n) {}
 
-    SegmentTree(const vi &initialArr) : SegmentTree((int)initialArr.size()) {  // Constructor de st con arreglo inicial
+    SegmentTree(const vi &initialArr) : SegmentTree((int)initialArr.size()) {
         arr = initialArr;
         build(0, 0, n - 1);
     }
 
     void update(int i, int val) { update(0, 0, n - 1, i, val); }
 
-    int query(int i, int j) { return query(0, 0, n - 1, i, j); }
+    int query(int i, int j) { return query(0, 0, n - 1, i, j); } // [i, j]
 };

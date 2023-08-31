@@ -1,4 +1,11 @@
-// Implementado para minimo, es posible cambiar a cualquier operacion conmutativa
+/**
+ * Descripcion: arbol de segmentos, bastante poderoso para
+ * realizar consultas de rango y actualizaciones de punto,
+ * se puede utilizar cualquier operacion conmutativa, es decir,
+ * aquella en donde el orden de evaluacion no importe: suma,
+ * multiplicacion, XOR, OR, AND, MIN, MAX, etc.
+ * Tiempo: O(n log n) en construccion y O(log n) por consulta
+ */
 template <class T> class SegmentTree {
 private:
     const T DEFAULT = 1e18;  // Causa overflow si T es int
@@ -20,6 +27,7 @@ public:
             ST[ind / 2] = min(ST[ind], ST[ind ^ 1]); // Operacion
     }
 
+    // [start, end]
     T query(int start, int end) {
         end++;
         T ans = DEFAULT;

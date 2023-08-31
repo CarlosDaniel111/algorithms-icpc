@@ -1,5 +1,7 @@
-/*
- * Convex Hull
+/**
+ * Descripcion: encuentra la envolvente convexa de un conjunto
+ * de puntos dados. Una envolvente convexa es la minima region
+ * convexa que contiene a todos los puntos del conjunto.
  * Tiempo: O(n log n)
  */
 

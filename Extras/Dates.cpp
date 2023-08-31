@@ -1,17 +1,19 @@
-// Routines for performing computations on dates. In these routines,
-// months are expressed as integers from 1 to 12, days are expressed
-// as integers from 1 to 31, and years are expressed as 4-digit
-// integers.
+/**
+ * Descripcion: rutinas para realizar calculos sobre fechas, 
+ * en estas rutinas, los meses son expresados como enteros desde 
+ * el 1 al 12, los dias como enteros desde el 1 al 31, y los anios 
+ * como enteros de 4 digitos.
+ */
 string dayOfWeek[] = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
 
-// converts Gregorian date to integer (Julian day number)
-int dateToInt(int m, int d, int y) {
+// Convierte fecha Gregoriana a entero (fecha Juliana)
+int dateToInt(int m, int d, int y) { 
     return 1461 * (y + 4800 + (m - 14) / 12) / 4 +
            367 * (m - 2 - (m - 14) / 12 * 12) / 12 - 3 * ((y + 4900 + (m - 14) / 12) / 100) / 4 +
            d - 32075;
 }
 
-// converts integer (Julian day number) to Gregorian date: month/day/year
+// Convierte entero (fecha Juliana) a Gregoriana: M/D/Y
 void intToDate(int jd, int &m, int &d, int &y) {
     int x, n, i, j;
 
@@ -27,7 +29,7 @@ void intToDate(int jd, int &m, int &d, int &y) {
     y = 100 * (n - 49) + i + x;
 }
 
-// converts integer (Julian day number) to day of week
+// Convierte entero (fecha Juliana) a dia de la semana
 string intToDay(int jd) {
     return dayOfWeek[jd % 7];
 }
@@ -38,7 +40,7 @@ int main() {
     intToDate(jd, m, d, y);
     string day = intToDay(jd);
 
-    // expected output:
+    // Salida esperada:
     // 2453089
     // 3/24/2004
     // Wed

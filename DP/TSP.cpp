@@ -1,46 +1,32 @@
-/*
-Problema de agente viajero TSP
-El problema del agente viajero consiste en encontrar un recorrido
-que visite todos los vertices de un grafo, sin repetir y a costo minimo.
-Escribe un programa que resuelva la version del problema en la que el agente
-viajero puede comenzar en cualquier vertice y no necesita regresar al vertice inicial.
-*/
+/**
+ * Descripcion: algoritmo para resolver el problema del viajero (TSP):
+ * consiste en encontrar un recorrido que visite todos los vertices del
+ * grafo, sin repeticiones y con el costo minimo. Este codigo resuelve
+ * una variante del TSP donde se puede comenzar en cualquier vertice y
+ * no necesita volver al inicial.
+ * Tiempo: O(2^n * n)
+ */
 
-int dist[MAXN][MAXN];
-int dp[MAXN][1 << (MAXN + 1)];
-int n;
+constexpr int MAX_NODES = 15;
+int n, dist[MAX_NODES][MAX_NODES], dp[MAX_NODES][1 << (MAX_NODES + 1)];
 
-int solve(int idx, int mask) {
+int solve(int i, int mask) {
     if (mask == (1 << n) - 1)
         return 0;
-    if (dp[idx][mask] != -1)
-        return dp[idx][mask];
+    int &ans = dp[i][mask]; 
+    if (ans != -1)
+        return ans;
 
-    int ret = INF;
-    F0R(i, n) {
-        if ((mask & (1 << i)) == 0) {
-            int newMask = mask | (1 << i);
-            ret = min(ret, solve(i, newMask) + dist[idx][i]);
-        }
-    }
-    return dp[idx][mask] = ret;
+    ans = INF;
+    for (int k = 0; k < n; k++)
+        if ((mask & (1 << k)) == 0)
+            ans = min(ans, solve(k, mask | (1 << k)) + dist[i][k]);
+    return ans;
 }
 
-int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(nullptr);
-
-    cin >> n;
-    memset(dp, -1, sizeof(dp));
-    F0R(i, n) {
-        F0R(j, n) {
-            cin >> dist[i][j];
-        }
-    }
+int solveTSP() {
     int ans = INF;
-    F0R(i, n) {
+    for (int i = 0; i < n; i++)
         ans = min(ans, solve(i, (1 << (i))));
-    }
-    cout << ans;
-    return 0;
+    return ans;
 }
