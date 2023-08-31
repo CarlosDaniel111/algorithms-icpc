@@ -1,9 +1,8 @@
 /**
- * Description: Used infrequently. Ukkonen's algorithm for suffix tree. Longest
- * non-unique suffix of \texttt{s} has length \texttt{len[p]+lef} after each
- * call to \texttt{add} terminates. Each iteration of loop within \texttt{add}
- * decreases this quantity by one.
- * Time: O(N\log \sum)
+ * Descripcion: Algoritmo de Ukkonen para arbol de sufijos. El sufijo no unico
+ * mas largo de S tiene longitud len[p]+lef despues de cada llamada a add.
+ * Cada iteracion del bucle dentro de add esta cantidad disminuye en uno
+ * Tiempo: O(n log sum)
  */
 
 struct SuffixTree {

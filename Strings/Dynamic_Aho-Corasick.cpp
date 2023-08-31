@@ -1,3 +1,17 @@
+/*
+ * Descripcion: Si tenemos N cadenas en el diccionario, mantenga log(N) Aho Corasick
+ * automatas. El i-ésimo automata contiene las primeras 2^k cadenas no incluidas en el
+ * autómatas anteriores. Por ejemplo, si tenemos N = 19, necesitamos 3 automatas: {s[1]...s[16]},
+ * {s[17]...s[18]} y {s[19]}. Para responder a la consulta, podemos atravesar los automatas logN.
+ * utilizando la cadena de consulta dada.
+ * Para manejar la insercion, primero construya un automata usando una sola cadena y luego
+ * Si bien hay dos autómatas con el mismo numero de cadenas, los fusionamos mediante
+ * un nuevo automata usando fuerza bruta.
+ * Para manejar la eliminacion, simplemente insertamos un valor -1 para almacenar en los puntos finales de cada
+ * cadena agregada.
+ * Tiempo: O(m*log(numero_de_inserciones))
+ */
+
 class AhoCorasick {
    public:
     struct Node {

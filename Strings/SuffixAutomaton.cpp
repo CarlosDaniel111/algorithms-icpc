@@ -1,12 +1,11 @@
-/**
- * Description: Used infrequently. Constructs minimal deterministic
- * finite automaton (DFA) that recognizes all suffixes of a string.
- * \texttt{len} corresponds to the maximum length of a string in
- * the equivalence class, \texttt{pos} corresponds to
- * the first ending position of such a string, \texttt{lnk}
- * corresponds to the longest suffix that is in a different class.
- * Suffix links correspond to suffix tree of the reversed string!
- * Time: O(N\log \sum)
+/*
+ * Descripcion: Construye un automata finito que reconoce todos los
+ * sufijos de una cadena. len corresponde a la longitud maxima de una
+ * cadena en la clase de equivalencia, pos corresponde a la primera
+ * posicion final de dicha cadena, lnk corresponde al sufijo mas largo
+ * que esta en una clase diferente. Los enlaces de sufijos corresponden
+ * al arbol de sufijos de la cadena invertida
+ * Tiempo: O(n log sum)
  */
 
 struct SuffixAutomaton {

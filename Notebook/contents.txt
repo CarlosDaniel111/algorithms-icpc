@@ -5,7 +5,7 @@
 
 [Templates]
 Templates/templatecpp.cpp	Plantilla C++
-Templates/templatepy.py	Plantilla Phyton
+Templates/templatepy.py	Plantilla Python
 Templates/templatemax.cpp	Plantilla C++ Max
 
 [Data Structures]

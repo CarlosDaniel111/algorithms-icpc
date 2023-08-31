@@ -1,7 +1,7 @@
 /*
-    Aho-Corasick
-    Este algoritmo te permite buscar rapidamente multiples patrones en un texto
-*/
+ * Descripcion: Este algoritmo te permite buscar rapidamente multiples patrones en un texto
+ * Tiempo: O(mk)
+ */
 
 // Utilizar esta implementacion cuando las letras permitidas sean pocas
 struct AhoCorasick {

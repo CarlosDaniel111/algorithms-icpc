@@ -1,5 +1,5 @@
 /*
- * Un SuffixArray es un array ordenado de todos los sufijos de un string
+ * Descripcion: Un SuffixArray es un array ordenado de todos los sufijos de un string
  * Tiempo: O(|S|)
  * Aplicaciones:
  *  - Encontrar todas las ocurrencias de un substring P dentro del string S - O(|P| log n)

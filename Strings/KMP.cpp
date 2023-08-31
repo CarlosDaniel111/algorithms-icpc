@@ -1,6 +1,5 @@
 /*
- * Prefix function. Knuth-Morris-Pratt
- * El prefix function para un string S es definido como un arreglo phi donde phi[i] es
+ * Descripcion: El prefix function para un string S es definido como un arreglo phi donde phi[i] es
  * la longitud del prefijo propio de S mas largo de la subcadena S[0..i] el cual tambien
  * es sufijo de esta subcadena
  * Tiempo: O(|s| + |pat|)

@@ -1,3 +1,10 @@
+/*
+ * Descripcion: Un trie es una estructura de datos de arbol multidireccional
+ * que se utiliza para almacenar cadenas en un alfabeto. La coincidencia
+ * de patrones se puede realizar de manera eficiente usando trie
+ * Tiempo: O(n)
+ */
+
 struct TrieNode {
     unordered_map<char, TrieNode *> children;
     bool isEndOfWord;

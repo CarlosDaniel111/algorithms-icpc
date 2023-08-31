@@ -1,3 +1,9 @@
+/*
+ * Descripcion: longitud del palindromo mas grande centrado en cada caracter de la cadena
+ * y entre cada par consecutivo
+ * Tiempo: O(n)
+ */
+
 vi manacher(string _S) {
     string S = char(64);
     for (char c : _S) S += c, S += char(35);

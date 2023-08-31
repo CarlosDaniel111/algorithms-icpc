@@ -1,6 +1,6 @@
 /*
  * Hashing
- * El objetivo es convertir una cadena en un numero entero
+ * Descripcion: El objetivo es convertir una cadena en un numero entero
  * para poder comparar cadenas en O(1)
  * Tiempo: O(|s|)
  */
