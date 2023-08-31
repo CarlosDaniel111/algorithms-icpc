@@ -26,6 +26,7 @@ DataStructure/SegmentTree/Iterative.cpp	Iterative Segment Tree
 Math/Bits.cpp	Operaciones con Bits
 Math/Combinations.cpp	Combinaciones
 Math/Euclid.cpp	Algoritmo Ext. de Euclides
+Math/FFT.cpp	FFT
 Math/LinearDiophantine.cpp	Linear Diophantine
 Math/Matrix.cpp	Matrix
 Math/ModOperations.cpp	Operaciones con MOD
