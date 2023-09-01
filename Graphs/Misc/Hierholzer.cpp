@@ -16,18 +16,18 @@ int N;
 vector<vi> graph;  // Grafo dirigido
 
 vi hierholzer(int s) {
-    vi ans, idx(N, 0), st;
-    st.pb(s);
-    while (!st.empty()) {
-        int u = st.back();
-        if (idx[u] < (int)graph[u].size()) {
-            st.pb(graph[u][idx[u]]);
-            ++idx[u];
-        } else {
-            ans.pb(u);
-            st.pop_back();
-        }
+  vi ans, idx(N, 0), st;
+  st.pb(s);
+  while (!st.empty()) {
+    int u = st.back();
+    if (idx[u] < (int)graph[u].size()) {
+      st.pb(graph[u][idx[u]]);
+      ++idx[u];
+    } else {
+      ans.pb(u);
+      st.pop_back();
     }
-    reverse(all(ans));
-    return ans;
+  }
+  reverse(all(ans));
+  return ans;
 }

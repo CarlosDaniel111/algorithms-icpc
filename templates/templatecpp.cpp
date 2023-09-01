@@ -20,8 +20,8 @@ constexpr int INF = 1e9;
 constexpr ll LLINF = 1e18;
 
 int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(nullptr);
+  ios_base::sync_with_stdio(0);
+  cin.tie(nullptr);
 
-    return 0;
+  return 0;
 }

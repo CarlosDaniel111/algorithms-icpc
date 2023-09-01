@@ -6,19 +6,19 @@ inline double RAD_to_DEG(double r) { return (r * 180.0 / PI); }
 
 typedef double T;
 struct Point {
-    T x, y;
-    Point operator+(Point& p) const { return {x + p.x, y + p.y}; }
-    Point operator-(Point& p) const { return {x - p.x, y - p.y}; }
-    Point operator*(T& d) const { return {x * d, y * d}; }
-    Point operator/(T& d) const { return {x / d, y / d}; }  // Solo para punto flotante
+  T x, y;
+  Point operator+(Point& p) const { return {x + p.x, y + p.y}; }
+  Point operator-(Point& p) const { return {x - p.x, y - p.y}; }
+  Point operator*(T& d) const { return {x * d, y * d}; }
+  Point operator/(T& d) const { return {x / d, y / d}; }  // Solo para punto flotante
 
-    bool operator<(Point& other) const {
-        if (fabs(x - other.x) > EPS)
-            return x < other.x;
-        return y < other.y;
-    }
-    bool operator==(Point& other) const { return fabs(x - other.x) <= EPS && fabs(y - other.y) <= EPS; }
-    bool operator!=(Point& other) const { return !(*this == other); }
+  bool operator<(Point& other) const {
+    if (fabs(x - other.x) > EPS)
+      return x < other.x;
+    return y < other.y;
+  }
+  bool operator==(Point& other) const { return fabs(x - other.x) <= EPS && fabs(y - other.y) <= EPS; }
+  bool operator!=(Point& other) const { return !(*this == other); }
 };
 
 T sq(Point p) { return p.x * p.x + p.y * p.y; }
@@ -47,8 +47,8 @@ bool isPerp(Point v, Point w) { return dot(v, w) == 0; }
 double angle(Point v, Point w) { return acos(clamp(dot(v, w) / abs(v) / abs(w), -1.0, 1.0)); }
 // C++14 o menor
 double angle(Point v, Point w) {
-    double cosTheta = dot(v, w) / abs(v) / abs(w);
-    return acos(max(-1.0, min(1.0, cosTheta)));
+  double cosTheta = dot(v, w) / abs(v) / abs(w);
+  return acos(max(-1.0, min(1.0, cosTheta)));
 }
 
 T cross(Point v, Point w) { return v.x * w.y - v.y * w.x; }
@@ -57,7 +57,7 @@ T orient(Point a, Point b, Point c) { return cross(b - a, c - a); }
 // Funcion signum: -1 si x es negativo, 0 si x = 0 y 1 si x es positivo
 template <typename T>
 int sgn(T x) {
-    return (T(0) < x) - (x < T(0));
+  return (T(0) < x) - (x < T(0));
 }
 
 int manhattan(Point& p1, Point& p2) { return abs(p1.x - p2.x) + abs(p1.y - p2.y); }
@@ -65,5 +65,5 @@ int manhattan(Point& p1, Point& p2) { return abs(p1.x - p2.x) + abs(p1.y - p2.y)
 // Vector desplazamiento desde el punto p1 a p2
 Point toVector(Point& p1, Point& p2) { return p2 - p1; }
 bool areCollinear(Point& p, Point& q, Point& r) {
-    return abs(cross(toVector(p, q), toVector(p, r))) <= EPS;
+  return abs(cross(toVector(p, q), toVector(p, r))) <= EPS;
 }

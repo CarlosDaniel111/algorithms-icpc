@@ -11,22 +11,22 @@ constexpr int MAX_NODES = 15;
 int n, dist[MAX_NODES][MAX_NODES], dp[MAX_NODES][1 << (MAX_NODES + 1)];
 
 int solve(int i, int mask) {
-    if (mask == (1 << n) - 1)
-        return 0;
-    int &ans = dp[i][mask]; 
-    if (ans != -1)
-        return ans;
-
-    ans = INF;
-    for (int k = 0; k < n; k++)
-        if ((mask & (1 << k)) == 0)
-            ans = min(ans, solve(k, mask | (1 << k)) + dist[i][k]);
+  if (mask == (1 << n) - 1)
+    return 0;
+  int &ans = dp[i][mask];
+  if (ans != -1)
     return ans;
+
+  ans = INF;
+  for (int k = 0; k < n; k++)
+    if ((mask & (1 << k)) == 0)
+      ans = min(ans, solve(k, mask | (1 << k)) + dist[i][k]);
+  return ans;
 }
 
 int solveTSP() {
-    int ans = INF;
-    for (int i = 0; i < n; i++)
-        ans = min(ans, solve(i, (1 << (i))));
-    return ans;
+  int ans = INF;
+  for (int i = 0; i < n; i++)
+    ans = min(ans, solve(i, (1 << (i))));
+  return ans;
 }

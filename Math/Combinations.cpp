@@ -6,15 +6,15 @@
  */
 ll invfact[MAXN];
 void precalc_invfact() {
-    precalc_inv();
-    for (int i = 2; i < MAXN; i++)
-        invfact[i] = invfact[i - 1] * inv[i] % MOD;
+  precalc_inv();
+  for (int i = 2; i < MAXN; i++)
+    invfact[i] = invfact[i - 1] * inv[i] % MOD;
 }
 
 ll comb(int n, int k) {
-    if (n < k)
-        return 0;
-    return fact[n] * invfact[k] % MOD * invfact[n - k] % MOD;
+  if (n < k)
+    return 0;
+  return fact[n] * invfact[k] % MOD * invfact[n - k] % MOD;
 }
 
 /**
@@ -23,11 +23,11 @@ ll comb(int n, int k) {
  * Tiempo: O(m log_m(n))
  */
 ll comb(int n, int k) {
-    if (n < k || k < 0)
-        return 0;
-    if (n == k)
-        return 1;
-    return comb(n % MOD, k % MOD) * comb(n / MOD, k / MOD) % MOD;
+  if (n < k || k < 0)
+    return 0;
+  if (n == k)
+    return 1;
+  return comb(n % MOD, k % MOD) * comb(n / MOD, k / MOD) % MOD;
 }
 
 /*
@@ -37,11 +37,11 @@ ll comb(int n, int k) {
  */
 ll dp[MAXN][MAXN];
 ll comb(int n, int k) {
-    if (k > n || k < 0)
-        return 0;
-    if (n == k || k == 0)
-        return 1;
-    if (dp[n][k] != -1)
-        return dp[n][k];
-    return dp[n][k] = comb(n - 1, k) + comb(n - 1, k - 1);
+  if (k > n || k < 0)
+    return 0;
+  if (n == k || k == 0)
+    return 1;
+  if (dp[n][k] != -1)
+    return dp[n][k];
+  return dp[n][k] = comb(n - 1, k) + comb(n - 1, k - 1);
 }

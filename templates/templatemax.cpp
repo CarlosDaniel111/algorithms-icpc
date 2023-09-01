@@ -57,8 +57,8 @@ template <class T>
 using pqg = priority_queue<T, vector<T>, greater<T>>;
 
 int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(nullptr);
+  ios_base::sync_with_stdio(0);
+  cin.tie(nullptr);
 
-    return 0;
+  return 0;
 }

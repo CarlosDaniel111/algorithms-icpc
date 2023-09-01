@@ -10,11 +10,11 @@
 vi g[MAXN];
 int val[MAXN], in[MAXN], out[MAXN], toursz = 0;
 void dfs(int u, int p) {
-    in[u] = toursz++;
+  in[u] = toursz++;
 
-    for (auto& v : g[u])
-        if (v != p)
-            dfs(v, u);
+  for (auto& v : g[u])
+    if (v != p)
+      dfs(v, u);
 
-    out[u] = toursz++;
+  out[u] = toursz++;
 }

@@ -23,13 +23,13 @@ void solve() {
 }
 
 int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(nullptr);
+  ios_base::sync_with_stdio(0);
+  cin.tie(nullptr);
 
-    int t = 1;
-    cin >> t;
-    while (t--)
-        solve();
+  int t = 1;
+  cin >> t;
+  while (t--)
+    solve();
 
-    return 0;
+  return 0;
 }

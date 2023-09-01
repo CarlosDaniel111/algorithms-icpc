@@ -1,5 +1,5 @@
 /**
- * Descripcion: Estos 2 algoritmos encuentran por medio de la Criba 
+ * Descripcion: Estos 2 algoritmos encuentran por medio de la Criba
  * de Eratostenes todos los numeros primos menor o iguales a n, difieren
  * por su estrategia y por consecuente su complejidad temporal.
  * Tiempo metodo #1: O(n log(log n))
@@ -8,59 +8,59 @@
 ll sieve_size;
 vl primes;
 void sieve(int n) {
-    vector<bool> is_prime(n + 1, 1);
+  vector<bool> is_prime(n + 1, 1);
 
-    is_prime[0] = is_prime[1] = 0;
-    for (ll p = 2; p <= n; p++) {
-        if (is_prime[p]) {
-            for (ll i = p * p; i <= n; i += p) is_prime[i] = 0;
-            primes.push_back(p);
-        }
+  is_prime[0] = is_prime[1] = 0;
+  for (ll p = 2; p <= n; p++) {
+    if (is_prime[p]) {
+      for (ll i = p * p; i <= n; i += p) is_prime[i] = 0;
+      primes.push_back(p);
     }
+  }
 }
 void sieve(int N) {
-    vector<int> lp(N + 1);
-    vector<int> pr;
+  vector<int> lp(N + 1);
+  vector<int> pr;
 
-    for (int i = 2; i <= N; ++i) {
-        if (lp[i] == 0) {
-            lp[i] = i;
-            pr.push_back(i);
-        }
-        for (int j = 0; i * pr[j] <= N; ++j) {
-            lp[i * pr[j]] = pr[j];
-            if (pr[j] == lp[i]) {
-                break;
-            }
-        }
+  for (int i = 2; i <= N; ++i) {
+    if (lp[i] == 0) {
+      lp[i] = i;
+      pr.push_back(i);
     }
+    for (int j = 0; i * pr[j] <= N; ++j) {
+      lp[i * pr[j]] = pr[j];
+      if (pr[j] == lp[i]) {
+        break;
+      }
+    }
+  }
 }
 
 /**
- * Descripcion: Calcula la funcion de Mobius 
+ * Descripcion: Calcula la funcion de Mobius
  * para todo entero menor o igual a n
  * Tiempo: O(N)
  */
 void preMobius(int N) {
-    memset(check, false, sizeof(check));
-    mu[1] = 1;
-    int tot = 0;
-    FOR(i, 2, N) {
-        if (!check[i]) {  // i es primo
-            prime[tot++] = i;
-            mu[i] = -1;
-        }
-        FOR(j, 0, tot) {
-            if (i * prime[j] > N) break;
-            check[i * prime[j]] = true;
-            if (i % prime[j] == 0) {
-                mu[i * prime[j]] = 0;
-                break;
-            } else {
-                mu[i * prime[j]] = -mu[i];
-            }
-        }
+  memset(check, false, sizeof(check));
+  mu[1] = 1;
+  int tot = 0;
+  FOR(i, 2, N) {
+    if (!check[i]) {  // i es primo
+      prime[tot++] = i;
+      mu[i] = -1;
     }
+    FOR(j, 0, tot) {
+      if (i * prime[j] > N) break;
+      check[i * prime[j]] = true;
+      if (i % prime[j] == 0) {
+        mu[i * prime[j]] = 0;
+        break;
+      } else {
+        mu[i * prime[j]] = -mu[i];
+      }
+    }
+  }
 }
 
 // Primos menores a 1000:

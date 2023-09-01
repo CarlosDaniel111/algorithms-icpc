@@ -10,7 +10,6 @@ Templates/templatemax.cpp	Plantilla C++ Max
 
 [Data Structures]
 DataStructure/BIT.cpp	Binary Indexed Tree
-DataStructure/DSU.cpp	Union-Find
 DataStructure/DSU_Rollback.cpp	DSU RollBack
 DataStructure/FenwickTree.cpp	Fenwick Tree
 DataStructure/OrderStatisticsTree.cpp	Order Statistics Tree

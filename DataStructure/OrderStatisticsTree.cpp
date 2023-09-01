@@ -1,9 +1,9 @@
 /**
- * Descripcion: es una variante del BST, que ademas soporta 2 
+ * Descripcion: es una variante del BST, que ademas soporta 2
  * operaciones extra ademas de insercion, busqueda y eliminacion:
  * Select(i) - find_by_order: encontrar el i-esimo elemento (0-indexado)
  * del conjunto ordenado de los elementos, retorna un iterador.
- * Rank(x) - order_of_key: encontrar el rango de x en el conjunto, 
+ * Rank(x) - order_of_key: encontrar el rango de x en el conjunto,
  * es decir, retorna su indice en la lista ordenada de los elementos.
  * Uso:
  * oset<int> OST
@@ -11,7 +11,7 @@
  * repetidos. Si se necesitan repetidos, pero no eliminar valores,
  * cambiar la funcion comparadora por less_equal<T>. Si se necesitan
  * repetidos y tambien la eliminacion, agregar una dimension a T en
- * en donde el ultimo parametro sea el diferenciador (por ejemplo, 
+ * en donde el ultimo parametro sea el diferenciador (por ejemplo,
  * si estamos con enteros, utilizar un pair donde el second sea unico).
  * Modificar el primer y tercer parametro (tipo y funcion comparadora),
  * si se necesita un mapa, en lugar de null_type, escribir el tipo a mapear.

@@ -6,64 +6,64 @@
  */
 
 struct TrieNode {
-    unordered_map<char, TrieNode *> children;
-    bool isEndOfWord;
-    int numPrefix;
+  unordered_map<char, TrieNode *> children;
+  bool isEndOfWord;
+  int numPrefix;
 
-    TrieNode() : isEndOfWord(false), numPrefix(0) {}
+  TrieNode() : isEndOfWord(false), numPrefix(0) {}
 };
 
 class Trie {
-   private:
-    TrieNode *root;
+ private:
+  TrieNode *root;
 
-   public:
-    Trie() {
-        root = new TrieNode();
-    }
+ public:
+  Trie() {
+    root = new TrieNode();
+  }
 
-    void insert(string word) {
-        TrieNode *curr = root;
-        for (char c : word) {
-            if (curr->children.find(c) == curr->children.end()) {
-                curr->children[c] = new TrieNode();
-            }
-            curr = curr->children[c];
-            curr->numPrefix++;
-        }
-        curr->isEndOfWord = true;
+  void insert(string word) {
+    TrieNode *curr = root;
+    for (char c : word) {
+      if (curr->children.find(c) == curr->children.end()) {
+        curr->children[c] = new TrieNode();
+      }
+      curr = curr->children[c];
+      curr->numPrefix++;
     }
+    curr->isEndOfWord = true;
+  }
 
-    bool search(string word) {
-        TrieNode *curr = root;
-        for (char c : word) {
-            if (curr->children.find(c) == curr->children.end()) {
-                return false;
-            }
-            curr = curr->children[c];
-        }
-        return curr->isEndOfWord;
+  bool search(string word) {
+    TrieNode *curr = root;
+    for (char c : word) {
+      if (curr->children.find(c) == curr->children.end()) {
+        return false;
+      }
+      curr = curr->children[c];
     }
+    return curr->isEndOfWord;
+  }
 
-    bool startsWith(string prefix) {
-        TrieNode *curr = root;
-        for (char c : prefix) {
-            if (curr->children.find(c) == curr->children.end()) {
-                return false;
-            }
-            curr = curr->children[c];
-        }
-        return true;
+  bool startsWith(string prefix) {
+    TrieNode *curr = root;
+    for (char c : prefix) {
+      if (curr->children.find(c) == curr->children.end()) {
+        return false;
+      }
+      curr = curr->children[c];
     }
+    return true;
+  }
 
-    int countPrefix(string prefix) {
-        TrieNode *curr = root;
-        for (char c : prefix) {
-            if (curr->children.find(c) == curr->children.end()) {
-                return 0;
-            }
-            curr = curr->children[c];
-        }
-        return curr->numPrefix;
+  int countPrefix(string prefix) {
+    TrieNode *curr = root;
+    for (char c : prefix) {
+      if (curr->children.find(c) == curr->children.end()) {
+        return 0;
+      }
+      curr = curr->children[c];
     }
+    return curr->numPrefix;
+  }
 };

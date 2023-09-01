@@ -10,99 +10,99 @@
 #define LSOne(S) ((S) & -(S))
 
 class FenwickTree {
-   private:
-    vll ft;
+ private:
+  vll ft;
 
-   public:
-    FenwickTree(int m) { ft.assign(m + 1, 0); }
+ public:
+  FenwickTree(int m) { ft.assign(m + 1, 0); }
 
-    void build(const vll &f) {
-        int m = (int)f.size() - 1;
-        ft.assign(m + 1, 0);
-        FOR(i, 1, m + 1) {
-            ft[i] += f[i];
-            if (i + LSOne(i) <= m)
-                ft[i + LSOne(i)] += ft[i];
-        }
+  void build(const vll &f) {
+    int m = (int)f.size() - 1;
+    ft.assign(m + 1, 0);
+    FOR(i, 1, m + 1) {
+      ft[i] += f[i];
+      if (i + LSOne(i) <= m)
+        ft[i + LSOne(i)] += ft[i];
     }
+  }
 
-    FenwickTree(const vll &f) { build(f); }
+  FenwickTree(const vll &f) { build(f); }
 
-    FenwickTree(int m, const vi &s) {
-        vll f(m + 1, 0);
-        F0R(i, (int)s.size()) {
-            ++f[s[i]];
-        }
-        build(f);
+  FenwickTree(int m, const vi &s) {
+    vll f(m + 1, 0);
+    F0R(i, (int)s.size()) {
+      ++f[s[i]];
     }
+    build(f);
+  }
 
-    ll query(int j) {
-        ll sum = 0;
-        for (; j; j -= LSOne(j))
-            sum += ft[j];
-        return sum;
-    }
+  ll query(int j) {
+    ll sum = 0;
+    for (; j; j -= LSOne(j))
+      sum += ft[j];
+    return sum;
+  }
 
-    ll query(int i, int j) {
-        return query(j) - query(i - 1);
-    }
+  ll query(int i, int j) {
+    return query(j) - query(i - 1);
+  }
 
-    void update(int i, ll v) {
-        for (; i < (int)ft.size(); i += LSOne(i))
-            ft[i] += v;
-    }
+  void update(int i, ll v) {
+    for (; i < (int)ft.size(); i += LSOne(i))
+      ft[i] += v;
+  }
 
-    int select(ll k) {
-        int p = 1;
-        while (p * 2 < (int)ft.size())
-            p *= 2;
-        int i = 0;
-        while (p) {
-            if (k > ft[i + p]) {
-                k -= ft[i + p];
-                i += p;
-            }
-            p /= 2;
-        }
-        return i + 1;
+  int select(ll k) {
+    int p = 1;
+    while (p * 2 < (int)ft.size())
+      p *= 2;
+    int i = 0;
+    while (p) {
+      if (k > ft[i + p]) {
+        k -= ft[i + p];
+        i += p;
+      }
+      p /= 2;
     }
+    return i + 1;
+  }
 };
 
 class RUPQ {  // Consulta de punto y actualizacion de rango
-   private:
-    FenwickTree ft;
+ private:
+  FenwickTree ft;
 
-   public:
-    RUPQ(int m) : ft(FenwickTree(m)) {}
+ public:
+  RUPQ(int m) : ft(FenwickTree(m)) {}
 
-    void range_update(int ui, int uj, ll v) {
-        ft.update(ui, v);
-        ft.update(uj + 1, -v);
-    }
+  void range_update(int ui, int uj, ll v) {
+    ft.update(ui, v);
+    ft.update(uj + 1, -v);
+  }
 
-    ll point_query(int i) {
-        return ft.query(i);
-    }
+  ll point_query(int i) {
+    return ft.query(i);
+  }
 }
 
 class RURQ {  // Consulta de rango y actualizacion de rango
-   private:
-    RUPQ(int m) : rupq(RUPQ(m)), purq(FenwickTree(m)) {}
+ private:
+  RUPQ(int m) : rupq(RUPQ(m)), purq(FenwickTree(m)) {}
 
-    void range_update(int ui, int uj, ll v) {
-        rupq.range_update(ui, uj, v);
-        purq.update(ui, v * (ui - 1));
-        purq.update(uj + 1, -v * uj);
-    }
+  void range_update(int ui, int uj, ll v) {
+    rupq.range_update(ui, uj, v);
+    purq.update(ui, v * (ui - 1));
+    purq.update(uj + 1, -v * uj);
+  }
 
-    ll query(int j) {
-        return ruqp.point_query(j) * j -
-               purq.query(j);
-    }
+  ll query(int j) {
+    return ruqp.point_query(j) * j -
+           purq.query(j);
+  }
 
-    ll query(int i, int j) {
-        return query(j) - query(i - 1);
-    }
+  ll query(int i, int j) {
+    return query(j) - query(i - 1);
+  }
 }
 
 // Implementacion
@@ -122,6 +122,6 @@ rurq.range_update(6, 7, 3);
 // idx = 0 (unused) | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |10
 // val = -          | 0 | 7 | 7 | 7 | 7 |10 |10 | 7 | 7 | 0
 for (int i = 1; i <= 10; i++)
-    printf("%d -> %lld\n", i, rupq.point_query(i));
+  printf("%d -> %lld\n", i, rupq.point_query(i));
 printf("RSQ(1, 10) = %lld\n", rurq.rsq(1, 10));  // 62
 printf("RSQ(6, 7) = %lld\n", rurq.rsq(6, 7));    // 20

@@ -7,10 +7,10 @@
  */
 
 ll euclid(ll a, ll b, ll &x, ll &y) {
-    if (!b) {
-        x = 1, y = 0;
-        return a;
-    }
-    ll d = euclid(b, a % b, y, x);
-    return y -= a / b * x, d;
+  if (!b) {
+    x = 1, y = 0;
+    return a;
+  }
+  ll d = euclid(b, a % b, y, x);
+  return y -= a / b * x, d;
 }

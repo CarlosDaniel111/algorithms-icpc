@@ -14,24 +14,24 @@ bool taken[MAXN];
 priority_queue<pi> pq;
 
 void process(int u) {
-    taken[u] = 1;
-    for (auto &[v, w] : graph[u])
-        if (!taken[v])
-            pq.push({-w, v});
+  taken[u] = 1;
+  for (auto &[v, w] : graph[u])
+    if (!taken[v])
+      pq.push({-w, v});
 }
 
 int prim() {
-    process(0);
-    int totalWeight = 0, takenEdges = 0;
-    while (!pq.empty() && takenEdges != V - 1) {
-        auto [w, u] = pq.top();
-        pq.pop();
-        
-        if (taken[u]) continue;
+  process(0);
+  int totalWeight = 0, takenEdges = 0;
+  while (!pq.empty() && takenEdges != V - 1) {
+    auto [w, u] = pq.top();
+    pq.pop();
 
-        totalWeight -= w;
-        process(u);
-        ++takenEdges;
-    }
-    return totalWeight;
+    if (taken[u]) continue;
+
+    totalWeight -= w;
+    process(u);
+    ++takenEdges;
+  }
+  return totalWeight;
 }
