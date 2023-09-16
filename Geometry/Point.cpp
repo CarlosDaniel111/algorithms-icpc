@@ -18,13 +18,13 @@ struct Point {
   Point operator/(T d) const { return {x / d, y / d}; }  // Solo para punto flotante
 
   // Operaciones de comparacion para punto flotante
-  bool operator<(Point& other) const {
+  bool operator<(Point other) const {
     if (fabs(x - other.x) > EPS)
       return x < other.x;
     return y < other.y;
   }
-  bool operator==(Point& other) const { return fabs(x - other.x) <= EPS && fabs(y - other.y) <= EPS; }
-  bool operator!=(Point& other) const { return !(*this == other); }
+  bool operator==(Point other) const { return fabs(x - other.x) <= EPS && fabs(y - other.y) <= EPS; }
+  bool operator!=(Point other) const { return !(*this == other); }
 
   // Operaciones de comparacion para enteros
   bool operator<(Point p) const { return tie(x, y) < tie(p.x, p.y); }
@@ -50,7 +50,6 @@ Point rotate(Point p, double a) { return {p.x * cos(a) - p.y * sin(a), p.x * sin
 Point perpendicular(Point p) { return {-p.y, p.x}; }
 double dist(Point p1, Point p2) { return hypot(p1.x - p2.x, p1.y - p2.y); }
 
-// VECTORES
 // Vector desplazamiento desde el punto p1 a p2
 Point toVector(Point& p1, Point& p2) { return p2 - p1; }
 // Operaciones vectoriales, en donde nuestro punto indica el fin del vector, siendo el origen su inicio

@@ -19,7 +19,6 @@ Line pointsToLine(Point& p1, Point& p2) {
 Line pointSlopeToLine(Point& p, double& m) { return Line{-m, 1, -((-m * p.x) + p.y)}; }
 
 bool areParallel(Line& l1, Line& l2) { return (abs(l1.a - l2.a) <= EPS) && (abs(l1.b - l2.b) <= EPS); }
-
 bool areSame(Line& l1, Line& l2) { return areParallel(l1, l2) && (abs(l1.c - l2.c) <= EPS); }
 
 bool areIntersect(Line l1, Line l2, Point& p) {
@@ -55,9 +54,18 @@ void closestPoint(Line l, Point p, Point& ans) {
   areIntersect(l, perpendicular, ans);
 }
 
+// Retorna la distancia mas corta entre el punto P y la linea de A a B
+// y guarda el punto mas cercano en C
+double distToLine(Point p, Point a, Point b, Point& c) {
+  Point ap = toVector(a, p), ab = toVector(a, b);
+  double u = dot(ap, ab) / sq(ab);
+  c = translate(a, scale(ab, u));
+  return dist(p, c);
+}
+
 void reflectionPoint(Line l, Point p, Point& ans) {
   Point b;
   closestPoint(l, p, b);
-  vec v = toVec(p, b);
+  vec v = toVector(p, b);
   ans = translate(translate(p, v), v);
 }
