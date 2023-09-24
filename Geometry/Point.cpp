@@ -65,6 +65,16 @@ double angle(Point v, Point w) {
   return acos(max(-1.0, min(1.0, cosTheta)));
 }
 
+// Angulo que se forma en 3 puntos
+double angle(Point a, Point o, Point b) {
+  Point oa = toVector(o, a), ob = toVector(o, b);
+  return acos(dot(oa, ob) / sqrt(sq(oa) * sq(ob)));
+}
+
+bool ccw(Point p, Point q, Point r) {
+  return cross(toVector(p, q), toVector(p, r)) > -EPS;
+}
+
 T cross(Point v, Point w) { return v.x * w.y - v.y * w.x; }
 T orient(Point a, Point b, Point c) { return cross(b - a, c - a); }
 
