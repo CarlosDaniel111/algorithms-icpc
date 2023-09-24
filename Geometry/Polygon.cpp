@@ -57,3 +57,15 @@ int insidePolygon(Point pt, const vector<Point>& P) {
   }
   return fabs(sum) > M_PI ? 1 : -1;
 }
+
+// Retorna si el punto esta dentro del triangulo
+double area(Point a, Point b, Point c) {
+  return abs((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2.0);
+}
+bool isInside(Point a, Point b, Point c, Point p) {
+  double A = area(a, b, c);
+  double A1 = area(p, b, c);
+  double A2 = area(a, p, c);
+  double A3 = area(a, b, p);
+  return (fabs(A - (A1 + A2 + A3)) <= EPS);
+}
