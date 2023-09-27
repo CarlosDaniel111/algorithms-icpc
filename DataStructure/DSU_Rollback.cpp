@@ -10,8 +10,8 @@ struct RollbackDSU {
   vector<int> e;
   vector<pair<int, int>> st;
   RollbackDS(int n) : e(n, -1) {}
-  int size(int x) { return -e[find(x)]; }
-  int find(int x) { return e[x] < 0 ? x : find(e[x]); }
+  int size(int x) { return -e[get(x)]; }
+  int get(int x) { return e[x] < 0 ? x : e[x] = get(e[x]); }
   int time() { return st.size(); }
   void rollback(int t) {
     for (int i = time(); i-- > t;)
@@ -19,7 +19,7 @@ struct RollbackDSU {
     st.resize(t);
   }
   bool join(int a, int b) {
-    a = find(a), b = find(b);
+    a = get(a), b = get(b);
     if (a == b)
       return false;
     if (e[a] > e[b])
