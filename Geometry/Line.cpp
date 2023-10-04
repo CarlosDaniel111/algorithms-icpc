@@ -66,6 +66,6 @@ double distToLine(Point p, Point a, Point b, Point& c) {
 void reflectionPoint(Line l, Point p, Point& ans) {
   Point b;
   closestPoint(l, p, b);
-  vec v = toVector(p, b);
+  Point v = toVector(p, b);
   ans = translate(translate(p, v), v);
 }
