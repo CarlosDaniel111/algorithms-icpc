@@ -24,3 +24,25 @@ bool circle2PtsRad(Point p1, Point p2, double r, Point &c) {
   c.y = (p1.y + p2.y) * 0.5 + (p2.x - p1.x) * h;
   return true;
 }
+
+void circle_line_intersection(double r, Line linea) {
+  double a = linea.a, b = linea.b, c = linea.c;
+  double x0 = -a * c / (a * a + b * b), y0 = -b * c / (a * a + b * b);
+  if (c * c > r * r * (a * a + b * b) + EPS)
+    puts("no points");
+  else if (abs(c * c - r * r * (a * a + b * b)) < EPS) {
+    puts("1 point");
+    cout << x0 << ' ' << y0 << ENDL;
+  } else {
+    double d = r * r - c * c / (a * a + b * b);
+    double mult = sqrt(d / (a * a + b * b));
+    double ax, ay, bx, by;
+    ax = x0 + b * mult;
+    bx = x0 - b * mult;
+    ay = y0 - a * mult;
+    by = y0 + a * mult;
+    puts("2 points");
+    cout << ax << ' ' << ay << ENDL
+         << bx << ' ' << by << ENDL;
+  }
+}

@@ -11,6 +11,14 @@ const LOG_MAXN = 25;
 int jump[MAXN][LOG_MAXN];
 int depth[MAXN];
 
+void dfs(int u, int padre = -1, int d = 0) {
+  depth[u] = d;
+  jump[u][0] = padre;
+  for (auto &hijo : graph[u])
+    if (hijo != padre)
+      dfs(hijo, u, d + 1);
+}
+
 void build(int n) {
   memset(jump, -1, sizeof jump);
 
