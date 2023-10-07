@@ -7,14 +7,15 @@
  * Tiempo: O(n log n) en construccion y O(log n) por consulta
  */
 
-const LOG_MAXN = 25;
-int jump[MAXN][LOG_MAXN];
-int depth[MAXN];
+const MAX = 1e5 + 5, LOG_MAX = 28;
+vector<int> g[MAX];
+int jump[MAX][LOG_MAX];
+int depth[MAX];
 
 void dfs(int u, int padre = -1, int d = 0) {
   depth[u] = d;
   jump[u][0] = padre;
-  for (auto &hijo : graph[u])
+  for (auto &hijo : g[u])
     if (hijo != padre)
       dfs(hijo, u, d + 1);
 }
@@ -24,7 +25,7 @@ void build(int n) {
 
   dfs(0);
 
-  for (int i = 1; i < LOG_MAXN; i++)
+  for (int i = 1; i < LOG_MAX; i++)
     for (int u = 0; u < n; u++)
       if (jump[u][i - 1] != -1)
         jump[u][i] = jump[jump[u][i - 1]][i - 1];
@@ -35,14 +36,14 @@ int LCA(int p, int q) {
     swap(p, q);
 
   int dist = depth[p] - depth[q];
-  for (int i = LOG_MAXN - 1; i >= 0; i--)
+  for (int i = LOG_MAX - 1; i >= 0; i--)
     if ((dist >> i) & 1)
       p = jump[p][i];
 
   if (p == q)
     return p;
 
-  for (int i = LOG_MAXN - 1; i >= 0; i--)
+  for (int i = LOG_MAX - 1; i >= 0; i--)
     if (jump[p][i] != jump[q][i]) {
       p = jump[p][i];
       q = jump[q][i];
