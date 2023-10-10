@@ -7,6 +7,7 @@
 ll invfact[MAXN];
 void precalc_invfact() {
   precalc_inv();
+  invfact[1] = 1;
   for (int i = 2; i < MAXN; i++)
     invfact[i] = invfact[i - 1] * inv[i] % MOD;
 }
