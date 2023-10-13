@@ -36,6 +36,20 @@ void sieve(int N) {
   }
 }
 
+/*
+ *Descripcion: Calcular todos los factores primos de N
+ */
+vi primeFactors(ll N) {
+  vi factors;
+  for (int i = 0; i < (int)primes.size() && primes[i] * primes[i] <= N; ++i)
+    while (N % primes[i] == 0) {
+      N /= primes[i];
+      factors.push_back(primes[i]);
+    }
+  if (N != 1) factors.push_back(N);
+  return factors;
+}
+
 /**
  * Descripcion: Calcula la funcion de Mobius
  * para todo entero menor o igual a n
