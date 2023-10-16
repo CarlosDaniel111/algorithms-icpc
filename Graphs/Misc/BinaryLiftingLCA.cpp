@@ -51,3 +51,7 @@ int LCA(int p, int q) {
 
   return jump[p][0];
 }
+
+int dist(int u, int v) {
+  return depth[u] + depth[v] - 2 * depth[LCA(u, v)];
+}
