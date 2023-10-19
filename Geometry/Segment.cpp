@@ -28,9 +28,9 @@ double distToLineSegment(Point p, Point a, Point b, Point& c) {
   return distToLine(p, a, b, c);
 }
 
-// Si existe un punto de intersección único entre los segmentos de línea que van de A a B y de C a D, se devuelve.
-// Si no existe ningún punto de intersección, se devuelve un vector vacío.
-// Si existen infinitos, se devuelve un vector con 2 elementos, que contiene los puntos finales del segmento de línea común.
+// Si existe un punto de interseccion unico entre los segmentos de linea que van de A a B y de C a D, se devuelve.
+// Si no existe ningun punto de interseccion, se devuelve un vector vacio.
+// Si existen infinitos, se devuelve un vector con 2 elementos, que contiene los puntos finales del segmento de linea comun.
 vector<Point> segInter(Point a, Point b, Point c, Point d) {
   auto oa = orient(c, d, a), ob = orient(c, d, b),
        oc = orient(a, b, c), od = orient(a, b, d);

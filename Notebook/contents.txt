@@ -10,6 +10,7 @@ Templates/templatemax.cpp	Plantilla C++ Max
 
 [Data Structures]
 DataStructure/BIT.cpp	Binary Indexed Tree
+DataStructure/BIT2D.cpp	Binary Indexed Tree 2D
 DataStructure/DSU_Rollback.cpp	DSU RollBack
 DataStructure/FenwickTree.cpp	Fenwick Tree
 DataStructure/OrderStatisticsTree.cpp	Order Statistics Tree
@@ -18,11 +19,14 @@ DataStructure/SegmentTree/SegmentTree.cpp	Segment Tree
 DataStructure/SegmentTree/LazySegmentTree.cpp	Lazy Segment Tree
 DataStructure/SegmentTree/LazyRMQ.cpp	LazyRMQ
 DataStructure/SegmentTree/SparseSegmentTree.cpp	Sparse Segment Tree
+DataStructure/SegmentTree/SparseLazySegmentTree.cpp	Sparse Lazy Propagation
+DataStructure/SegmentTree/PersistentST.cpp	Persistent Segment Tree
 DataStructure/SegmentTree/PersistentLazyPropagation.cpp	Persistent Lazy Propagation
 DataStructure/SegmentTree/Iterative.cpp	Iterative Segment Tree
 
 [Math]
 Math/Bits.cpp	Operaciones con Bits
+Math/Catalan.py	Catalan
 Math/Combinations.cpp	Combinaciones
 Math/Euclid.cpp	Algoritmo Ext. de Euclides
 Math/FFT.cpp	FFT
@@ -79,12 +83,16 @@ Graphs/Misc/TopologicalSort.cpp	Orden Topologico
 [Geometry]
 Geometry/Point.cpp	Punto
 Geometry/Line.cpp	Linea
+Geometry/Segment.cpp	Segmento
 Geometry/Polygon.cpp	Poligono
+Geometry/2DCircle.cpp	Circulo
 Geometry/Fraction.cpp	Fracciones
 Geometry/ConvexHull.cpp	Convex Hull
+Geometry/ClosestPair.cpp	Puntos mas cercanos
 Geometry/Point3D.cpp	Punto 3D
 
 [Extras]
+Extras/Busquedas.cpp	Busquedas
 Extras/Dates.cpp	Fechas
 Extras/HashPair.cpp	HashPair
 Extras/Trucos.cpp	Trucos
