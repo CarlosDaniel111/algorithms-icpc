@@ -1,7 +1,7 @@
 /**
  * Descripcion: Soluciona el problema de maximo emparejamiento bipartito,
  * se basa en el algoritmo que puede ser pensado como n DFS siendo ejecutadas.
- * Tiempo: O(n^2)
+ * Tiempo: O(nm)
  */
 int n, k;
 vector<vector<int>> g;
