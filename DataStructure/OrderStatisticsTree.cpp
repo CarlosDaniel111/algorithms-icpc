@@ -3,8 +3,7 @@
  * operaciones extra ademas de insercion, busqueda y eliminacion:
  * Select(i) - find_by_order: encontrar el i-esimo elemento (0-indexado)
  * del conjunto ordenado de los elementos, retorna un iterador.
- * Rank(x) - order_of_key: encontrar el rango de x en el conjunto,
- * es decir, retorna su indice en la lista ordenada de los elementos.
+ * Rank(x) - order_of_key: numero de elementos estrictamente menores a x
  * Uso:
  * oset<int> OST
  * Funciona como un set, por lo que nativamente no soporta elementos
