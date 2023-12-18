@@ -8,7 +8,7 @@ using vi = vector<int>;
 #define fi first
 #define se second
 #define pb push_back
-#define SZ(x) int((x).size())
+#define SZ(x) ((int)(x).size())
 #define ALL(x) begin(x), end(x)
 #define FOR(i, a, b) for (int i = (a); i < (b); ++i)
 #define ROF(i, a, b) for (int i = (a)-1; i >= (b); --i)
