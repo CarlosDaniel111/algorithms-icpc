@@ -65,12 +65,13 @@ double angle(Point v, Point w) {
   return acos(max(-1.0, min(1.0, cosTheta)));
 }
 
-// Angulo que se forma en 3 puntos
+// angulo aob
 double angle(Point a, Point o, Point b) {
   Point oa = toVector(o, a), ob = toVector(o, b);
   return acos(dot(oa, ob) / sqrt(sq(oa) * sq(ob)));
 }
 
+// comprobar si al moverte por p, q y r (en ese orden) se realiza un giro ccw
 bool ccw(Point p, Point q, Point r) {
   return cross(toVector(p, q), toVector(p, r)) > -EPS;
 }

@@ -1,7 +1,7 @@
 /**
  * Descripcion: Algoritmo para resolver el problema de maximum bipartite
  * matching. Los nodos para c1 y c2 deben comenzar desde el indice 1
- * Tiempo: O(sqrt(|V|) * E)
+ * Tiempo: O(sqrt(N) * M)
  */
 
 int dist[MAXN], pairU[MAXN], pairV[MAXN], c1, c2;
