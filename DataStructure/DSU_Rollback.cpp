@@ -9,7 +9,7 @@
 struct RollbackDSU {
   vector<int> e;
   vector<pair<int, int>> st;
-  RollbackDS(int n) : e(n, -1) {}
+  void init(int n) { e = vi(n, -1); }
   int size(int x) { return -e[get(x)]; }
   int get(int x) { return e[x] < 0 ? x : e[x] = get(e[x]); }
   int time() { return st.size(); }

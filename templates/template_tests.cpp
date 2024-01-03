@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-// AC2++
+// AC2#
 using ll = long long;
 using pi = pair<int, int>;
 using vi = vector<int>;
