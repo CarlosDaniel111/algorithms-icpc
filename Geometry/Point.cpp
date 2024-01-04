@@ -77,7 +77,7 @@ bool ccw(Point p, Point q, Point r) {
 }
 
 T cross(Point v, Point w) { return v.x * w.y - v.y * w.x; }
-T orient(Point a, Point b, Point c) { return cross(b - a, c - a); }
+T cross(Point a, Point b, Point c) { return cross(b - a, c - a); }
 
 // Funcion signum: -1 si x es negativo, 0 si x = 0 y 1 si x es positivo
 template <typename T>

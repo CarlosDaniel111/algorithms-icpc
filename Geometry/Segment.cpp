@@ -1,6 +1,6 @@
 // Retorna si el punto P se encuentra en el segmento de puntos S a E
 bool onSegment(Point s, Point e, Point p) {
-  return orient(p, s, e) == 0 && dot(s - p, e - p) <= 0;
+  return cross(p, s, e) == 0 && dot(s - p, e - p) <= 0;
 }
 
 // Retorna la distancia mas corta entre el punto P y el segmento S a E
@@ -32,8 +32,8 @@ double distToLineSegment(Point p, Point a, Point b, Point& c) {
 // Si no existe ningun punto de interseccion, se devuelve un vector vacio.
 // Si existen infinitos, se devuelve un vector con 2 elementos, que contiene los puntos finales del segmento de linea comun.
 vector<Point> segInter(Point a, Point b, Point c, Point d) {
-  auto oa = orient(c, d, a), ob = orient(c, d, b),
-       oc = orient(a, b, c), od = orient(a, b, d);
+  auto oa = cross(c, d, a), ob = cross(c, d, b),
+       oc = cross(a, b, c), od = cross(a, b, d);
   if (sgn(oa) * sgn(ob) < 0 && sgn(oc) * sgn(od) < 0)
     return {(a * ob - b * oa) / (ob - oa)};
   set<Point> s;

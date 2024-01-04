@@ -59,13 +59,58 @@ int insidePolygon(Point pt, const vector<Point>& P) {
 }
 
 // Retorna si el punto esta dentro del triangulo
-double area(Point a, Point b, Point c) {
-  return abs((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2.0);
+bool pointInTriangle(Point a, Point b, Point c, Point p) {
+  T s1 = abs(cross(a, b, c));
+  T s2 = abs(cross(p, a, b)) + abs(cross(p, b, c)) + abs(cross(p, c, a));
+  return s1 == s2;
 }
-bool isInside(Point a, Point b, Point c, Point p) {
-  double A = area(a, b, c);
-  double A1 = area(p, b, c);
-  double A2 = area(a, p, c);
-  double A3 = area(a, b, p);
-  return (fabs(A - (A1 + A2 + A3)) <= EPS);
+
+// Checa si un punto se encuentra dentro de un poligono convexo
+// Nota: el poligono debe estar ordenado contra la manecilla del
+// reloj (ccw)
+// Necesario: cross(pt1,pt2), sgn(T), sq(pt), pointInTriangle()
+// Tiempo: O(log n)
+vector<Point> seq;
+Point translation;
+int n;
+
+void prepare(vector<Point>& points) {
+  n = SZ(points);
+  int pos = 0;
+  FOR(i, 1, n) {
+    if (points[i] < points[pos])
+      pos = i;
+  }
+  rotate(points.begin(), points.begin() + pos, points.end());
+  n--;
+  seq.resize(n);
+  FOR(i, 0, n) {
+    seq[i] = points[i + 1] - points[0];
+  }
+  translation = points[0];
+}
+
+bool pointInConvexPolygon(Point point) {
+  point = point - translation;
+  if (cross(seq[0], point) != 0 &&
+      sgn(cross(seq[0], point)) != sgn(cross(seq[0], seq[n - 1])))
+    return false;
+  if (cross(seq[n - 1], point) != 0 &&
+      sgn(cross(seq[n - 1], point)) != sgn(cross(seq[n - 1], seq[0])))
+    return false;
+
+  if (cross(seq[0], point) == 0)
+    return sq(seq[0]) >= sq(point);
+
+  int l = 0, r = n - 1;
+  while (r - l > 1) {
+    int mid = (l + r) / 2;
+    int pos = mid;
+    if (cross(seq[pos], point) == 0)
+      l = mid;
+    else
+      r = mid;
+  }
+  int pos = l;
+  return isInside(seq[pos], seq[pos + 1], Point{0, 0}, point);
 }
