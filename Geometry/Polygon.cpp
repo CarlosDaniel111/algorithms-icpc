@@ -59,6 +59,7 @@ int insidePolygon(Point pt, const vector<Point>& P) {
 }
 
 // Retorna si el punto esta dentro del triangulo
+// Requiere: cross(pt1,pt2,pt3)
 bool pointInTriangle(Point a, Point b, Point c, Point p) {
   T s1 = abs(cross(a, b, c));
   T s2 = abs(cross(p, a, b)) + abs(cross(p, b, c)) + abs(cross(p, c, a));
