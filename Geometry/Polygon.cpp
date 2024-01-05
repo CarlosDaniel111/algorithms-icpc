@@ -107,11 +107,11 @@ bool pointInConvexPolygon(Point point) {
   while (r - l > 1) {
     int mid = (l + r) / 2;
     int pos = mid;
-    if (cross(seq[pos], point) == 0)
+    if (cross(seq[pos], point) >= 0)
       l = mid;
     else
       r = mid;
   }
   int pos = l;
-  return isInside(seq[pos], seq[pos + 1], Point{0, 0}, point);
+  return pointInTriangle(seq[pos], seq[pos + 1], Point{0, 0}, point);
 }
