@@ -18,7 +18,7 @@ double triangleArea(Point& p1, Point& p2, Point& p3) {
 
 // Con la magnitud del producto cruz
 double triangleArea(Point& p1, Point& p2, Point& p3) {
-  return cross(p2 - p1, p3 - p1) / 2;
+  return abs(cross(p2 - p1, p3 - p1) / 2);
 }
 
 double area(const vector<Point>& P) {
