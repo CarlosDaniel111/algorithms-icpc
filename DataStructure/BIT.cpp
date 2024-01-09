@@ -5,20 +5,20 @@
  * Tiempo: O(log n)
  */
 
-int n, bit[MAX];
+vector<ll> bit;
 
-int query(int index) {
-  int sum = 0;
-  while (index > 0) {
-    sum += bit[index];
-    index -= index & (-index);
+ll query(int i) {
+  ll sum = 0;
+  while (i > 0) {
+    sum += bit[i];
+    i -= i & (-i);
   }
   return sum;
 }
 
-void add(int index, int val) {
-  while (index <= n) {
-    bit[index] += val;
-    index += index & (-index);
+void add(int i, int val) {
+  while (i < SZ(bit)) {
+    bit[i] += val;
+    i += i & (-i);
   }
 }
