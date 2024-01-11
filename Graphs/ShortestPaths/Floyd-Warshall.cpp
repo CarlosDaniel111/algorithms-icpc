@@ -8,15 +8,15 @@ int graph[MAXN][MAXN];
 int p[MAXN][MAXN];  // Guardar camino
 
 void floydWarshall() {
-  F0R(i, N) {  // Inicializar el camino
-    F0R(j, N) {
+  FOR(i, 0, N) {  // Inicializar el camino
+    FOR(j, 0, N) {
       p[i][j] = i;
     }
   }
 
-  F0R(k, N) {
-    F0R(i, N) {
-      F0R(j, N) {
+  FOR(k, 0, N) {
+    FOR(i, 0, N) {
+      FOR(j, 0, N) {
         if (graph[i][k] + graph[k][j] < graph[i][j])  // Solo utilizar si necesitas el camino
           p[i][j] = p[k][j];
 

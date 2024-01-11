@@ -46,3 +46,11 @@ ll comb(int n, int k) {
     return dp[n][k];
   return dp[n][k] = comb(n - 1, k) + comb(n - 1, k - 1);
 }
+
+void calc_comb() {
+  FOR(i, 0, MAXN) {
+    comb[i][0] = comb[i][i] = 1;
+    FOR(j, 1, i)
+    comb[i][j] = comb[i - 1][j] + comb[i - 1][j - 1];
+  }
+}

@@ -45,7 +45,7 @@ void precalc_inv() {
  * metodo si MOD es primo, y el segundo en caso contrario
  * Tiempo: O(log MOD)
  */
-ll modInverse(ll b) { return modpow(b, MOD - 2, MOD) % MOD; }
+ll modInverse(ll b) { return modpow(b, MOD - 2) % MOD; }
 ll modInverse(ll a) {
   ll x, y, d = euclid(a, MOD, x, y);
   assert(d == 1);
