@@ -53,6 +53,9 @@ void init() {
   decompose(0, 0);
 }
 
+// Pro-tip: si se quiere actualizar un camino con cierto valor
+// utilizar esta misma funcion solo que en igual de igualar a
+// res, realizar la actualizacion a un lazy segment tree
 int query(int a, int b) {
   int res = 0;
   for (; head[a] != head[b]; b = parent[head[b]]) {
