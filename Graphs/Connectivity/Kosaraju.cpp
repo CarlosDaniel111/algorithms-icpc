@@ -6,36 +6,26 @@
  * Tiempo: O(V + E)
  */
 
-vi graph[MAXN];    // Grafo
-vi graph_T[MAXN];  // Grafo transpuesto
-vi dfs_num;
-vi S;
-int N, numSCC;
+vector<vi> g, gT;
+vi dfs_num, S;
+int numSCC;
 
-void Kosaraju(int u, int pass) {
+void go(int u, int pass) {
   dfs_num[u] = 1;
-  vi &neighbor = (pass == 1) ? graph[u] : graph_T[u];
-  for (auto v : neighbor) {
-    if (dfs_num[v] == -1)
-      Kosaraju(v, pass);
-  }
+  vi &neighbor = (pass == 1) ? g[u] : gT[u];
+  for (auto v : neighbor) if (dfs_num[v] == -1) go(v, pass);
   S.pb(u);
 }
 
-int main() {
+int korasaju() {
   S.clear();
-  dfs_num.assign(N, -1);
-  F0R(u, N) {
-    if (dfs_num[u] == -1)
-      Kosaraju(u, 1);
-  }
-  dfs_num.assign(N, -1);
+  dfs_num.assign(SZ(g), -1);
+  FOR (u, 0, SZ(g)) if (dfs_num[u] == -1) go(u, 1);
+  dfs_num.assign(SZ(g), -1);
   numSCC = 0;
-  R0F(i, N) {  // Segunda pasada
-    if (dfs_num[S[i]] == -1) {
-      ++numSCC;
-      Kosaraju(S[i], 2);
-    }
+  FOR (i, 0, SZ(g)) if (dfs_num[S[i]] == -1) {
+    ++numSCC;
+    go(S[i], 2);
   }
-  cout << numSCC << ENDL;
+  return numSCC;
 }

@@ -9,8 +9,8 @@
  */
 
 int V, E;
-vector<pi> graph[MAXN];
-bool taken[MAXN];
+vector<vector<pi>> graph;
+vector<bool> taken;
 priority_queue<pi> pq;
 
 void process(int u) {
@@ -21,6 +21,7 @@ void process(int u) {
 }
 
 int prim() {
+  taken.assign(SZ(graph), 0);
   process(0);
   int totalWeight = 0, takenEdges = 0;
   while (!pq.empty() && takenEdges != V - 1) {

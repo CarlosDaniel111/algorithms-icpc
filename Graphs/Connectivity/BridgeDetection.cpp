@@ -3,39 +3,35 @@
  * Tiempo: O(V + E)
  */
 
-int n;
-vector<int> g[MAXN];
-bool articulation[MAXN];
-int tin[MAXN], low[MAXN], timer, dfsRoot, rootChildren;
+vector<vi> g;
+vector<bool> articulation;
+vi tin, low;
+int timer, dfsRoot, rootChildren;
 
 void dfs(int u, int p = -1) {
   tin[u] = low[u] = timer++;
   for (int v : g[u]) {
-    if (v == p)
-      continue;
-    if (tin[v] != -1)
-      low[u] = min(low[u], tin[v]);
+    if (v == p) continue;
+    if (tin[v] != -1) low[u] = min(low[u], tin[v]);
     else {
-      if (u == dfsRoot)  // La raiz es un punto de articulacion
-        ++rootChildren;
-
+      if (u == dfsRoot) ++rootChildren;  // La raiz es un punto de articulacion
+        
       dfs(v, u);
 
-      if (low[v] >= tin[u])
-        articulation[u] = 1;
-      if (low[v] > tin[u])
-        // La arista (u, v) es un puente
-
-        low[u] = min(low[u], low[v]);
+      if (low[v] >= tin[u]) articulation[u] = 1;
+      if (low[v] > tin[u]) ES_PUENTE(u, v);
+      
+      low[u] = min(low[u], low[v]);
     }
   }
 }
 
 void find_bridges_articulations() {
-  memset(tin, tin + n, -1);
-  memset(low, low + n, -1);
+  tin.assign(SZ(g), -1);
+  low.assign(SZ(g), -1);
+  timer = 0;
 
-  for (int i = 0; i < n; ++i) {
+  for (int i = 0; i < SZ(g); ++i) {
     if (tin[i] == -1) {
       dfsRoot = i;
       rootChildren = 0;

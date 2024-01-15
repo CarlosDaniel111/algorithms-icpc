@@ -1,38 +1,30 @@
 /**
- * Descripcion: Soluciona el problema de maximo emparejamiento bipartito,
- * se basa en el algoritmo que puede ser pensado como n DFS siendo ejecutadas.
- * Tiempo: O(nm)
+ * Descripcion: Algoritmo simple para maximo emparejamiento bipartito.
+ * el grafo g debe de ser una lista de los vecinos de la particion
+ * izquierda y m el numero de nodos en la particion derecha.
+ * Retorna (Numero de emparejamientos, btoa[]) donde btoa[i] sera el
+ * emparejamiento para el vertice i del lado derecho o -1 si no lo tiene
+ * Tiempo: O(VE)
  */
-int n, k;
-vector<vector<int>> g;
-vector<int> mt;
-vector<bool> used;
-
-bool try_kuhn(int v) {
-  if (used[v])
-    return false;
-  used[v] = true;
-  for (int to : g[v]) {
-    if (mt[to] == -1 || try_kuhn(mt[to])) {
-      mt[to] = v;
-      return true;
-    }
+bool find(int j, vector<vi>& g, vi& btoa, vi& vis) {
+	if (btoa[j] == -1) return 1;
+	vis[j] = 1;
+  int di = btoa[j];
+	for (int e : g[di]) if (!vis[e] && find(e, g, btoa, vis)) {
+    btoa[e] = di;
+    return 1;
   }
-  return false;
+	return 0;
 }
-
-int main() {
-  //... reading the graph ...
-
-  mt.assign(k, -1);
-  int ans = 0;
-  for (int v = 0; v < n; ++v) {
-    used.assign(n, false);
-    if (try_kuhn(v)) ans++;
-  }
-
-  cout << ans << ENDL;
-  for (int i = 0; i < k; ++i)
-    if (mt[i] != -1)
-      printf("%d %d\n", mt[i] + 1, i + 1);
+int kuhn(vector<vi>& g, int m) {
+	vi vis, btoa(m, -1);
+	FOR (i, 0, SZ(g)) {
+		vis.assign(SZ(btoa), 0);
+		for (int j : g[i])
+			if (find(j, g, btoa, vis)) {
+				btoa[j] = i;
+				break;
+			}
+	}
+	return {SZ(btoa) - (int)count(ALL(btoa), -1), btoa};
 }

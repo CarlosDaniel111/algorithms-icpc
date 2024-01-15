@@ -12,12 +12,10 @@ vector<int> g[MAX];
 int jump[MAX][LOG_MAX];
 int depth[MAX];
 
-void dfs(int u, int padre = -1, int d = 0) {
+void dfs(int u, int p = -1, int d = 0) {
   depth[u] = d;
-  jump[u][0] = padre;
-  for (auto &hijo : g[u])
-    if (hijo != padre)
-      dfs(hijo, u, d + 1);
+  jump[u][0] = p;
+  for (auto &v : g[u]) if (v != p) dfs(v, u, d + 1);
 }
 
 void build(int n) {
