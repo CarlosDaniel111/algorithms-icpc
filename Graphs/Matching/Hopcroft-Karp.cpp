@@ -42,12 +42,11 @@ pair<int, vi> hopcroftKarp(vector<vi>& g, int m) {
 				}
 			}
 			if (islast) break;
-			if (next.empty()) return res;
+			if (next.empty()) return {res, btoa};
 			for (int a : next) A[a] = lay;
 			cur.swap(next);
 		}
 		/// Usa DFS para escanear caminos aumentantes
 		FOR (a, 0, SZ(g)) res += dfs(a, 0, g, btoa, A, B);
 	}
-  return {res, btoa};
 }
