@@ -6,15 +6,15 @@ bool onSegment(Point s, Point e, Point p) {
 // Retorna la distancia mas corta entre el punto P y el segmento S a E
 double dist2(Point x) { return x * x + y * y; }
 double dist(Point x) { sqrt((double)dist2(x)); }
-double segDist(Point& s, Point& e, Point& p) {
+double pointToSegDist(Point& s, Point& e, Point& p) {
   if (s == e) return dist(p - s);
   auto d = dist2(e - s), t = min(d, max(.0, dot(p - s, e - s)));
   return (dist((p - s) * d - (e - s) * t) / d);
 }
 
-// Retorna la distancia mas corta entre el punto P y el segmento A a B
+// Retorna la distancia mas corta entre el punto P y el segmento AB
 // y guarda el punto mas cercano en C
-double distToLineSegment(Point p, Point a, Point b, Point& c) {
+double pointToSegDist(Point p, Point a, Point b, Point& c) {
   vec ap = toVector(a, p), ab = toVector(a, b);
   double u = dot(ap, ab) / sq(ab);
   if (u < 0.0) {
@@ -26,6 +26,26 @@ double distToLineSegment(Point p, Point a, Point b, Point& c) {
     return dist(p, b);
   }
   return distToLine(p, a, b, c);
+}
+
+bool properInter(pt a, pt b, pt c, pt d, pt &out) {
+  double oa = orient(c, d, a),
+  ob = orient(c, d, b),
+  oc = orient(a, b, c),
+  od = orient(a, b, d);
+  // Proper intersection exists iff opposite signs
+  if (oa * ob < 0 && oc * od < 0) {
+    out = (a * ob - b * oa) / (ob - oa);
+    return true;
+  }
+  return false;
+}
+
+// Retorna la distancia entre los segmentos AB y CD
+double segToSegDist(pt a, pt b, pt c, pt d) {
+  pt dummy;
+  if (properInter(a,b,c,d,dummy)) return 0;
+  return min({pointToSegDist(a,b,c), pointToSegDist(a,b,d), pointToSegDist(c,d,a), pointToSegDist(c,d,b)});
 }
 
 // Si existe un punto de interseccion unico entre los segmentos de linea que van de A a B y de C a D, se devuelve.
