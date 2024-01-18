@@ -7,7 +7,7 @@
  * Tiempo: O(n log n) en construccion y O(log n) por consulta
  */
 
-template <typename T>
+template <class T>
 class SegmentTree {
  private:
   int n;
