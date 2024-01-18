@@ -7,10 +7,11 @@
  * Tiempo: O(n log n) en construccion y O(log n) por consulta
  */
 
+template <typename T>
 class SegmentTree {
  private:
   int n;
-  vi arr, st;
+  vector<T> arr, st;
 
   int l(int p) { return (p << 1) + 1; }
   int r(int p) { return (p << 1) + 2; }
@@ -28,7 +29,7 @@ class SegmentTree {
     }
   }
 
-  int query(int index, int start, int end, int i, int j) {
+  T query(int index, int start, int end, int i, int j) {
     if (j < start || end < i)
       return 0;  // Si ese rango no nos sirve, retornar un valor que no cambie nada
 
@@ -40,7 +41,7 @@ class SegmentTree {
     return query(l(index), start, mid, i, j) + query(r(index), mid + 1, end, i, j);
   }
 
-  void update(int index, int start, int end, int idx, int val) {
+  void update(int index, int start, int end, int idx, T val) {
     if (start == end)
       st[index] = val;
     else {
@@ -57,12 +58,12 @@ class SegmentTree {
  public:
   SegmentTree(int sz) : n(sz), st(4 * n) {}
 
-  SegmentTree(const vi &initialArr) : SegmentTree((int)initialArr.size()) {
+  SegmentTree(const vector<T> &initialArr) : SegmentTree((int)initialArr.size()) {
     arr = initialArr;
     build(0, 0, n - 1);
   }
 
-  void update(int i, int val) { update(0, 0, n - 1, i, val); }
+  void update(int i, T val) { update(0, 0, n - 1, i, val); }
 
-  int query(int i, int j) { return query(0, 0, n - 1, i, j); }  // [i, j]
+  T query(int i, int j) { return query(0, 0, n - 1, i, j); }  // [i, j]
 };
