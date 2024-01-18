@@ -75,7 +75,7 @@ class LazySegmentTree {
  public:
   LazySegmentTree(int sz) : n(sz), st(4 * n), lazy(4 * n) {}
 
-  LazySegmentTree(const vector<T> &initialA) : LazySegmentTree(SZ(initialArr)) {
+  LazySegmentTree(const vector<T> &initialA) : LazySegmentTree(SZ(initialA)) {
     A = initialA;
     build(0, 0, n - 1);
   }
