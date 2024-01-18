@@ -7,10 +7,11 @@
  * Tiempo: O(log n)
  */
 
+template <class T>
 class LazySegmentTree {
  private:
   int n;
-  vi A, st, lazy;
+  vector<T> A, st, lazy;
 
   inline int l(int p) { return (p << 1) + 1; }  // ir al hijo izquierdo
   inline int r(int p) { return (p << 1) + 2; }  // ir al hijo derecho
@@ -38,16 +39,16 @@ class LazySegmentTree {
     }
   }
 
-  void add(int index, int start, int end, int i, int j, int x) {
+  void add(int index, int start, int end, int i, int j, T val) {
     propagate(index, start, end);
     if ((end < i) || (start > j))
       return;
 
     if (start >= i && end <= j) {
-      st[index] += (end - start + 1) * x;
+      st[index] += (end - start + 1) * val;
       if (start != end) {
-        lazy[l(index)] += x;
-        lazy[r(index)] += x;
+        lazy[l(index)] += val;
+        lazy[r(index)] += val;
       }
       return;
     }
@@ -59,7 +60,7 @@ class LazySegmentTree {
     st[index] = (st[l(index)] + st[r(index)]);
   }
 
-  int query(int index, int start, int end, int i, int j) {
+  T query(int index, int start, int end, int i, int j) {
     propagate(index, start, end);
     if (end < i || start > j)
       return 0;
@@ -74,11 +75,11 @@ class LazySegmentTree {
  public:
   LazySegmentTree(int sz) : n(sz), st(4 * n), lazy(4 * n) {}
 
-  LazySegmentTree(const vi &initialA) : LazySegmentTree((int)initialA.size()) {
+  LazySegmentTree(const vector<T> &initialA) : LazySegmentTree(SZ(initialArr)) {
     A = initialA;
     build(0, 0, n - 1);
   }
   // [i, j]
-  void add(int i, int j, int val) { add(0, 0, n - 1, i, j, val); }  // [i, j]
-  int query(int i, int j) { return query(0, 0, n - 1, i, j); }      // [i, j]
+  void add(int i, int j, T val) { add(0, 0, n - 1, i, j, val); }  // [i, j]
+  T query(int i, int j) { return query(0, 0, n - 1, i, j); }      // [i, j]
 };
