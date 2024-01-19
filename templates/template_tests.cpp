@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-// AC2#
+// BRO... CSM
 using ll = long long;
 using pi = pair<int, int>;
 using vi = vector<int>;
@@ -22,7 +22,7 @@ constexpr ll LLINF = 1e18;
 void solve() {
 }
 
-int main() {
+signed main() {
   ios_base::sync_with_stdio(0);
   cin.tie(nullptr);
 

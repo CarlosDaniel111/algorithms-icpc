@@ -4,6 +4,8 @@ constexpr double PI = acos(-1.0);
 inline double DEG_to_RAD(double d) { return (d * PI / 180.0); }
 inline double RAD_to_DEG(double r) { return (r * 180.0 / PI); }
 
+int sgn(T x) { return (T(0) < x) - (x < T(0)); }
+
 typedef double T;
 struct Point {
   T x, y;
@@ -18,75 +20,62 @@ struct Point {
   Point operator/(T d) const { return {x / d, y / d}; }  // Solo para punto flotante
 
   // Operaciones de comparacion para punto flotante
-  bool operator<(Point other) const {
-    if (fabs(x - other.x) > EPS)
-      return x < other.x;
-    return y < other.y;
-  }
-  bool operator==(Point other) const { return fabs(x - other.x) <= EPS && fabs(y - other.y) <= EPS; }
-  bool operator!=(Point other) const { return !(*this == other); }
+  bool operator<(Point p) const { return x < p.x - EPS || (abs(x - p.x) <= EPS && y < p.y - EPS); }
+  bool operator==(Point p) const { return abs(x - p.x) <= EPS && abs(y - p.y) <= EPS; }
+  bool operator!=(Point p) const { return !(*this == p); }
 
   // Operaciones de comparacion para enteros
   bool operator<(Point p) const { return tie(x, y) < tie(p.x, p.y); }
   bool operator==(Point p) const { return tie(x, y) == tie(p.x, p.y); }
+
+  T sq() { return x * x + y * y; }
+  double norm() { return sqrt(sq()); }
+  Point unit() { return *this / norm(); }
+
+  // Operaciones generales:
+  Point translate(Point v) { return *this + v; }
+  Point scale(Point c, double factor) { return c + (*this - c) * factor; }
+  Point rotate(double ang) { return {x * cos(ang) - y * sin(ang), x * sin(ang) + y * cos(ang)}; }
+  Point rot_around(double ang, Point c) { return p + (*this - p).rotate(ang); }
+  Point perp() { return {-y, x}; }
+
+  T dot(Point p) { return x * p.x + y * p.y; }
+  T cross(Point p) const { return x * p.y - y * p.x; }
+  T cross(Point a, Point b) const { return (a - *this).cross(b - *this); }
+
+  friend ostream& operator<<(ostream& os, Point p) {
+    return os << "(" << p.x << "," << p.y << ")";
+  }
 };
 
-T sq(Point p) { return p.x * p.x + p.y * p.y; }
-double abs(Point p) { return sqrt(sq(p)); }
-
-// Para poder hacer cout << miPunto
-ostream& operator<<(ostream& os, Point p) { return os << "(" << p.x << "," << p.y << ")"; }
-
-// Ejemplos de uso
-Point a{3, 4}, b{2, -1};
-cout << a + b << " " << a - b << "\n";   // (5,3) (1,5)
-cout << a * -1 << " " << b / 2 << "\n";  // (-3,-4) (1.5,2)
-
-// Operaciones generales:
-Point translate(Point v, Point p) { return p + v; }
-Point scale(Point c, double factor, Point p) { return c + (p - c) * factor; }
-// Si se desea rotar a partir de un punto C, restar p-c realizar el rotate y sumar p+c
-Point rotate(Point p, double a) { return {p.x * cos(a) - p.y * sin(a), p.x * sin(a) + p.y * cos(a)}; }
-Point perpendicular(Point p) { return {-p.y, p.x}; }
+// Vector: p2-p1
 double dist(Point p1, Point p2) { return hypot(p1.x - p2.x, p1.y - p2.y); }
+bool isPerp(Point v, Point w) { return v.dot(w) == 0; }
+//-1 -> left / 0 -> collinear / +1 -> right
+T orient(Point a, Point b, Point c) { return a.cross(b, c); }
+bool cw(Point a, Point b, Point c) { return orient(a, b, c) < EPS; }
+bool ccw(Point a, Point b, Point c) { return orient(a, b, c) > -EPS; }
 
-// Vector desplazamiento desde el punto p1 a p2
-Point toVector(Point& p1, Point& p2) { return p2 - p1; }
-// Operaciones vectoriales, en donde nuestro punto indica el fin del vector, siendo el origen su inicio
-T dot(Point v, Point w) { return v.x * w.x + v.y * w.y; }
-bool isPerp(Point v, Point w) { return dot(v, w) == 0; }
-Point scale(const Point& v, double s) { return vec(v.x * s, v.y * s); }
-
+// ANGULOS
 // Para c++17
-double angle(Point v, Point w) { return acos(clamp(dot(v, w) / abs(v) / abs(w), -1.0, 1.0)); }
+double angle(Point v, Point w) { return acos(clamp(v.dot(w) / v.norm() / w.norm(), -1.0, 1.0)); }
 // C++14 o menor
 double angle(Point v, Point w) {
-  double cosTheta = dot(v, w) / abs(v) / abs(w);
+  double cosTheta = v.dot(w) / v.norm() / w.norm();
   return acos(max(-1.0, min(1.0, cosTheta)));
 }
-
 // angulo aob
-double angle(Point a, Point o, Point b) {
-  Point oa = toVector(o, a), ob = toVector(o, b);
-  return acos(dot(oa, ob) / sqrt(sq(oa) * sq(ob)));
+double angle(Point o, Point a, Point b) {
+  return angle(a - o, b - o);
 }
-
-// comprobar si al moverte por p, q y r (en ese orden) se realiza un giro ccw
-bool ccw(Point p, Point q, Point r) {
-  return cross(toVector(p, q), toVector(p, r)) > -EPS;
+double orientedAngle(Point o, Point a, Point b) {
+  if (ccw(o, a, b))
+    return angle(a - o, b - o);
+  else
+    return 2 * PI - angle(a - o, b - o);
 }
-
-T cross(Point v, Point w) { return v.x * w.y - v.y * w.x; }
-T cross(Point a, Point b, Point c) { return cross(b - a, c - a); }
-
-// Funcion signum: -1 si x es negativo, 0 si x = 0 y 1 si x es positivo
-template <typename T>
-int sgn(T x) {
-  return (T(0) < x) - (x < T(0));
-}
-
-int manhattan(Point& p1, Point& p2) { return abs(p1.x - p2.x) + abs(p1.y - p2.y); }
-
-bool areCollinear(Point& p, Point& q, Point& r) {
-  return abs(cross(toVector(p, q), toVector(p, r))) <= EPS;
+bool inAngle(Point o, Point a, Point b, Point p) {
+  assert(orient(o, a, b) != 0);
+  if (cw(o, a, b)) swap(b, c);
+  return ccw(o, a, p) && cw(o, c, p);
 }
