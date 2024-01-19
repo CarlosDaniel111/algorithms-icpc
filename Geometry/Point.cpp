@@ -4,9 +4,10 @@ constexpr double PI = acos(-1.0);
 inline double DEG_to_RAD(double d) { return (d * PI / 180.0); }
 inline double RAD_to_DEG(double r) { return (r * 180.0 / PI); }
 
+typedef double T;
+
 int sgn(T x) { return (T(0) < x) - (x < T(0)); }
 
-typedef double T;
 struct Point {
   T x, y;
 
