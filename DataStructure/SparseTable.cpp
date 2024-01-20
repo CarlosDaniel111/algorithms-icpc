@@ -6,17 +6,17 @@
 
 template<class T>
 struct SparseTable {
-	vector<vector<T>> jmp;
-	void init(const vector<T>& V) {
-		jmp.emplace_back(V);
+  vector<vector<T>> jmp;
+  void init(const vector<T>& V) {
+    jmp.emplace_back(V);
     for (int pw = 1, k = 1; pw * 2 <= SZ(V); pw *= 2, ++k) {
-			jmp.emplace_back(SZ(V) - pw * 2 + 1);
-			FOR (j, 0, SZ(jmp[k]))
-				jmp[k][j] = min(jmp[k - 1][j], jmp[k - 1][j + pw]);
-		}
-	}
-	T query(int l, int r) { // [a, b)
-		int dep = 31 - __builtin_clz(r - l);
-		return min(jmp[dep][l], jmp[dep][r - (1 << dep)]);
-	}
+      jmp.emplace_back(SZ(V) - pw * 2 + 1);
+      FOR (j, 0, SZ(jmp[k]))
+        jmp[k][j] = min(jmp[k - 1][j], jmp[k - 1][j + pw]);
+    }
+  }
+  T query(int l, int r) { // [a, b)
+    int dep = 31 - __builtin_clz(r - l);
+    return min(jmp[dep][l], jmp[dep][r - (1 << dep)]);
+  }
 };
