@@ -1,71 +1,48 @@
+typedef ll T;
 struct Line {
-  double a, b, c;
-  bool operator<(Line& other) const {
-    if (fabs(a - other.a) >= EPS)
-      return a < other.a;
-    if (fabs(b - other.b) >= EPS)
-      return b < other.b;
-    return c < other.c;
+  Point v;
+  T c;
+
+  // De vector direccional v y offset c
+  Line(Point v, T c) : v(v), c(c) {}
+
+  // De la ecuacion ax+by=c
+  Line(T a, T b, T c) : v({b, -a}), c(c) {}
+
+  // De punto P a punto Q
+  Line(Point p, Point q) : v(q - p), c(v.cross(p)) {}
+
+  // 0 si se encuentra en la linea, > 0 arriba, < 0 abajo
+  T side(Point p) { return v.cross(p) - c; }
+
+  double dist(Point p) { return abs(side(p)) / v.norm(); }
+  double sqDist(Point p) { return side(p) * side(p) / (double)v.sq(); }  // si se trabaja con enteros
+  Line perp(Point p) { return {p, p + v.perp()}; }
+  Line translate(Point t) { return {v, c + v.cross(t)}; }
+  Line shiftLeft(double dist) { return {v, c + dist * v.norm()}; }
+
+  Point proj(Point p) { return p - v.perp() * side(p) / v.sq(); }  // Punto en linea mas cercano a P
+  Point refl(Point p) { return p - v.perp() * 2 * side(p) / v.sq(); }
+
+  // Sirve para comparar si un punto A esta antes de B en una linea
+  bool cmpProj(Point p, Point q) {
+    return v.dot(p) < v.dot(q);
   }
 };
 
-Line pointsToLine(Point& p1, Point& p2) {
-  if (abs(p1.x - p2.x) <= EPS)
-    return Line{1.0, 0.0, -p1.x};
-  double a = -(double)(p1.y - p2.y) / (p1.x - p2.x);
-  return Line{a, 1.0, -(double)(a * p1.x) - p1.y};
-}
-
-Line pointSlopeToLine(Point& p, double& m) { return Line{-m, 1, -((-m * p.x) + p.y)}; }
-
-bool areParallel(Line& l1, Line& l2) { return (abs(l1.a - l2.a) <= EPS) && (abs(l1.b - l2.b) <= EPS); }
-bool areSame(Line& l1, Line& l2) { return areParallel(l1, l2) && (abs(l1.c - l2.c) <= EPS); }
-
+bool areParallel(Line l1, Line l2) { return (l1.v.cross(l2.v) == 0); }
 bool areIntersect(Line l1, Line l2, Point& p) {
-  if (areParallel(l1, l2)) return false;
-  p.x = (l2.b * l1.c - l1.b * l2.c) / (l2.a * l1.b - l1.a * l2.b);
-  if (fabs(l1.b) > EPS)
-    p.y = -(l1.a * p.x + l1.c);
-  else
-    p.y = -(l2.a * p.x + l2.c);
+  T d = l1.v.cross(l2.v);
+  if (d == 0) return false;             // cambiar a epsilon si es double
+  p = (l2.v * l1.c - l1.v * l2.c) / d;  // requiere double
   return true;
 }
 
-// convert point and gradient/slope to Line
-void pointSlopeToLine(Point p, double m, Line& l) {
-  l.a = -m;
-  l.b = 1;
-  l.c = -((l.a * p.x) + (l.b * p.y));
-}
-
-void closestPoint(Line l, Point p, Point& ans) {
-  Line perpendicular;
-  if (fabs(l.b) < EPS) {  // vertical Line
-    ans.x = -(l.c);
-    ans.y = p.y;
-    return;
-  }
-  if (fabs(l.a) < EPS) {  // horizontal Line
-    ans.x = p.x;
-    ans.y = -(l.c);
-    return;
-  }
-  pointSlopeToLine(p, 1 / l.a, perpendicular);  // normal Line
-  areIntersect(l, perpendicular, ans);
-}
-
-// Retorna la distancia mas corta entre el punto P y la linea de A a B
-// y guarda el punto mas cercano en C
-double distToLine(Point p, Point a, Point b, Point& c) {
-  Point ap = toVector(a, p), ab = toVector(a, b);
-  double u = dot(ap, ab) / sq(ab);
-  c = translate(a, scale(ab, u));
-  return dist(p, c);
-}
-
-void reflectionPoint(Line l, Point p, Point& ans) {
-  Point b;
-  closestPoint(l, p, b);
-  Point v = toVector(p, b);
-  ans = translate(translate(p, v), v);
+// Un angulo bisector de dos lineas es una linea que forma
+// angulos iguales con l1 y l2
+Line bisector(Line l1, Line l2, bool interior) {
+  assert(l1.v.cross(l2.v) != 0);  // l1 y l2 no pueden ser paralelas
+  double sign = interior ? 1 : -1;
+  return {l2.v / l2.v.norm() + l1.v / l1.v.norm() * sign,
+          l2.c / l2.v.norm() + l1.c / l1.v.norm() * sign};
 }
