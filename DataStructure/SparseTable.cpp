@@ -8,6 +8,7 @@ template<class T>
 struct SparseTable {
   vector<vector<T>> jmp;
   void init(const vector<T>& V) {
+    if (SZ(jmp)) jmp.clear();
     jmp.emplace_back(V);
     for (int pw = 1, k = 1; pw * 2 <= SZ(V); pw *= 2, ++k) {
       jmp.emplace_back(SZ(V) - pw * 2 + 1);
