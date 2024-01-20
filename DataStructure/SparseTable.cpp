@@ -1,28 +1,22 @@
 /**
- * Descripcion: nos permite realizar eficientemente consultas
- * en rango del minimo o maximo elemento, cuando no se actualiza
- * nunca el arreglo, ST[k][i] = min/max(A[i]...A[i + 2^k - 1]);
+ * Descripcion: util para consultas min/max en rango para 
+ * arreglos inmutables, ST[k][i] = min/max(A[i]...A[i + 2^k - 1]);
  * Tiempo: O(n log n) en construccion y O(1) por query
  */
 
-template <typename T>
+template<class T>
 struct SparseTable {
-  vector<vector<T>> ST;
-
-  void build(vector<T> &A) {
-    const int MAX_LOG = 25;
-    ST.assign(MAX_LOG, vector<T>(SZ(A), 0));
-
-    for (int i = 0; i < SZ(A); i++)
-      ST[0][i] = A[i];
-
-    for (int k = 1; k <= MAX_LOG; k++)
-      for (int i = 0; i + (1 << k) <= SZ(A); i++)
-        ST[k][i] = min(ST[k - 1][i], ST[k - 1][i + (1 << (k - 1))]);
-  }
-
-  T query(int l, int r) {  // [l, r]
-    int p = 31 - __builtin_clz(r - l + 1);
-    return min(ST[p][l], ST[p][r - (1 << p) + 1]);
-  }
+	vector<vector<T>> jmp;
+	void init(const vector<T>& V) {
+		jmp.emplace_back(V);
+    for (int pw = 1, k = 1; pw * 2 <= SZ(V); pw *= 2, ++k) {
+			jmp.emplace_back(SZ(V) - pw * 2 + 1);
+			FOR (j, 0, SZ(jmp[k]))
+				jmp[k][j] = min(jmp[k - 1][j], jmp[k - 1][j + pw]);
+		}
+	}
+	T query(int l, int r) { // [a, b)
+		int dep = 31 - __builtin_clz(r - l);
+		return min(jmp[dep][l], jmp[dep][r - (1 << dep)]);
+	}
 };
