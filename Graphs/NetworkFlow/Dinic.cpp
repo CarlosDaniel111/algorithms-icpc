@@ -22,11 +22,10 @@ struct Dinic {
     if (v == t || !f) return f;
     for (int& i = ptr[v]; i < SZ(adj[v]); i++) {
       Edge& e = adj[v][i];
-      if (lvl[e.to] == lvl[v] + 1)
-        if (T p = dfs(e.to, t, min(f, e.c))) {
-          e.c -= p, adj[e.to][e.rev].c += p;
-          return p;
-        }
+      if (lvl[e.to] == lvl[v] + 1) if (T p = dfs(e.to, t, min(f, e.c))) {
+        e.c -= p, adj[e.to][e.rev].c += p;
+        return p;
+      }
     }
     return 0;
   }
