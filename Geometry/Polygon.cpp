@@ -1,117 +1,108 @@
-const double EPS = 1e-9;
-double DEG_to_RAD(double d) { return d * M_PI / 180.0; }
-double RAD_to_DEG(double r) { return r * 180.0 / M_PI; }
 
-// Duplicar P[0] al final del vector de puntos
-double perimeter(const vector<Point>& P) {
-  double ans = 0.0;
-  for (int i = 0; i < (int)P.size() - 1; ++i)
-    ans += dist(P[i], P[i + 1]);
-  return ans;
+// Retorna el area de un triangulo
+double areaTriangle(Point a, Point b, Point c) {
+  return abs((b - a).cross(c - a)) / 2.0;
 }
 
-// Formula de Heron
-double triangleArea(Point& p1, Point& p2, Point& p3) {
-  double a = abs(p2 - p1), b = abs(p3 - p1), c = abs(p3 - p2), s = (a + b + c) / 2.0;
-  return sqrt(s * (s - a) * (s - b) * (s - c));
+// Retorna si el punto esta dentro del triangulo
+bool pointInTriangle(Point a, Point b, Point c, Point p) {
+  T s1 = abs(a.cross(b, c));
+  T s2 = abs(p.cross(a, b)) + abs(p.cross(b, c)) + abs(p.cross(c, a));
+  return s1 == s2;
 }
 
-// Con la magnitud del producto cruz
-double triangleArea(Point& p1, Point& p2, Point& p3) {
-  return abs(cross(p2 - p1, p3 - p1) / 2);
+// Retorna el area del poligono
+double areaPolygon(vector<Point> p) {
+  double area = 0.0;
+  int n = SZ(p);
+  FOR(i, 0, n) {
+    area += p[i].cross(p[(i + 1) % n]);
+  }
+  return abs(area) / 2.0;
 }
 
-double area(const vector<Point>& P) {
-  double ans = 0.0;
-  for (int i = 0; i < (int)P.size() - 1; ++i)
-    ans += (P[i].x * P[i + 1].y - P[i + 1].x * P[i].y);
-  return fabs(ans) / 2.0;
-}
-
-bool isConvex(const vector<Point>& P) {
-  int n = (int)P.size();
-  if (n <= 3) return false;
-  bool firstTurn = ccw(P[0], P[1], P[2]);
-  for (int i = 1; i < n - 1; ++i)
-    if (ccw(P[i], P[i + 1], P[(i + 2) == n ? 1 : i + 2]) != firstTurn)
-      return false;
-  return true;
+// Retorna si el poligono es convexo
+bool isConvex(vector<Point> p) {
+  bool hasPos = false, hasNeg = false;
+  for (int i = 0, n = SZ(p); i < n; i++) {
+    int o = orient(p[i], p[(i + 1) % n], p[(i + 2) % n]);
+    if (o > 0) hasPos = true;
+    if (o < 0) hasNeg = true;
+  }
+  return !(hasPos && hasNeg);
 }
 
 // Retorna 1/0/-1 si el punto p esta dentro/sobre/fuera de
 // cualquier poligono P concavo/convexo
-int insidePolygon(Point pt, const vector<Point>& P) {
-  int n = (int)P.size();
-  if (n <= 3) return -1;
-  bool on_polygon = false;
-  for (int i = 0; i < n - 1; ++i)
-    if (fabs(dist(P[i], pt) + dist(pt, P[i + 1]) - dist(P[i], P[i + 1])) < EPS)
-      on_polygon = true;
-  if (on_polygon) return 0;
-  double sum = 0.0;
-  for (int i = 0; i < n - 1; ++i) {
-    if (ccw(pt, P[i], P[i + 1]))
-      sum += angle(P[i], pt, P[i + 1]);
-    else
-      sum -= angle(P[i], pt, P[i + 1]);
-  }
-  return fabs(sum) > M_PI ? 1 : -1;
-}
-
-// Retorna si el punto esta dentro del triangulo
-// Requiere: cross(pt1,pt2,pt3)
-bool pointInTriangle(Point a, Point b, Point c, Point p) {
-  T s1 = abs(cross(a, b, c));
-  T s2 = abs(cross(p, a, b)) + abs(cross(p, b, c)) + abs(cross(p, c, a));
-  return s1 == s2;
-}
-
-// Checa si un punto se encuentra dentro de un poligono convexo
-// Nota: el poligono debe estar ordenado contra la manecilla del
-// reloj (ccw)
-// Necesario: cross(pt1,pt2), sgn(T), sq(pt), pointInTriangle()
-// Tiempo: O(log n)
-vector<Point> seq;
-Point translation;
-int n;
-
-void prepare(vector<Point>& points) {
-  n = SZ(points);
-  int pos = 0;
-  FOR(i, 1, n) {
-    if (points[i] < points[pos])
-      pos = i;
-  }
-  rotate(points.begin(), points.begin() + pos, points.end());
-  n--;
-  seq.resize(n);
+// Tiempo: O(n)
+int inPolygon(vector<Point> poly, Point p) {
+  int n = SZ(poly), ans = 0;
   FOR(i, 0, n) {
-    seq[i] = points[i + 1] - points[0];
+    Point p1 = poly[i], p2 = poly[(i + 1) % n];
+    if (p1.y > p2.y) swap(p1, p2);
+    if (onSegment(p1, p2, p)) return 0;
+    ans ^= (p1.y <= p.y && p.y < p2.y && p.cross(p1, p2) > 0);
   }
-  translation = points[0];
+  return ans ? -1 : 1;
 }
 
-bool pointInConvexPolygon(Point point) {
-  point = point - translation;
-  if (cross(seq[0], point) != 0 &&
-      sgn(cross(seq[0], point)) != sgn(cross(seq[0], seq[n - 1])))
-    return false;
-  if (cross(seq[n - 1], point) != 0 &&
-      sgn(cross(seq[n - 1], point)) != sgn(cross(seq[n - 1], seq[0])))
-    return false;
-
-  if (cross(seq[0], point) == 0)
-    return sq(seq[0]) >= sq(point);
-
-  int l = 0, r = n - 1;
-  while (r - l > 1) {
-    int mid = (l + r) / 2;
-    int pos = mid;
-    if (cross(seq[pos], point) >= 0)
-      l = mid;
-    else
-      r = mid;
+// Retorna el centroide del poligono
+Point polygonCenter(vector<Point>& v) {
+  Point res{0, 0};
+  double A = 0;
+  for (int i = 0, j = SZ(v) - 1; i < SZ(v); j = i++) {
+    res = res + (v[i] + v[j]) * v[j].cross(v[i]);
+    A += v[j].cross(v[i]);
   }
-  int pos = l;
-  return pointInTriangle(seq[pos], seq[pos + 1], Point{0, 0}, point);
+  return res / A / 3;
+}
+
+// Determina si un punto P se encuentra dentro de un poligono
+// convexo ordenado en ccw y sin puntos colineares (Convex hull)
+// Tiempo O(log n)
+bool inPolygonCH(vector<Point>& l, Point p, bool strict = true) {
+  int a = 1, b = SZ(l) - 1, r = !strict;
+  if (SZ(l) < 3) return r && onSegment(l[0], l.back(), p);
+  if (orient(l[0], l[a], l[b]) > 0) swap(a, b);
+  if (orient(l[0], l[a], p) >= r || orient(l[0], l[b], p) <= -r)
+    return false;
+  while (abs(a - b) > 1) {
+    int c = (a + b) / 2;
+    (orient(l[0], l[c], p) > 0 ? b : a) = c;
+  }
+  return sgn(l[a].cross(l[b], p)) < r;
+}
+
+// Retorna los dos puntos con mayor distancia en un poligono
+// convexo ordenado en ccw y sin puntos colineares (Convex hull)
+// Tiempo O(n)
+array<Point, 2> hullDiameter(vector<Point> S) {
+  int n = SZ(S), j = n < 2 ? 0 : 1;
+  pair<ll, array<Point, 2>> res({0, {S[0], S[0]}});
+  FOR(i, 0, j) {
+    for (;; j = (j + 1) % n) {
+      res = max(res, {(S[i] - S[j]).sq(), {S[i], S[j]}});
+      if ((S[(j + 1) % n] - S[j]).cross(S[i + 1] - S[i]) >= 0)
+        break;
+    }
+  }
+  return res.second;
+}
+
+// Retorna el poligono que se encuentra a la izquierda de la linea
+// que va de s a e despues del corte
+vector<Point> polygonCut(vector<Point>& poly, Point s, Point e) {
+  vector<Point> res;
+  FOR(i, 0, SZ(poly)) {
+    Point cur = poly[i], prev = i ? poly[i - 1] : poly.back();
+    bool side = s.cross(e, cur) < 0;
+    if (side != (s.cross(e, prev) < 0)) {
+      Point p;
+      areIntersect(Line(s, e), Line(cur, prev), p);
+      res.push_back(p);
+    }
+    if (side)
+      res.push_back(cur);
+  }
+  return res;
 }
