@@ -1,6 +1,6 @@
 /**
  * Descripcion: sirve para la busqueda de componentes fuertemente conexos (SCC)
- * Un SCC se define de la siguiente manera: si elegimo cualquier par de vertices u y v
+ * Un SCC se define de la siguiente manera: si elegimos cualquier par de vertices u y v
  * en el SCC, podemos encontrar un camino de u a v y viceversa
  * Explicacion: La idea basica del algoritmo de Tarjan es que los SCC forman subarboles
  * en el arbol de expansion de la DFS. Ademas de calcular tin(u) y low(u) para cada vertice,
@@ -9,40 +9,34 @@
  * vis (parte del SCC actual) pueden actualizar low(u). Ahora, si tenemos el vertice u
  * en este arbol de expansion DFS con low(u) = tin(u), podemos concluir que u es la raiz de
  * un SCC y los miembros de estos SCC se pueden identificar obteniendo el contenido actual
- * de la pila, hasta que volvamos a llegar al vertice u
+ * de la pila, hasta que volvamos a llegar al vertice u.
+ * Retorna el vector de los SCC, donde SCC[i] es el vector de los nodos del i-esimo SCC
  * Tiempo: O(V + E)
  */
-
-vector<vi> g;
-vi tin, low, vis;
-int timer, numSCC;
-stack<int> pila;
-
-void go(int u) {
-  tin[u] = low[u] = timer++;
-  pila.push(u);
-  vis[u] = 1;
-  for (int to : g[u]) {
-    if (tin[to] == -1) go(to);
-    if (vis[to]) low[u] = min(low[u], low[to]);
-  }
-  if (low[u] == tin[u]) {
-    ++numSCC;
-    while (1) {
-      int v = pila.top();
-      pila.pop();
-      vis[v] = 0;
-      if (u == v) break;
+vector<vi> tarjan(vector<vi>& g) {
+  int n = SZ(g);
+  vector<vi> scc;
+  vi tin(n, -1), low(n, 0), vis(n, 0);
+  stack<int> st;
+  int timer = 0;
+  auto dfs = [&](auto self, int u) -> void {
+    tin[u] = low[u] = timer++;
+    st.push(u);
+    vis[u] = 1;
+    for (int to : g[u]) {
+      if (tin[to] == -1) self(self, to);
+      if (vis[to]) low[u] = min(low[u], low[to]);
     }
-  }
-}
-
-int tarjan() {
-  tin.assign(n, -1);
-  low.assign(n, 0);
-  vis.assign(n, 0);
-  while (!pila.empty()) pila.pop();
-  timer = numSCC = 0;
-  FOR (i, 0, n) if (tin[i] == -1) go(i);
-  return numSCC;
+    if (low[u] == tin[u]) {
+      scc.pb({});
+      while (1) {
+        int v = st.top();
+        st.pop();
+        scc.back().pb(v);
+        if (u == v) break;
+      }
+    }
+  };
+  FOR (i, 0, n) if (tin[i] == -1) dfs(dfs, i);
+  return scc;
 }
