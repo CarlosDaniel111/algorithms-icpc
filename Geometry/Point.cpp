@@ -37,12 +37,13 @@ struct Point {
   Point translate(Point v) { return *this + v; }
   Point scale(Point c, double factor) { return c + (*this - c) * factor; }
   Point rotate(double ang) { return {x * cos(ang) - y * sin(ang), x * sin(ang) + y * cos(ang)}; }
-  Point rot_around(double ang, Point c) { return p + (*this - p).rotate(ang); }
+  Point rot_around(double ang, Point c) { return c + (*this - c).rotate(ang); }
   Point perp() { return {-y, x}; }
 
   T dot(Point p) { return x * p.x + y * p.y; }
   T cross(Point p) const { return x * p.y - y * p.x; }
   T cross(Point a, Point b) const { return (a - *this).cross(b - *this); }
+  double angle() const { return atan2(y, x); }
 
   friend ostream& operator<<(ostream& os, Point p) {
     return os << "(" << p.x << "," << p.y << ")";

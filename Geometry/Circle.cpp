@@ -8,6 +8,11 @@ Point circumCenter(Point a, Point b, Point c) {
   return a + (b * sq(c) - c * sq(b)).perp() / b.cross(c) / 2;
 }
 
+// Retorna el punto que se encuentra en el circulo dado el angulo
+Point circlePoint(Point c, double r, double ang) {
+  return Point{c.x + cos(ang) * r, c.y + sin(ang) * r};
+}
+
 // Retorna el numero de intersecciones de la linea l con el circulo (o,r)
 // y los pone en out. Si solo hay una interseccion el par de out es igual
 int circleLine(Point o, double r, Line l, pair<Point, Point> &out) {
@@ -24,7 +29,7 @@ int circleLine(Point o, double r, Line l, pair<Point, Point> &out) {
 // la interseccion con una linea
 int circleCircle(Point o1, double r1, Point o2, double r2, pair<Point, Point> &out) {
   Point d = o2 - o1;
-  double d2 = sq(d);
+  double d2 = d.sq();
   if (d2 == 0) {
     assert(r1 != r2);  // los circulos son iguales
     return 0;
