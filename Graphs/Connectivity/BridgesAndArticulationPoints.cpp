@@ -23,7 +23,7 @@ pair<vector<pi>, vi> findBridgesAndArticulationPoints(vector<vi>& g) {
       }
       self(self, v, u);
       if (low[v] >= tin[u] && p != -1) articulation[u] = 1;
-      if (low[v] > tin[u]) bridges.pb({min(u, v), max(u, v)});
+      if (low[v] > tin[u]) bridges.pb({u, v});
       low[u] = min(low[u], low[v]);
       children++;
     }
