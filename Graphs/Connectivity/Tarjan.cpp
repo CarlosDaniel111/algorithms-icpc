@@ -14,11 +14,10 @@
  * Tiempo: O(V + E)
  */
 vector<vi> tarjan(vector<vi>& g) {
-  int n = SZ(g);
+  int n = SZ(g), timer = 0;
   vector<vi> scc;
   vi tin(n, -1), low(n, 0), vis(n, 0);
   stack<int> st;
-  int timer = 0;
   auto dfs = [&](auto self, int u) -> void {
     tin[u] = low[u] = timer++;
     st.push(u);
