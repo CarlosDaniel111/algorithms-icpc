@@ -22,15 +22,16 @@ vector<vi> tarjan(vector<vi>& g) {
     tin[u] = low[u] = timer++;
     st.push(u);
     vis[u] = 1;
-    for (int to : g[u]) {
-      if (tin[to] == -1) self(self, to);
-      if (vis[to]) low[u] = min(low[u], low[to]);
+    for (int v : g[u]) {
+      if (tin[v] == -1) self(self, v);
+      if (vis[v]) low[u] = min(low[u], low[v]);
     }
     if (low[u] == tin[u]) {
       scc.pb({});
       while (1) {
         int v = st.top();
         st.pop();
+        vis[v] = 0;
         scc.back().pb(v);
         if (u == v) break;
       }
