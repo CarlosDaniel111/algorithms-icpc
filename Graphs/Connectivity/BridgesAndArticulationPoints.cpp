@@ -2,7 +2,7 @@
  * Descripcion: algoritmo para buscar los puentes y puntos de articulacion
  * en un grafo, regresa un par (P, A) donde P contiene a las aristas que
  * son un puente y A contiene los nodos que son un punto de articulacion,
- * si se requiere un arreglo vector<bool> A(n) donde A[i] indica si el
+ * si se requiere un vector<bool> A(n), donde A[i] indica si el
  * i-esimo nodo es un punto de articulacion, retornar articulation.
  * Tiempo: O(V + E)
  */
