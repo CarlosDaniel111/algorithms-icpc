@@ -6,25 +6,24 @@
  * emparejamiento para el vertice i del lado derecho o -1 si no lo tiene
  * Tiempo: O(VE)
  */
-bool find(int j, vector<vi>& g, vi& btoa, vi& vis) {
-	if (btoa[j] == -1) return 1;
-	vis[j] = 1;
-  int di = btoa[j];
-	for (int e : g[di]) if (!vis[e] && find(e, g, btoa, vis)) {
-    btoa[e] = di;
-    return 1;
-  }
-	return 0;
-}
 int kuhn(vector<vi>& g, int m) {
-	vi vis, btoa(m, -1);
-	FOR (i, 0, SZ(g)) {
-		vis.assign(SZ(btoa), 0);
-		for (int j : g[i])
-			if (find(j, g, btoa, vis)) {
-				btoa[j] = i;
-				break;
-			}
-	}
-	return {SZ(btoa) - (int)count(ALL(btoa), -1), btoa};
+  vi vis, btoa(m, -1);
+  auto dfs = [&](auto self, int j) -> bool {
+    if (btoa[j] == -1) return 1;
+    vis[j] = 1;
+    int di = btoa[j];
+    for (int e : g[di]) if (!vis[e] && self(self, e)) {
+      btoa[e] = di;
+      return 1;
+    }
+    return 0;  
+  };
+  FOR (i, 0, SZ(g)) {
+    vis.assign(SZ(btoa), 0);
+    for (int j : g[i]) if (dfs(dfs, j)) {
+      btoa[j] = i;
+      break;
+    }
+  }
+  return {SZ(btoa) - (int)count(ALL(btoa), -1), btoa};
 }
