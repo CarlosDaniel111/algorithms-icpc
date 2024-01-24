@@ -43,6 +43,12 @@ int circleCircle(Point o1, double r1, Point o2, double r2, pair<Point, Point> &o
   return 1 + sgn(h2);
 }
 
+// Retorna un booleano indicando si los dos circulos intersectan o no
+bool circleCircle(Point o1, double r1, Point o2, double r2) {
+  double dx = o1.x - o2.x, dy = o1.y - o2.y, rs = r1 + r2; 
+  return dx * dx + dy * dy <= rs * rs;
+}
+
 // Retorna el area de la interseccion de un circulo con
 // un poligono ccw
 // Tiempo O(n)
