@@ -1,3 +1,9 @@
+/**
+ * Descripcion: crea un segment tree donde guarda sus
+ * formas pasadas cuando se hace una actualizacion
+ * Tiempo: log(n)
+ */
+
 #define oper(a,b) (min(a, b))
 #define NEUT 0
 struct STree { // persistent segment tree for min over integers
