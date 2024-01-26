@@ -1,6 +1,7 @@
 /**
  * Descripcion: crea un segment tree donde guarda sus
  * formas pasadas cuando se hace una actualizacion
+ * soporta consultas y actualizaciones en rango
  * Tiempo: log(n)
  */
 
