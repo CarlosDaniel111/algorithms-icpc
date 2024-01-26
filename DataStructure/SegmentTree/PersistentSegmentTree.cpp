@@ -1,4 +1,4 @@
-#define oper(a,b) (a+b)
+#define oper(a,b) (min(a, b))
 #define NEUT 0
 struct STree { // persistent segment tree for min over integers
   vector<int> st, L, R; int n, sz, rt;
