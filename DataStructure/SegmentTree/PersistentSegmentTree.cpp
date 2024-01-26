@@ -31,6 +31,6 @@ struct STree { // persistent segment tree for min over integers
   int init(vi a) { return init(0, n, a); }
   int upd(int k, int p, int v) { return rt = upd(k, 0, n, p, v); }
   int upd(int p, int v) { return upd(rt, p, v); } // update on last root, returns new root
-  int query(int k, int a, int b) { return query(k, 0, n, a, b); };
+  int query(int k, int a, int b) { return query(k, 0, n, a, b); }; // [a, b)
   // k -> starting root
 };
