@@ -4,38 +4,48 @@
  * Tiempo: log(n)
  */
 
-struct STree {  // persistent segment tree for min over integers
-  vi st, L, R;
-  int n, tam, rt;
-  STree(int n) : st(1, INF), L(1, 0), R(1, 0), n(n), rt(0), tam(1) {}
-  int new_node(int v, int l = 0, int r = 0) {
-    int ks = sz(st);
-    st.pb(v);
-    L.pb(l);
-    R.pb(r);
-    return ks;
+template<class T, int SZ> struct pseg {
+  static const int LIM = 1e7;
+  struct node { 
+    int l, r; T val = 0, lazy = 0; 
+    void inc(T x) { lazy += x; }
+    T get() { return val+lazy; }
+  };
+  node d[LIM]; int nex = 0;
+  int copy(int c) { d[nex] = d[c]; return nex++; }
+  T comb(T a, T b) { return a+b; }
+  void pull(int c) { d[c].val = comb(d[d[c].l].get(), d[d[c].r].get()); } 
+  //// MAIN FUNCTIONS
+  T query(int c, int lo, int hi, int L, int R) {  
+    if (lo <= L && R <= hi) return d[c].get();
+    if (R < lo || hi < L) return 0;
+    int M = (L+R)/2;
+    return d[c].lazy+comb(query(d[c].l,lo,hi,L,M),
+        query(d[c].r,lo,hi,M+1,R));
   }
-  int upd(int k, int s, int e, int p, int v) {
-    int ks = new_node(st[k], L[k], R[k]);
-    if (s + 1 == e) {
-      st[ks] = v;
-      return ks;
+  int upd(int c, int lo, int hi, T v, int L, int R) {
+    if (R < lo || hi < L) return c;
+    int x = copy(c);
+    if (lo <= L && R <= hi) { d[x].inc(v); return x; }
+    int M = (L+R)/2;
+    d[x].l = upd(d[x].l,lo,hi,v,L,M);
+    d[x].r = upd(d[x].r,lo,hi,v,M+1,R);
+    pull(x); return x;
+  }
+  int build(const vector<T>& arr, int L, int R) {
+    int c = nex++;
+    if (L == R) {
+      if (L < SZ(arr)) d[c].val = arr[L];
+      return c;
     }
-    int m = (s + e) / 2, ps;
-    if (p < m)
-      ps = upd(L[ks], s, m, p, v), L[ks] = ps;
-    else
-      ps = upd(R[ks], m, e, p, v), R[ks] = ps;
-    st[ks] = oper(st[L[ks]], st[R[ks]]);
-    return ks;
+    int M = (L+R)/2;
+    d[c].l = build(arr,L,M), d[c].r = build(arr,M+1,R);
+    pull(c); return c;
   }
-  int query(int k, int s, int e, int a, int b) {
-    if (e <= a || b <= s) return INF;
-    if (a <= s && e <= b) return st[k];
-    int m = (s + e) / 2;
-    return oper(query(L[k], s, m, a, b), query(R[k], m, e, a, b));
-  }
-  int upd(int k, int p, int v) { return rt = upd(k, 0, n, p, v); }
-  int upd(int p, int v) { return upd(rt, p, v); }  // update on last root
-  int query(int k, int a, int b) { return query(k, 0, n, a, b); };
+  vi loc; //// PUBLIC
+  void upd(int lo, int hi, T v) { 
+    loc.push_back(upd(loc.back(),lo,hi,v,0,SZ-1)); }
+  T query(int ti, int lo, int hi) { 
+    return query(loc[ti],lo,hi,0,SZ-1); }
+  void build(const vector<T>&arr) {loc.push_back(build(arr,0,SZ-1));}
 };
