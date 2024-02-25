@@ -8,62 +8,51 @@
  */
 
 template <class T>
-class SegmentTree {
- private:
+struct SegTree {
+  #define NIL 0
+  
   int n;
-  vector<T> arr, st;
+  vector<T> A, st;
+  
+  inline int lc(int p) { return (p << 1) + 1; }
+  inline int rc(int p) { return (p << 1) + 2; }
 
-  int l(int p) { return (p << 1) + 1; }
-  int r(int p) { return (p << 1) + 2; }
-
-  void build(int index, int start, int end) {
-    if (start == end)
-      st[index] = arr[start];
-    else {
-      int mid = (start + end) / 2;
-
-      build(l(index), start, mid);
-      build(r(index), mid + 1, end);
-
-      st[index] = st[l(index)] + st[r(index)];
-    }
-  }
-
-  T query(int index, int start, int end, int i, int j) {
-    if (j < start || end < i)
-      return 0;  // Si ese rango no nos sirve, retornar un valor que no cambie nada
-
-    if (i <= start && end <= j)
-      return st[index];
-
-    int mid = (start + end) / 2;
-
-    return query(l(index), start, mid, i, j) + query(r(index), mid + 1, end, i, j);
-  }
-
-  void update(int index, int start, int end, int idx, T val) {
-    if (start == end)
-      st[index] = val;
-    else {
-      int mid = (start + end) / 2;
-      if (start <= idx && idx <= mid)
-        update(l(index), start, mid, idx, val);
-      else
-        update(r(index), mid + 1, end, idx, val);
-
-      st[index] = st[l(index)] + st[r(index)];
-    }
-  }
-
- public:
-  SegmentTree(int sz) : n(sz), st(4 * n) {}
-
-  SegmentTree(const vector<T> &initialArr) : SegmentTree((int)initialArr.size()) {
-    arr = initialArr;
+  void init(vector<T> v) {
+    A = v;
+    n = SZ(A);
+    st.resize(n * 4);
     build(0, 0, n - 1);
   }
 
-  void update(int i, T val) { update(0, 0, n - 1, i, val); }
+  void build(int p, int L, int R) {
+    if (L == R) {
+      st[p] = A[L];
+      return;
+    }
+    int m = (L + R) >> 1;
+    build(lc(p), L, m);
+    build(rc(p), m + 1, R);
+    st[p] = st[lc(p)] + st[rc(p)];
+  }
 
-  T query(int i, int j) { return query(0, 0, n - 1, i, j); }  // [i, j]
+  T query(int l, int r, int p, int L, int R) {
+    if (l <= L && r >= R) return st[p];
+    if (l > R || r < L) return NIL;
+    int m = (L + R) >> 1;
+    return query(l, r, lc(p), L, m) + query(l, r, rc(p), m + 1, R);
+  }
+  T query (int l, int r) { return query(l, r, 0, 0, n - 1); }
+
+  void update(int i, T val, int p, int L, int R) {
+    if (L > i || R < i) return;
+    if (L == R) {
+      st[p] = val;
+      return;
+    }
+    int m = (L + R) >> 1;
+    update(i, val, lc(p), L, m);
+    update(i, val, rc(p), m + 1, R);
+    st[p] = st[lc(p)] + st[rc(p)];
+  }
+  void update(int i, T val) { update(i, val, 0, 0, n - 1); }
 };
