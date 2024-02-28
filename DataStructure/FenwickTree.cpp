@@ -9,7 +9,7 @@ struct FT {
   vector<ll> s;
   FT(int n) : s(n) {}
   void update(int pos, ll dif) { // a[pos] += dif
-    for (; pos < sz(s); pos |= pos + 1) s[pos] += dif;
+    for (; pos < SZ(s); pos |= pos + 1) s[pos] += dif;
   }
   ll query(int pos) { // sum of values in [0, pos)
     ll res = 0;
@@ -21,7 +21,7 @@ struct FT {
     if (sum <= 0) return -1;
     int pos = 0;
     for (int pw = 1 << 25; pw; pw >>= 1)
-      if (pos + pw <= sz(s) && s[pos + pw-1] < sum)
+      if (pos + pw <= SZ(s) && s[pos + pw-1] < sum)
         pos += pw, sum -= s[pos-1];
     return pos;
   }
