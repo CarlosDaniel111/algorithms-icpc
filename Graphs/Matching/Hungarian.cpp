@@ -10,7 +10,7 @@
  */
 template<typename T>
 pair<T, vi> hungarian(const vector<vector<T>> &a) {
-  #define INF numeric_limits<T>::max(); 
+  #define INF numeric_limits<T>::max()
   if (a.empty()) return {0, {}};
   int n = SZ(a) + 1, m = SZ(a[0]) + 1;
   vi p(m), ans(n - 1);
@@ -23,7 +23,8 @@ pair<T, vi> hungarian(const vector<vector<T>> &a) {
     vector<bool> done(m + 1);
     do {  // dijkstra
       done[j0] = true;
-      int i0 = p[j0], j1, delta = INF;
+      int i0 = p[j0], j1;
+      T delta = INF;
       FOR (j, 1, m) if (!done[j]) {
         auto cur = a[i0 - 1][j - 1] - u[i0] - v[j];
         if (cur < dist[j]) dist[j] = cur, pre[j] = j0;
